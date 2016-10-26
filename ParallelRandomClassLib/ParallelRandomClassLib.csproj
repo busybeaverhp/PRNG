@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParallelRandom.cs" />
+    <Compile Include="ParallelPRNG.cs" />
     <Compile Include="PRNG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -18,3 +18,8 @@ C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelRandomClassL
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.csprojResolveAssemblyReference.cache
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.dll
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.pdb
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\bin\Debug\ParallelRandomClassLib.dll
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\bin\Debug\ParallelRandomClassLib.pdb
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.csprojResolveAssemblyReference.cache
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.dll
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.pdb

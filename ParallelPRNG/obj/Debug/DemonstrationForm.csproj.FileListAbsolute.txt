@@ -1,0 +1,11 @@
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.pdb
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.dll
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.pdb
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csprojResolveAssemblyReference.cache
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb

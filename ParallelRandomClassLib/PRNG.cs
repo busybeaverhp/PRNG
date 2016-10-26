@@ -22,12 +22,15 @@ namespace ParallelRandomClassLib
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _listOfEntropyByteArrays = new List<byte[]>();
 
+            // RNGCrypto provides the virtually random bytes.
             byte[] _systemEntropy64ByteSeed = new byte[64];
             rngcsp.GetBytes(_systemEntropy64ByteSeed);
             rngcsp.Dispose();
 
+            // When initializing PRNG without an argument, a SHA-512("inputString") hash will be used.
             byte[] _inputEntropy64ByteSeed = sha512.ComputeHash(Encoding.ASCII.GetBytes("inputString"));
 
+            // Concatenate both entropy seeds.
             var concatenatedSeed = new byte[_systemEntropy64ByteSeed.Length + _inputEntropy64ByteSeed.Length];
             _systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
             _inputEntropy64ByteSeed.CopyTo(concatenatedSeed, _inputEntropy64ByteSeed.Length);
@@ -41,12 +44,15 @@ namespace ParallelRandomClassLib
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _listOfEntropyByteArrays = new List<byte[]>();
 
+            // RNGCrypto provides the virtually random bytes.
             byte[] _systemEntropy64ByteSeed = new byte[64];
             rngcsp.GetBytes(_systemEntropy64ByteSeed);
             rngcsp.Dispose();
 
+            // Your input is to guarantee an additional source of entropy in case the entropy pool from RNGCSP fails.
             byte[] _inputEntropy64ByteSeed = sha512.ComputeHash(Encoding.ASCII.GetBytes(inputString));
 
+            // Concatenate both entropy seeds.
             var concatenatedSeed = new byte[_systemEntropy64ByteSeed.Length + _inputEntropy64ByteSeed.Length];
             _systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
             _inputEntropy64ByteSeed.CopyTo(concatenatedSeed, _inputEntropy64ByteSeed.Length);
@@ -84,7 +90,12 @@ namespace ParallelRandomClassLib
             return prn;
         }
 
+        // Delete this when deploying my PRNG in a real application. This is for debugging only!
         public byte[] HashedSeedByte
         { get { return _hashedSeedByte; } }
+
+        // Delete this when deploying my PRNG in a real application. This is for debugging only!
+        public byte[] CurrentEntropyHash
+        { get { return _listOfEntropyByteArrays[0]; } }
     }
 }

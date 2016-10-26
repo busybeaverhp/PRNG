@@ -43,3 +43,6 @@ C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelPRNG\obj\Deb
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
 C:\Huygee\Dropbox\_VisualStudioSpace\Library - ParallelPRNG\ParallelPRNG\obj\Debug\ParallelPRNG.csproj.GenerateResource.Cache
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
