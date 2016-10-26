@@ -9,3 +9,14 @@ E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Reso
 E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
 E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
 E:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.pdb
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.dll
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.pdb
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csprojResolveAssemblyReference.cache
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
