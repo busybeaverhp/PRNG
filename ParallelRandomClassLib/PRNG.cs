@@ -61,7 +61,7 @@ namespace ParallelRandomClassLib
             _currentEntropyBytes = _hashedSeedByte.ToArray();
         }
 
-        private byte[] NextEntropy32ByteArray()
+        public byte[] NextEntropy32ByteArray()
         {
             byte[] entropy32ByteArray = sha256.ComputeHash(_currentEntropyBytes);
 
@@ -74,11 +74,12 @@ namespace ParallelRandomClassLib
         public List<byte[]> GenerateListOfEntropy32ByteArrays(int desiredQuantityOfArrays)
         {
             List<byte[]> listOfEntropy32ByteArray = new List<byte[]>();
+            byte[] entropy32ByteArray = new byte[32];
 
             if (desiredQuantityOfArrays > 0)
                 for (int i = 0; i < desiredQuantityOfArrays; i++)
                 {
-                    byte[] entropy32ByteArray = NextEntropy32ByteArray();
+                    entropy32ByteArray = NextEntropy32ByteArray();
                     listOfEntropy32ByteArray.Add(entropy32ByteArray);
                 }
 
@@ -108,6 +109,36 @@ namespace ParallelRandomClassLib
 
             prn = (prn % minMaxDifference) + minIntValueInclusive;
             return prn;
+        }
+
+        public List<BigInteger> GenerateListOfEntropyUValues(BigInteger integerMaxExclusive, int desiredQuantityOfValues)
+        {
+            List<BigInteger> listOfEntropyUValues = new List<BigInteger>();
+            BigInteger generatedValue = 0;
+
+            if (desiredQuantityOfValues > 0)
+                for (int i = 0; i < desiredQuantityOfValues; i++)
+                {
+                    generatedValue = NextUInteger(integerMaxExclusive);
+                    listOfEntropyUValues.Add(generatedValue);
+                }
+
+            return listOfEntropyUValues;
+        }
+
+        public List<BigInteger> GenerateListOfEntropyValuesBigInteger(BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive, int desiredQuantityOfValues)
+        {
+            List<BigInteger> listOfEntropyValues = new List<BigInteger>();
+            BigInteger generatedValue = 0;
+
+            if (desiredQuantityOfValues > 0)
+                for (int i = 0; i < desiredQuantityOfValues; i++)
+                {
+                    generatedValue = Next(minIntValueInclusive, maxIntValueExclusive);
+                    listOfEntropyValues.Add(generatedValue);
+                }
+
+            return listOfEntropyValues;
         }
 
         // Delete this when deploying my PRNG in a real application. This is for debugging only!
