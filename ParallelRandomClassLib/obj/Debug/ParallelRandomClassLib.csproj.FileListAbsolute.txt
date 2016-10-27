@@ -25,6 +25,5 @@ E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClas
 E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.pdb
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelRandomClassLib\bin\Debug\ParallelRandomClassLib.dll
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelRandomClassLib\bin\Debug\ParallelRandomClassLib.pdb
-C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.csprojResolveAssemblyReference.cache
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.dll
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.pdb

@@ -10,12 +10,12 @@ namespace ParallelRandomClassLib
 {
     public enum DesiredCPUUtilization {AllThreads, HalfAvailPlusOneThread, HalfAvailThreads, SingleThread};
 
-    public class ParallelPRNG
+    public class PPRNG
     {
         ConcurrentBag<byte[]> _bagOfRandomBytes = new ConcurrentBag<byte[]>();
         ConcurrentBag<BigInteger> _bagOfRandomIntegers = new ConcurrentBag<BigInteger>();
 
-        public ParallelPRNG() { }
+        public PPRNG() { }
 
         public void GenerateDesiredQuantityOfRandomByteArrays(DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandomByteArrays)
         {
@@ -48,7 +48,7 @@ namespace ParallelRandomClassLib
 
             int iterationsPerThread = (desiredQuantityOfValues / threadUsage) + 1;
 
-            Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, ParallelLoopState) =>
+            Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i) =>
             {
                 string inputString = "New PRNG Instance" + i;
                 PRNG prng = new PRNG(inputString);
@@ -76,5 +76,11 @@ namespace ParallelRandomClassLib
 
             return threadUsage;
         }
+
+        public ConcurrentBag<byte[]> GetBagOfRandomBytes
+        { get { return _bagOfRandomBytes; } }
+
+        public ConcurrentBag<BigInteger> GetBagOfRandomIntegers
+        { get { return _bagOfRandomIntegers; } }
     }
 }
