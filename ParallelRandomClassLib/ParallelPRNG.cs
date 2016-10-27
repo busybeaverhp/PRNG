@@ -17,14 +17,16 @@ namespace ParallelRandomClassLib
 
         public PPRNG() { }
 
-        public void GenerateDesiredQuantityOfRandomByteArrays(DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandomByteArrays)
+        public void GenerateDesiredQuantityOfRandom32ByteArrays(DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandom32ByteArrays)
         {
+            _bagOfRandomBytes = new ConcurrentBag<byte[]>();
+
             int threadUsage = ThreadUsage(desiredCPUUtilization);
 
             ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
             maxDegreeOfParallelism.MaxDegreeOfParallelism = threadUsage;
 
-            int iterationsPerThread = (quantityOfRandomByteArrays / threadUsage) + 1;
+            int iterationsPerThread = (quantityOfRandom32ByteArrays / threadUsage) + 1;
 
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, ParallelLoopState) =>
             {
@@ -41,6 +43,8 @@ namespace ParallelRandomClassLib
 
         public void GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization desiredCPUUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
         {
+            _bagOfRandomIntegers = new ConcurrentBag<BigInteger>();
+
             int threadUsage = ThreadUsage(desiredCPUUtilization);
 
             ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
