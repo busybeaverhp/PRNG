@@ -381,23 +381,36 @@ namespace ParallelPRNG
             int iterations = 1000;
             
             Color color = Color.FromArgb((int)prng.NextUInteger(256), (int)prng.NextUInteger(256), (int)prng.NextUInteger(256));
-            Pen pen = new Pen(color, 3);
+            Pen pen = new Pen(color, 2);
 
             Point originPoint = new Point(canvasTab3.Width / 2, canvasTab3.Height / 2);
 
             for (int i = 0; i < iterations; i++)
             {
                 Point point1 = originPoint;
-                Point point2 = new Point((point1.X + 4*(int)prng.Next(-1, 2)) % canvasTab3.Width, (point1.Y + 4*(int)prng.Next(-1, 2)) % canvasTab3.Height);
-                g.DrawLine(pen, point1, point2);
+                Point point2 = new Point((point1.X + (int)prng.Next(-4, 5)), (point1.Y + (int)prng.Next(-4, 5)));
 
-                originPoint = point2;
+                if (point2.X < 0 || point2.Y < 0 || point2.X > canvasTab3.Width - 1 || point2.Y > canvasTab3.Height - 1 )
+                {
+                    originPoint = new Point(canvasTab3.Width / 2, canvasTab3.Height / 2);
+                }
+                else
+                {
+                    g.DrawLine(pen, point1, point2);
+                    originPoint = point2;
+                }
             }
  
             canvasTab3.Image = bmap;
         }
 
         #endregion
+
+        private void btnClearCanvas_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.White);
+            canvasTab3.Image = bmap;
+        }
 
         #region METHODS
 
@@ -418,5 +431,7 @@ namespace ParallelPRNG
         }
 
         #endregion
+
+
     }
 }
