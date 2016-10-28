@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
@@ -28,8 +29,15 @@ namespace ParallelPRNG
         public Form1()
         {
             InitializeComponent();
+
             bmap = new Bitmap(canvasTab3.Width, canvasTab3.Height);
             g = Graphics.FromImage(bmap);
+
+            float dx = bmap.Width * 0F;
+            float dy = bmap.Height * 1F;
+
+            Matrix matrix = new Matrix(1, 0, 0, -1, dx, dy);
+            g.Transform = matrix;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -357,7 +365,36 @@ namespace ParallelPRNG
 
         private void btnGenerateVerticalBars_Click(object sender, EventArgs e)
         {
+            Color color = Color.FromArgb((int)prng.NextUInteger(256), (int)prng.NextUInteger(256), (int)prng.NextUInteger(256));
+            SolidBrush solidBrush = new SolidBrush(color);
 
+            for (int i = 0; i < bmap.Width; i++)
+            {
+                g.FillRectangle(solidBrush, i, 0, 1, (int)prng.NextUInteger(bmap.Height));
+            }
+
+            canvasTab3.Image = bmap;
+        }
+
+        private void btnRandomWalk_Click(object sender, EventArgs e)
+        {
+            int iterations = 1000;
+            
+            Color color = Color.FromArgb((int)prng.NextUInteger(256), (int)prng.NextUInteger(256), (int)prng.NextUInteger(256));
+            Pen pen = new Pen(color, 3);
+
+            Point originPoint = new Point(canvasTab3.Width / 2, canvasTab3.Height / 2);
+
+            for (int i = 0; i < iterations; i++)
+            {
+                Point point1 = originPoint;
+                Point point2 = new Point((point1.X + 4*(int)prng.Next(-1, 2)) % canvasTab3.Width, (point1.Y + 4*(int)prng.Next(-1, 2)) % canvasTab3.Height);
+                g.DrawLine(pen, point1, point2);
+
+                originPoint = point2;
+            }
+ 
+            canvasTab3.Image = bmap;
         }
 
         #endregion
@@ -378,17 +415,6 @@ namespace ParallelPRNG
                 threadUsage = 1;
 
             return threadUsage;
-        }
-
-        private Color NextRandomColor()
-        {
-            int r = (int)prng.NextUInteger(256);
-            int g = (int)prng.NextUInteger(256);
-            int b = (int)prng.NextUInteger(256);
-            int a = (int)prng.NextUInteger(256);
-
-            Color color = Color.FromArgb(a, r, g, b);
-            return color;
         }
 
         #endregion

@@ -64,6 +64,7 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
+            this.btnRandomWalk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -521,6 +522,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnRandomWalk);
             this.tabPage3.Controls.Add(this.btnGenerateVerticalBars);
             this.tabPage3.Controls.Add(this.btnGenerateBWNoise);
             this.tabPage3.Controls.Add(this.btnGenerateRGBNoise);
@@ -570,6 +572,16 @@
             this.canvasTab3.Size = new System.Drawing.Size(880, 541);
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
+            // 
+            // btnRandomWalk
+            // 
+            this.btnRandomWalk.Location = new System.Drawing.Point(6, 93);
+            this.btnRandomWalk.Name = "btnRandomWalk";
+            this.btnRandomWalk.Size = new System.Drawing.Size(136, 23);
+            this.btnRandomWalk.TabIndex = 4;
+            this.btnRandomWalk.Text = "Draw Random Walk";
+            this.btnRandomWalk.UseVisualStyleBackColor = true;
+            this.btnRandomWalk.Click += new System.EventHandler(this.btnRandomWalk_Click);
             // 
             // Form1
             // 
@@ -635,6 +647,7 @@
         private System.Windows.Forms.Button btnGenerateRGBNoise;
         private System.Windows.Forms.Button btnGenerateBWNoise;
         private System.Windows.Forms.Button btnGenerateVerticalBars;
+        private System.Windows.Forms.Button btnRandomWalk;
     }
 }
 
