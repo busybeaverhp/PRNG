@@ -20,3 +20,14 @@ C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPR
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
 C:\Users\busyb_uewlt9m\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.pdb
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.dll
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.pdb
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csprojResolveAssemblyReference.cache
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
+C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
