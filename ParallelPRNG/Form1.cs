@@ -25,6 +25,8 @@ namespace ParallelPRNG
 
         Bitmap bmap;
         Graphics g;
+
+        List<BigInteger> bigIntegerList = new List<BigInteger>();
         
         public Form1()
         {
@@ -90,15 +92,24 @@ namespace ParallelPRNG
         {
             BigInteger min = new BigInteger(numUpDownMin.Value);
             BigInteger max = new BigInteger(numUpDownMax.Value);
-            int iterations = Int32.Parse(numUpDownIterations.Value.ToString());
-            List<BigInteger> randomValuesList = new List<BigInteger>(prng.GenerateListOfEntropyValuesBigInteger(min, max, iterations));
 
-            string[] stringArray = randomValuesList.Select(i => i.ToString()).ToArray();
+            if (min <= max)
+            {
+                int iterations = Int32.Parse(numUpDownIterations.Value.ToString());
+                List<BigInteger> randomValuesList = new List<BigInteger>(prng.GenerateListOfEntropyValuesBigInteger(min, max, iterations));
 
-            string blockOfValues;
-            blockOfValues = String.Join(", ", stringArray.Select(i => i.ToString()));
+                string[] stringArray = randomValuesList.Select(i => i.ToString()).ToArray();
 
-            txtConsole.Text += blockOfValues + " ";
+                string blockOfValues;
+                blockOfValues = String.Join(", ", stringArray.Select(i => i.ToString()));
+
+                txtConsole.Text += blockOfValues + " ";
+            }
+            else
+            {
+                MessageBox.Show("You cannot set the min value higher than the max value. Try again.");
+            }
+            
         }
 
         private void btnMax_Click(object sender, EventArgs e)
@@ -276,6 +287,119 @@ namespace ParallelPRNG
 
         #region TAB3 BUTTONS
 
+        private void btnPQMax_Click(object sender, EventArgs e)
+        {
+            numUpDownPQMax.Value = numUpDownPQMax.Maximum;
+        }
+
+        private void btnPQMin_Click(object sender, EventArgs e)
+        {
+            numUpDownPQMin.Value = numUpDownPQMin.Minimum;
+        }
+
+        private void btnPQIterations_Click(object sender, EventArgs e)
+        {
+            numUpDownPQIterations.Value = numUpDownPQIterations.Maximum;
+        }
+
+        private void btnCreateNumberTable_Click(object sender, EventArgs e)
+        {
+            BigInteger max = BigInteger.Parse(numUpDownPQMax.Value.ToString());
+            BigInteger min = BigInteger.Parse(numUpDownPQMin.Value.ToString());
+            int iterations = (int)numUpDownPQIterations.Value;
+
+            if (min <= max)
+            {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
+                PPRNG pprngQ = new PPRNG();
+                pprngQ.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.AllThreads, iterations, min, max);
+                bigIntegerList = new List<BigInteger>(pprngQ.GetBagOfRandomIntegers.ToArray());
+                bigIntegerList = bigIntegerList.GetRange(0, iterations);
+
+                stopwatch.Stop();
+
+                var uniqueValues = bigIntegerList.Distinct().ToArray();
+
+                string tempString = "\n" + "--- --- ---" + "\n\n" +
+                    "New Random Number Table Created: " + iterations.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + min.ToString("N0") + " (inclusive) to " + (max - 1).ToString("N0") + " (inclusive), " +
+                    Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
+                PQConsoleWriteLine(tempString);
+            }
+            else
+            {
+                MessageBox.Show("Min Range cannot be higher than Max Range. Try again.");
+            }
+        }
+
+        private void btnQueryValue_Click(object sender, EventArgs e)
+        {
+            BigInteger value = BigInteger.Parse(numUpDownQueryValue.Value.ToString());
+
+            var valuesQueried = (from num in bigIntegerList.AsParallel()
+                                where num == value
+                                select num);
+
+            List<BigInteger> valuesFrequency = new List<BigInteger>(valuesQueried);
+            valuesFrequency.TrimExcess();
+
+            string tempString = "Query: The frequency of the value " + value.ToString() + " in the Random Number Table: " + valuesFrequency.Count().ToString("N0");
+            PQConsoleWriteLine(tempString);
+        }
+
+
+        private void btnMaxQueryValue_Click(object sender, EventArgs e)
+        {
+            numUpDownMaxQueryValue.Value = numUpDownMaxQueryValue.Maximum;
+        }
+
+        private void btnMinQueryValue_Click(object sender, EventArgs e)
+        {
+            numUpDownMinQueryValue.Value = numUpDownMinQueryValue.Minimum;
+        }
+
+        private void btnQueryRange_Click(object sender, EventArgs e)
+        {
+            BigInteger maxRange = BigInteger.Parse(numUpDownMaxQueryValue.Value.ToString());
+            BigInteger minRange = BigInteger.Parse(numUpDownMinQueryValue.Value.ToString());
+
+            if (minRange <= maxRange)
+            {
+                var valuesQueried = (from num in bigIntegerList.AsParallel()
+                                     where (num <= maxRange && num >= minRange)
+                                     select num);
+
+                List<BigInteger> valuesFrequency = new List<BigInteger>(valuesQueried);
+                valuesFrequency.TrimExcess();
+
+                string tempString = "Query: The frequency of values between " + minRange.ToString() + " (inclusive) and " + maxRange.ToString() + " (inclusive) " + "in the Random Number Table: " + valuesFrequency.Count().ToString("N0");
+                PQConsoleWriteLine(tempString);
+            }
+            else
+            {
+                MessageBox.Show("Min Range cannot be higher than Max Range. Try again.");
+            }
+        }
+
+        #endregion
+
+        #region TAB3 METHODS
+
+        public void PQConsoleWrite(string input)
+        {
+            txtPQConsole.Text += input;
+        }
+
+        public void PQConsoleWriteLine(string input)
+        {
+            txtPQConsole.Text += input + "\n";
+        }
+
+        #endregion
+
+        #region TAB4 BUTTONS
+
         private void btnGenerateRGBNoise_Click(object sender, EventArgs e)
         {
             int integersNeeded = canvasTab3.Height * canvasTab3.Width * 3;
@@ -431,7 +555,5 @@ namespace ParallelPRNG
         }
 
         #endregion
-
-
     }
 }
