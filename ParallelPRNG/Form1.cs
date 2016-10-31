@@ -528,13 +528,13 @@ namespace ParallelPRNG
             canvasTab3.Image = bmap;
         }
 
-        #endregion
-
         private void btnClearCanvas_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
             canvasTab3.Image = bmap;
         }
+
+        #endregion
 
         #region METHODS
 
