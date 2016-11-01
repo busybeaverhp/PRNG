@@ -27,6 +27,8 @@ namespace ParallelPRNG
         Graphics g;
 
         List<BigInteger> bigIntegerList = new List<BigInteger>();
+
+        List<int> currentListOfCardIndexes;
         
         public Form1()
         {
@@ -51,6 +53,9 @@ namespace ParallelPRNG
             txtOutputArray[1] = (RichTextBox)txtOutput1;
             txtOutputArray[2] = (RichTextBox)txtOutput2;
             txtOutputArray[3] = (RichTextBox)txtOutput3;
+
+            IEnumerable<int> newcardDeck = Enumerable.Range(1, 52);
+            currentListOfCardIndexes = new List<int>(newcardDeck);
         }
 
         #region TAB1 INDEX-TRIGGERS
@@ -530,10 +535,15 @@ namespace ParallelPRNG
 
         private void btnGetNewDeck_Click(object sender, EventArgs e)
         {
+            IEnumerable<int> newcardDeck = Enumerable.Range(1, 52);
+            currentListOfCardIndexes = new List<int>(newcardDeck);
+
+            int indexCounter = 0;
+
             for (int i = 0; i < 4; i++)
                 for (int j = 0; j < 13; j++)
                 {
-                    int cardIndex = (13 * i) + (j + 1);
+                    int cardIndex = currentListOfCardIndexes[indexCounter];
                     int offsetX = 8;
                     int offsetY = 164;
                     int spacing = 7;
@@ -543,12 +553,33 @@ namespace ParallelPRNG
 
                     g.DrawImage(newImage, offsetX + (j*(60 + spacing)), offsetY + (i*(87 + spacing)), 60, 87);
                     canvasTab3.Image = bmap;
+
+                    indexCounter++;
                 }
         }
 
         private void btnShuffleDeck_Click(object sender, EventArgs e)
         {
+            currentListOfCardIndexes = ShuffleListOfIntegers(currentListOfCardIndexes);
 
+            int indexCounter = 0;
+
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 13; j++)
+                {
+                    int cardIndex = currentListOfCardIndexes[indexCounter];
+                    int offsetX = 8;
+                    int offsetY = 164;
+                    int spacing = 7;
+
+                    Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + cardIndex.ToString() + ".png", true);
+                    newImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                    g.DrawImage(newImage, offsetX + (j * (60 + spacing)), offsetY + (i * (87 + spacing)), 60, 87);
+                    canvasTab3.Image = bmap;
+
+                    indexCounter++;
+                }
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)
@@ -577,8 +608,22 @@ namespace ParallelPRNG
             return threadUsage;
         }
 
+        private List<int> ShuffleListOfIntegers(List<int> listOfIntegers)
+        {
+            List<int> originalList = new List<int>(listOfIntegers);
+            List<int> shuffledList = new List<int>();
+
+            for (int i = 0; i < listOfIntegers.Count; i++)
+            {
+                int randomIndex = (int)prng.NextUInteger(originalList.Count);
+
+                shuffledList.Add(originalList[randomIndex]);
+                originalList.RemoveAt(randomIndex);
+            }
+
+            return shuffledList;
+        }
+
         #endregion
-
-
     }
 }
