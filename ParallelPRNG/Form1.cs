@@ -528,6 +528,29 @@ namespace ParallelPRNG
             canvasTab3.Image = bmap;
         }
 
+        private void btnGetNewDeck_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 13; j++)
+                {
+                    int cardIndex = (13 * i) + (j + 1);
+                    int offsetX = 8;
+                    int offsetY = 164;
+                    int spacing = 7;
+
+                    Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + cardIndex.ToString() +".png", true);
+                    newImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                    g.DrawImage(newImage, offsetX + (j*(60 + spacing)), offsetY + (i*(87 + spacing)), 60, 87);
+                    canvasTab3.Image = bmap;
+                }
+        }
+
+        private void btnShuffleDeck_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnClearCanvas_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
@@ -555,5 +578,7 @@ namespace ParallelPRNG
         }
 
         #endregion
+
+
     }
 }

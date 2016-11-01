@@ -60,6 +60,8 @@
             this.btnTimeSingleThread = new System.Windows.Forms.Button();
             this.btnTimeHalfAvailThread = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnMinQueryValue = new System.Windows.Forms.Button();
+            this.btnMaxQueryValue = new System.Windows.Forms.Button();
             this.btnQueryRange = new System.Windows.Forms.Button();
             this.numUpDownMinQueryValue = new System.Windows.Forms.NumericUpDown();
             this.numUpDownMaxQueryValue = new System.Windows.Forms.NumericUpDown();
@@ -74,14 +76,15 @@
             this.numUpDownPQMin = new System.Windows.Forms.NumericUpDown();
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.grpCards = new System.Windows.Forms.GroupBox();
+            this.btnShuffleDeck = new System.Windows.Forms.Button();
+            this.btnGetNewDeck = new System.Windows.Forms.Button();
             this.btnClearCanvas = new System.Windows.Forms.Button();
             this.btnRandomWalk = new System.Windows.Forms.Button();
             this.btnGenerateVerticalBars = new System.Windows.Forms.Button();
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.btnMinQueryValue = new System.Windows.Forms.Button();
-            this.btnMaxQueryValue = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -101,6 +104,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -570,11 +574,33 @@
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnMinQueryValue
+            // 
+            this.btnMinQueryValue.Location = new System.Drawing.Point(375, 501);
+            this.btnMinQueryValue.Name = "btnMinQueryValue";
+            this.btnMinQueryValue.Size = new System.Drawing.Size(81, 22);
+            this.btnMinQueryValue.TabIndex = 14;
+            this.btnMinQueryValue.Text = "MinInclusive";
+            this.btnMinQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinQueryValue.UseVisualStyleBackColor = true;
+            this.btnMinQueryValue.Click += new System.EventHandler(this.btnMinQueryValue_Click);
+            // 
+            // btnMaxQueryValue
+            // 
+            this.btnMaxQueryValue.Location = new System.Drawing.Point(375, 475);
+            this.btnMaxQueryValue.Name = "btnMaxQueryValue";
+            this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
+            this.btnMaxQueryValue.TabIndex = 13;
+            this.btnMaxQueryValue.Text = "MaxInclusive";
+            this.btnMaxQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMaxQueryValue.UseVisualStyleBackColor = true;
+            this.btnMaxQueryValue.Click += new System.EventHandler(this.btnMaxQueryValue_Click);
+            // 
             // btnQueryRange
             // 
             this.btnQueryRange.Location = new System.Drawing.Point(375, 529);
             this.btnQueryRange.Name = "btnQueryRange";
-            this.btnQueryRange.Size = new System.Drawing.Size(279, 20);
+            this.btnQueryRange.Size = new System.Drawing.Size(196, 20);
             this.btnQueryRange.TabIndex = 12;
             this.btnQueryRange.Text = "Query Frequency of Values in Range";
             this.btnQueryRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -595,7 +621,7 @@
             0,
             -2147483648});
             this.numUpDownMinQueryValue.Name = "numUpDownMinQueryValue";
-            this.numUpDownMinQueryValue.Size = new System.Drawing.Size(192, 20);
+            this.numUpDownMinQueryValue.Size = new System.Drawing.Size(109, 20);
             this.numUpDownMinQueryValue.TabIndex = 11;
             this.numUpDownMinQueryValue.ThousandsSeparator = true;
             this.numUpDownMinQueryValue.Value = new decimal(new int[] {
@@ -618,7 +644,7 @@
             0,
             -2147483648});
             this.numUpDownMaxQueryValue.Name = "numUpDownMaxQueryValue";
-            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(192, 20);
+            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(109, 20);
             this.numUpDownMaxQueryValue.TabIndex = 10;
             this.numUpDownMaxQueryValue.ThousandsSeparator = true;
             this.numUpDownMaxQueryValue.Value = new decimal(new int[] {
@@ -631,7 +657,7 @@
             // 
             this.btnQueryValue.Location = new System.Drawing.Point(675, 501);
             this.btnQueryValue.Name = "btnQueryValue";
-            this.btnQueryValue.Size = new System.Drawing.Size(120, 46);
+            this.btnQueryValue.Size = new System.Drawing.Size(108, 46);
             this.btnQueryValue.TabIndex = 9;
             this.btnQueryValue.Text = "Query Table for \r\nThis Value";
             this.btnQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -652,7 +678,7 @@
             0,
             -2147483648});
             this.numUpDownQueryValue.Name = "numUpDownQueryValue";
-            this.numUpDownQueryValue.Size = new System.Drawing.Size(120, 20);
+            this.numUpDownQueryValue.Size = new System.Drawing.Size(108, 20);
             this.numUpDownQueryValue.TabIndex = 8;
             this.numUpDownQueryValue.ThousandsSeparator = true;
             this.numUpDownQueryValue.Value = new decimal(new int[] {
@@ -696,9 +722,9 @@
             // 
             // btnCreateNumberTable
             // 
-            this.btnCreateNumberTable.Location = new System.Drawing.Point(277, 475);
+            this.btnCreateNumberTable.Location = new System.Drawing.Point(204, 475);
             this.btnCreateNumberTable.Name = "btnCreateNumberTable";
-            this.btnCreateNumberTable.Size = new System.Drawing.Size(79, 72);
+            this.btnCreateNumberTable.Size = new System.Drawing.Size(64, 72);
             this.btnCreateNumberTable.TabIndex = 4;
             this.btnCreateNumberTable.Text = "Create Random Number Table";
             this.btnCreateNumberTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -719,7 +745,7 @@
             0,
             0});
             this.numUpDownPQIterations.Name = "numUpDownPQIterations";
-            this.numUpDownPQIterations.Size = new System.Drawing.Size(178, 20);
+            this.numUpDownPQIterations.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQIterations.TabIndex = 3;
             this.numUpDownPQIterations.ThousandsSeparator = true;
             this.numUpDownPQIterations.Value = new decimal(new int[] {
@@ -751,9 +777,14 @@
             0,
             -2147483648});
             this.numUpDownPQMin.Name = "numUpDownPQMin";
-            this.numUpDownPQMin.Size = new System.Drawing.Size(178, 20);
+            this.numUpDownPQMin.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQMin.TabIndex = 1;
             this.numUpDownPQMin.ThousandsSeparator = true;
+            this.numUpDownPQMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // numUpDownPQMax
             // 
@@ -769,7 +800,7 @@
             0,
             -2147483648});
             this.numUpDownPQMax.Name = "numUpDownPQMax";
-            this.numUpDownPQMax.Size = new System.Drawing.Size(178, 20);
+            this.numUpDownPQMax.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQMax.TabIndex = 0;
             this.numUpDownPQMax.ThousandsSeparator = true;
             this.numUpDownPQMax.Value = new decimal(new int[] {
@@ -780,6 +811,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.grpCards);
             this.tabPage4.Controls.Add(this.btnClearCanvas);
             this.tabPage4.Controls.Add(this.btnRandomWalk);
             this.tabPage4.Controls.Add(this.btnGenerateVerticalBars);
@@ -793,6 +825,40 @@
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "Visual Representation";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // grpCards
+            // 
+            this.grpCards.Controls.Add(this.btnShuffleDeck);
+            this.grpCards.Controls.Add(this.btnGetNewDeck);
+            this.grpCards.Location = new System.Drawing.Point(6, 122);
+            this.grpCards.Name = "grpCards";
+            this.grpCards.Size = new System.Drawing.Size(136, 78);
+            this.grpCards.TabIndex = 6;
+            this.grpCards.TabStop = false;
+            this.grpCards.Text = "Cards Shuffler";
+            // 
+            // btnShuffleDeck
+            // 
+            this.btnShuffleDeck.Location = new System.Drawing.Point(6, 48);
+            this.btnShuffleDeck.Name = "btnShuffleDeck";
+            this.btnShuffleDeck.Size = new System.Drawing.Size(124, 23);
+            this.btnShuffleDeck.TabIndex = 8;
+            this.btnShuffleDeck.Text = "Shuffle Current Deck";
+            this.btnShuffleDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShuffleDeck.UseVisualStyleBackColor = true;
+            this.btnShuffleDeck.Click += new System.EventHandler(this.btnShuffleDeck_Click);
+            // 
+            // btnGetNewDeck
+            // 
+            this.btnGetNewDeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnGetNewDeck.Location = new System.Drawing.Point(6, 19);
+            this.btnGetNewDeck.Name = "btnGetNewDeck";
+            this.btnGetNewDeck.Size = new System.Drawing.Size(124, 23);
+            this.btnGetNewDeck.TabIndex = 7;
+            this.btnGetNewDeck.Text = "New Ordered Deck";
+            this.btnGetNewDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGetNewDeck.UseVisualStyleBackColor = true;
+            this.btnGetNewDeck.Click += new System.EventHandler(this.btnGetNewDeck_Click);
             // 
             // btnClearCanvas
             // 
@@ -857,28 +923,6 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
-            // btnMinQueryValue
-            // 
-            this.btnMinQueryValue.Location = new System.Drawing.Point(375, 501);
-            this.btnMinQueryValue.Name = "btnMinQueryValue";
-            this.btnMinQueryValue.Size = new System.Drawing.Size(81, 22);
-            this.btnMinQueryValue.TabIndex = 14;
-            this.btnMinQueryValue.Text = "MinInclusive";
-            this.btnMinQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMinQueryValue.UseVisualStyleBackColor = true;
-            this.btnMinQueryValue.Click += new System.EventHandler(this.btnMinQueryValue_Click);
-            // 
-            // btnMaxQueryValue
-            // 
-            this.btnMaxQueryValue.Location = new System.Drawing.Point(375, 475);
-            this.btnMaxQueryValue.Name = "btnMaxQueryValue";
-            this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
-            this.btnMaxQueryValue.TabIndex = 13;
-            this.btnMaxQueryValue.Text = "MaxInclusive";
-            this.btnMaxQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMaxQueryValue.UseVisualStyleBackColor = true;
-            this.btnMaxQueryValue.Click += new System.EventHandler(this.btnMaxQueryValue_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -907,6 +951,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.grpCards.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
             this.ResumeLayout(false);
 
@@ -968,6 +1013,9 @@
         private System.Windows.Forms.NumericUpDown numUpDownQueryValue;
         private System.Windows.Forms.Button btnMinQueryValue;
         private System.Windows.Forms.Button btnMaxQueryValue;
+        private System.Windows.Forms.GroupBox grpCards;
+        private System.Windows.Forms.Button btnShuffleDeck;
+        private System.Windows.Forms.Button btnGetNewDeck;
     }
 }
 
