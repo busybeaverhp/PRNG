@@ -85,6 +85,8 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
+            this.btnThrowCard = new System.Windows.Forms.Button();
+            this.txtCardsRemaining = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -828,11 +830,13 @@
             // 
             // grpCards
             // 
+            this.grpCards.Controls.Add(this.txtCardsRemaining);
+            this.grpCards.Controls.Add(this.btnThrowCard);
             this.grpCards.Controls.Add(this.btnShuffleDeck);
             this.grpCards.Controls.Add(this.btnGetNewDeck);
             this.grpCards.Location = new System.Drawing.Point(6, 122);
             this.grpCards.Name = "grpCards";
-            this.grpCards.Size = new System.Drawing.Size(136, 78);
+            this.grpCards.Size = new System.Drawing.Size(136, 106);
             this.grpCards.TabIndex = 6;
             this.grpCards.TabStop = false;
             this.grpCards.Text = "Cards Shuffler";
@@ -923,6 +927,24 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
+            // btnThrowCard
+            // 
+            this.btnThrowCard.Location = new System.Drawing.Point(51, 77);
+            this.btnThrowCard.Name = "btnThrowCard";
+            this.btnThrowCard.Size = new System.Drawing.Size(79, 23);
+            this.btnThrowCard.TabIndex = 9;
+            this.btnThrowCard.Text = "Throw a Card";
+            this.btnThrowCard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThrowCard.UseVisualStyleBackColor = true;
+            // 
+            // txtCardsRemaining
+            // 
+            this.txtCardsRemaining.Location = new System.Drawing.Point(6, 79);
+            this.txtCardsRemaining.Name = "txtCardsRemaining";
+            this.txtCardsRemaining.ReadOnly = true;
+            this.txtCardsRemaining.Size = new System.Drawing.Size(39, 20);
+            this.txtCardsRemaining.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -952,6 +974,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.grpCards.ResumeLayout(false);
+            this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
             this.ResumeLayout(false);
 
@@ -1016,6 +1039,8 @@
         private System.Windows.Forms.GroupBox grpCards;
         private System.Windows.Forms.Button btnShuffleDeck;
         private System.Windows.Forms.Button btnGetNewDeck;
+        private System.Windows.Forms.Button btnThrowCard;
+        private System.Windows.Forms.TextBox txtCardsRemaining;
     }
 }
 
