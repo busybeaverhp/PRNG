@@ -561,13 +561,14 @@ namespace ParallelPRNG
         private void btnShuffleDeck_Click(object sender, EventArgs e)
         {
             currentListOfCardIndexes = ShuffleListOfIntegers(currentListOfCardIndexes);
+            List<int> appendedListOfCardIndexes = AppendZeroesToDeck(currentListOfCardIndexes); 
 
             int indexCounter = 0;
 
             for (int i = 0; i < 4; i++)
                 for (int j = 0; j < 13; j++)
                 {
-                    int cardIndex = currentListOfCardIndexes[indexCounter];
+                    int cardIndex = appendedListOfCardIndexes[indexCounter];
                     int offsetX = 8;
                     int offsetY = 164;
                     int spacing = 7;
@@ -580,6 +581,11 @@ namespace ParallelPRNG
 
                     indexCounter++;
                 }
+        }
+
+        private void btnThrowCard_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)
@@ -622,6 +628,16 @@ namespace ParallelPRNG
             }
 
             return shuffledList;
+        }
+
+        private List<int> AppendZeroesToDeck(List<int> listOfIntegers)
+        {
+            List<int> listOfCardIndexes = new List<int>(listOfIntegers); 
+
+            while (listOfCardIndexes.Count < 52)
+                listOfCardIndexes.Add(0);
+
+            return listOfCardIndexes;
         }
 
         #endregion
