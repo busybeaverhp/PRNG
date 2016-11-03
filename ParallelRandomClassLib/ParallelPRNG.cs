@@ -17,7 +17,7 @@ namespace ParallelRandomClassLib
 
         public PPRNG() { }
 
-        public void GenerateDesiredQuantityOfRandom32ByteArrays(DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandom32ByteArrays)
+        public void GenerateDesiredQuantityOfRandom32ByteArrays(string inputString, DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandom32ByteArrays)
         {
             _bagOfRandomBytes = new ConcurrentBag<byte[]>();
 
@@ -30,7 +30,7 @@ namespace ParallelRandomClassLib
 
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, ParallelLoopState) =>
             {
-                string inputString = "New PRNG Instance" + i;
+                inputString += i;
                 PRNG prng = new PRNG(inputString);
 
                 var listOfEntropy32ByteArrays = prng.GenerateListOfEntropy32ByteArrays(iterationsPerThread);
@@ -41,7 +41,7 @@ namespace ParallelRandomClassLib
             });
         }
 
-        public void GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization desiredCPUUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
+        public void GenerateDesiredQuantityOfRandomIntegers(string inputString, DesiredCPUUtilization desiredCPUUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
         {
             _bagOfRandomIntegers = new ConcurrentBag<BigInteger>();
 
@@ -54,7 +54,7 @@ namespace ParallelRandomClassLib
 
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i) =>
             {
-                string inputString = "New PRNG Instance" + i;
+                inputString += i;
                 PRNG prng = new PRNG(inputString);
 
                 var listOfRandomIntegers = prng.GenerateListOfEntropyValuesBigInteger(minIntValueInclusive, maxIntValueExclusive, iterationsPerThread);

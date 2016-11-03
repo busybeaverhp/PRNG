@@ -31,3 +31,4 @@ C:\Users\hqpham\Documents\Parallel_PRNG\ParallelRandomClassLib\bin\Debug\Paralle
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.csprojResolveAssemblyReference.cache
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.dll
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.pdb
+E:\GitProjects\Parallel_PRNG\ParallelRandomClassLib\obj\Debug\ParallelRandomClassLib.csprojResolveAssemblyReference.cache

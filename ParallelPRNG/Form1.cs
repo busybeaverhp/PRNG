@@ -54,8 +54,9 @@ namespace ParallelPRNG
             txtOutputArray[2] = (RichTextBox)txtOutput2;
             txtOutputArray[3] = (RichTextBox)txtOutput3;
 
-            IEnumerable<int> newcardDeck = Enumerable.Range(1, 52);
-            currentListOfCardIndexes = new List<int>(newcardDeck);
+            IEnumerable<int> newCardDeck = Enumerable.Range(1, 52);
+            currentListOfCardIndexes = new List<int>(newCardDeck);
+            txtCardsRemaining.Text = "R: " + currentListOfCardIndexes.Count;
         }
 
         #region TAB1 INDEX-TRIGGERS
@@ -113,8 +114,7 @@ namespace ParallelPRNG
             else
             {
                 MessageBox.Show("You cannot set the min value higher than the max value. Try again.");
-            }
-            
+            } 
         }
 
         private void btnMax_Click(object sender, EventArgs e)
@@ -220,11 +220,11 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays(DesiredCPUUtilization.HalfAvailThreads, iterations);
+            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.HalfAvailThreads, iterations, min, max);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations, min, max);
             stopwatch2.Stop();
 
             txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
@@ -246,11 +246,11 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays(DesiredCPUUtilization.HalfAvailPlusOneThread, iterations);
+            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.HalfAvailPlusOneThread, iterations, min, max);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations, min, max);
             stopwatch2.Stop();
 
             txtOutput2.Text += "Half-Available+1 Threaded PRNG Finished" + "\n";
@@ -272,11 +272,11 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays(DesiredCPUUtilization.AllThreads, iterations);
+            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.AllThreads, iterations, min, max);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
             stopwatch2.Stop();
 
             txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
@@ -319,7 +319,7 @@ namespace ParallelPRNG
                 stopwatch.Start();
 
                 PPRNG pprngQ = new PPRNG();
-                pprngQ.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.AllThreads, iterations, min, max);
+                pprngQ.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
                 bigIntegerList = new List<BigInteger>(pprngQ.GetBagOfRandomIntegers.ToArray());
                 bigIntegerList = bigIntegerList.GetRange(0, iterations);
 
@@ -408,7 +408,7 @@ namespace ParallelPRNG
         private void btnGenerateRGBNoise_Click(object sender, EventArgs e)
         {
             int integersNeeded = canvasTab3.Height * canvasTab3.Width * 3;
-            pprng.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
             ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
 
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
@@ -452,7 +452,7 @@ namespace ParallelPRNG
         private void btnGenerateBWNoise_Click(object sender, EventArgs e)
         {
             int integersNeeded = canvasTab3.Height * canvasTab3.Width;
-            pprng.GenerateDesiredQuantityOfRandomIntegers(DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
             ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
 
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
@@ -519,7 +519,7 @@ namespace ParallelPRNG
                 Point point1 = originPoint;
                 Point point2 = new Point((point1.X + (int)prng.Next(-4, 5)), (point1.Y + (int)prng.Next(-4, 5)));
 
-                if (point2.X < 0 || point2.Y < 0 || point2.X > canvasTab3.Width - 1 || point2.Y > canvasTab3.Height - 1 )
+                if (point2.X < 0 || point2.Y < 0 || point2.X > canvasTab3.Width - 1 || point2.Y > canvasTab3.Height - 1)
                 {
                     originPoint = new Point(canvasTab3.Width / 2, canvasTab3.Height / 2);
                 }
@@ -535,8 +535,8 @@ namespace ParallelPRNG
 
         private void btnGetNewDeck_Click(object sender, EventArgs e)
         {
-            IEnumerable<int> newcardDeck = Enumerable.Range(1, 52);
-            currentListOfCardIndexes = new List<int>(newcardDeck);
+            IEnumerable<int> newCardDeck = Enumerable.Range(1, 52);
+            currentListOfCardIndexes = new List<int>(newCardDeck);
 
             int indexCounter = 0;
 
@@ -544,15 +544,17 @@ namespace ParallelPRNG
                 for (int j = 0; j < 13; j++)
                 {
                     int cardIndex = currentListOfCardIndexes[indexCounter];
-                    int offsetX = 8;
-                    int offsetY = 164;
+                    int offsetX = -15;
+                    int offsetY = 159;
                     int spacing = 7;
 
                     Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + cardIndex.ToString() +".png", true);
                     newImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
-                    g.DrawImage(newImage, offsetX + (j*(60 + spacing)), offsetY + (i*(87 + spacing)), 60, 87);
+                    g.DrawImage(newImage, offsetX + (j*(60 + spacing)), offsetY + (i*(86 + spacing)), 106, 106);
                     canvasTab3.Image = bmap;
+
+                    txtCardsRemaining.Text = "R: " + currentListOfCardIndexes.Count;
 
                     indexCounter++;
                 }
@@ -569,15 +571,17 @@ namespace ParallelPRNG
                 for (int j = 0; j < 13; j++)
                 {
                     int cardIndex = appendedListOfCardIndexes[indexCounter];
-                    int offsetX = 8;
-                    int offsetY = 164;
+                    int offsetX = -15;
+                    int offsetY = 159;
                     int spacing = 7;
 
                     Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + cardIndex.ToString() + ".png", true);
                     newImage.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
-                    g.DrawImage(newImage, offsetX + (j * (60 + spacing)), offsetY + (i * (87 + spacing)), 60, 87);
+                    g.DrawImage(newImage, offsetX + (j * (60 + spacing)), offsetY + (i * (86 + spacing)), 106, 106);
                     canvasTab3.Image = bmap;
+
+                    txtCardsRemaining.Text = "R: " + currentListOfCardIndexes.Count;
 
                     indexCounter++;
                 }
@@ -585,13 +589,128 @@ namespace ParallelPRNG
 
         private void btnThrowCard_Click(object sender, EventArgs e)
         {
+            if (currentListOfCardIndexes.Count > 0)
+            {
+                int maxThrowRadius = (canvasTab3.Height / 2) - 54 - 8;
+                int randomDistance = (int)prng.NextUInteger(maxThrowRadius);
+                float randomAngle = ((float)prng.NextUInteger(36000) / 100f);
 
+                int xRandomOffset = 0;
+                int yRandomOffset = 0;
+
+                ApproximatePolarToCartesian(randomDistance, randomAngle, out xRandomOffset, out yRandomOffset);
+
+                Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + currentListOfCardIndexes[currentListOfCardIndexes.Count - 1].ToString() + ".png", true);
+                Bitmap newBitmap = new Bitmap(newImage);
+
+                float randomRotation = ((float)prng.NextUInteger(36000) / 100f);
+                newBitmap = RotateBitmap(newBitmap, randomRotation);
+                newBitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                g.DrawImage(newBitmap, (canvasTab3.Width / 2 - 53) + xRandomOffset, (canvasTab3.Height / 2 - 52) + yRandomOffset, 106, 106);
+                canvasTab3.Image = bmap;
+
+                currentListOfCardIndexes.RemoveAt(currentListOfCardIndexes.Count - 1);
+                txtCardsRemaining.Text = "R: " + currentListOfCardIndexes.Count;
+            }
+        }
+
+        private void btnThrowNewShuffedDeck_Click(object sender, EventArgs e)
+        {
+            IEnumerable<int> cardIndexes = Enumerable.Range(1, 52);
+            List<int> newCardDeck = new List<int>(cardIndexes);
+            List<int> newShuffledCardDeck = ShuffleListOfIntegers(newCardDeck);
+
+            while (newShuffledCardDeck.Count > 0)
+            {
+                int maxThrowRadius = (canvasTab3.Height / 2) - 54 - 8;
+                int randomDistance = (int)prng.NextUInteger(maxThrowRadius);
+                float randomAngle = ((float)prng.NextUInteger(36000) / 100f);
+
+                int xRandomOffset = 0;
+                int yRandomOffset = 0;
+
+                ApproximatePolarToCartesian(randomDistance, randomAngle, out xRandomOffset, out yRandomOffset);
+
+                Image newImage = Image.FromFile("..\\..\\bin\\Cards\\" + newShuffledCardDeck[newShuffledCardDeck.Count - 1].ToString() + ".png", true);
+                Bitmap newBitmap = new Bitmap(newImage);
+
+                float randomRotation = ((float)prng.NextUInteger(360000) / 1000f);
+                newBitmap = RotateBitmap(newBitmap, randomRotation);
+                newBitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                g.DrawImage(newBitmap, (canvasTab3.Width / 2 - 53) + xRandomOffset, (canvasTab3.Height / 2 - 52) + yRandomOffset, 106, 106);
+                canvasTab3.Image = bmap;
+
+                newShuffledCardDeck.RemoveAt(newShuffledCardDeck.Count - 1);
+            }  
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
             canvasTab3.Image = bmap;
+        }
+
+        #endregion
+
+        #region TAB4 METHODS
+
+        private List<int> ShuffleListOfIntegers(List<int> listOfIntegers)
+        {
+            List<int> originalList = new List<int>(listOfIntegers);
+            List<int> shuffledList = new List<int>();
+
+            for (int i = 0; i < listOfIntegers.Count; i++)
+            {
+                int randomIndex = (int)prng.NextUInteger(originalList.Count);
+
+                shuffledList.Add(originalList[randomIndex]);
+                originalList.RemoveAt(randomIndex);
+            }
+
+            return shuffledList;
+        }
+
+        private List<int> AppendZeroesToDeck(List<int> listOfIntegers)
+        {
+            List<int> listOfCardIndexes = new List<int>(listOfIntegers);
+
+            while (listOfCardIndexes.Count < 52)
+                listOfCardIndexes.Insert(0, 0);
+
+            return listOfCardIndexes;
+        }
+
+        private Bitmap RotateBitmap(Bitmap bitmap, float angle)
+        {
+            //create a new empty bitmap to hold rotated image
+            Bitmap returnBitmap = new Bitmap(bitmap.Width, bitmap.Height);
+
+            //make a graphics object from the empty bitmap
+            using (Graphics g = Graphics.FromImage(returnBitmap))
+            {
+                //move rotation point to center of image
+                g.TranslateTransform((float)bitmap.Width / 2, (float)bitmap.Height / 2);
+                //rotate
+                g.RotateTransform(angle);
+                //move image back
+                g.TranslateTransform(-(float)bitmap.Width / 2, -(float)bitmap.Height / 2);
+                //draw passed in image onto graphics object
+                g.DrawImage(bitmap, new Point(0, 0));
+            }
+            return returnBitmap;
+        }
+
+        private void ApproximatePolarToCartesian(int radius, float angle, out int x, out int y)
+        {
+            float internalAngle = angle % 360;
+
+            float floatX = (float)(radius * Math.Cos(internalAngle));
+            float floatY = (float)(radius * Math.Sin(internalAngle));
+
+            y = (int)floatX;
+            x = (int)floatY;
         }
 
         #endregion
@@ -612,32 +731,6 @@ namespace ParallelPRNG
                 threadUsage = 1;
 
             return threadUsage;
-        }
-
-        private List<int> ShuffleListOfIntegers(List<int> listOfIntegers)
-        {
-            List<int> originalList = new List<int>(listOfIntegers);
-            List<int> shuffledList = new List<int>();
-
-            for (int i = 0; i < listOfIntegers.Count; i++)
-            {
-                int randomIndex = (int)prng.NextUInteger(originalList.Count);
-
-                shuffledList.Add(originalList[randomIndex]);
-                originalList.RemoveAt(randomIndex);
-            }
-
-            return shuffledList;
-        }
-
-        private List<int> AppendZeroesToDeck(List<int> listOfIntegers)
-        {
-            List<int> listOfCardIndexes = new List<int>(listOfIntegers); 
-
-            while (listOfCardIndexes.Count < 52)
-                listOfCardIndexes.Add(0);
-
-            return listOfCardIndexes;
         }
 
         #endregion

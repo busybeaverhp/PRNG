@@ -77,6 +77,7 @@
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grpCards = new System.Windows.Forms.GroupBox();
+            this.btnThrowNewShuffedDeck = new System.Windows.Forms.Button();
             this.txtCardsRemaining = new System.Windows.Forms.TextBox();
             this.btnThrowCard = new System.Windows.Forms.Button();
             this.btnShuffleDeck = new System.Windows.Forms.Button();
@@ -627,7 +628,7 @@
             this.numUpDownMinQueryValue.TabIndex = 11;
             this.numUpDownMinQueryValue.ThousandsSeparator = true;
             this.numUpDownMinQueryValue.Value = new decimal(new int[] {
-            25,
+            26,
             0,
             0,
             0});
@@ -636,7 +637,7 @@
             // 
             this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(462, 477);
             this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
-            1000001,
+            1000000,
             0,
             0,
             0});
@@ -830,16 +831,28 @@
             // 
             // grpCards
             // 
+            this.grpCards.Controls.Add(this.btnThrowNewShuffedDeck);
             this.grpCards.Controls.Add(this.txtCardsRemaining);
             this.grpCards.Controls.Add(this.btnThrowCard);
             this.grpCards.Controls.Add(this.btnShuffleDeck);
             this.grpCards.Controls.Add(this.btnGetNewDeck);
             this.grpCards.Location = new System.Drawing.Point(6, 122);
             this.grpCards.Name = "grpCards";
-            this.grpCards.Size = new System.Drawing.Size(136, 106);
+            this.grpCards.Size = new System.Drawing.Size(136, 145);
             this.grpCards.TabIndex = 6;
             this.grpCards.TabStop = false;
             this.grpCards.Text = "Cards Shuffler";
+            // 
+            // btnThrowNewShuffedDeck
+            // 
+            this.btnThrowNewShuffedDeck.Location = new System.Drawing.Point(6, 105);
+            this.btnThrowNewShuffedDeck.Name = "btnThrowNewShuffedDeck";
+            this.btnThrowNewShuffedDeck.Size = new System.Drawing.Size(124, 34);
+            this.btnThrowNewShuffedDeck.TabIndex = 10;
+            this.btnThrowNewShuffedDeck.Text = "Throw 52 Cards from a Newly Shuffled Deck";
+            this.btnThrowNewShuffedDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThrowNewShuffedDeck.UseVisualStyleBackColor = true;
+            this.btnThrowNewShuffedDeck.Click += new System.EventHandler(this.btnThrowNewShuffedDeck_Click);
             // 
             // txtCardsRemaining
             // 
@@ -852,11 +865,12 @@
             // 
             // btnThrowCard
             // 
+            this.btnThrowCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.btnThrowCard.Location = new System.Drawing.Point(51, 77);
             this.btnThrowCard.Name = "btnThrowCard";
             this.btnThrowCard.Size = new System.Drawing.Size(79, 23);
             this.btnThrowCard.TabIndex = 9;
-            this.btnThrowCard.Text = "Throw a Card";
+            this.btnThrowCard.Text = "Throw Top Card";
             this.btnThrowCard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThrowCard.UseVisualStyleBackColor = true;
             this.btnThrowCard.Click += new System.EventHandler(this.btnThrowCard_Click);
@@ -1043,6 +1057,7 @@
         private System.Windows.Forms.Button btnGetNewDeck;
         private System.Windows.Forms.Button btnThrowCard;
         private System.Windows.Forms.TextBox txtCardsRemaining;
+        private System.Windows.Forms.Button btnThrowNewShuffedDeck;
     }
 }
 
