@@ -88,6 +88,10 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
+            this.lblBench1 = new System.Windows.Forms.Label();
+            this.lblBench2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -447,29 +451,34 @@
             this.tableLayoutPanelTextBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelTextBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelTextBox.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeFullThread, 3, 1);
-            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput3, 3, 0);
-            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput2, 2, 0);
-            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput1, 1, 0);
-            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput0, 0, 0);
-            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeHalfPlusOneAvailThread, 2, 1);
-            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeSingleThread, 0, 1);
-            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeHalfAvailThread, 1, 1);
+            this.tableLayoutPanelTextBox.Controls.Add(this.label2, 3, 0);
+            this.tableLayoutPanelTextBox.Controls.Add(this.label1, 2, 0);
+            this.tableLayoutPanelTextBox.Controls.Add(this.lblBench2, 1, 0);
+            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeSingleThread, 0, 2);
+            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeHalfAvailThread, 1, 2);
+            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeHalfPlusOneAvailThread, 2, 2);
+            this.tableLayoutPanelTextBox.Controls.Add(this.btnTimeFullThread, 3, 2);
+            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput1, 1, 1);
+            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput0, 0, 1);
+            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput2, 2, 1);
+            this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput3, 3, 1);
+            this.tableLayoutPanelTextBox.Controls.Add(this.lblBench1, 0, 0);
             this.tableLayoutPanelTextBox.Location = new System.Drawing.Point(4, 5);
             this.tableLayoutPanelTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanelTextBox.Name = "tableLayoutPanelTextBox";
-            this.tableLayoutPanelTextBox.RowCount = 2;
-            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93F));
-            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanelTextBox.RowCount = 3;
+            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.505155F));
+            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.49484F));
+            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelTextBox.Size = new System.Drawing.Size(1026, 518);
             this.tableLayoutPanelTextBox.TabIndex = 0;
             // 
             // btnTimeFullThread
             // 
-            this.btnTimeFullThread.Location = new System.Drawing.Point(770, 483);
+            this.btnTimeFullThread.Location = new System.Drawing.Point(770, 487);
             this.btnTimeFullThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeFullThread.Name = "btnTimeFullThread";
-            this.btnTimeFullThread.Size = new System.Drawing.Size(254, 33);
+            this.btnTimeFullThread.Size = new System.Drawing.Size(254, 29);
             this.btnTimeFullThread.TabIndex = 5;
             this.btnTimeFullThread.Text = "Run Full-Threaded Benchmark";
             this.btnTimeFullThread.UseVisualStyleBackColor = true;
@@ -477,54 +486,54 @@
             // 
             // txtOutput3
             // 
-            this.txtOutput3.Location = new System.Drawing.Point(770, 2);
+            this.txtOutput3.Location = new System.Drawing.Point(770, 19);
             this.txtOutput3.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput3.Name = "txtOutput3";
             this.txtOutput3.ReadOnly = true;
-            this.txtOutput3.Size = new System.Drawing.Size(254, 477);
+            this.txtOutput3.Size = new System.Drawing.Size(254, 464);
             this.txtOutput3.TabIndex = 3;
             this.txtOutput3.Text = "";
             this.txtOutput3.TextChanged += new System.EventHandler(this.txtOutput3_TextChanged);
             // 
             // txtOutput2
             // 
-            this.txtOutput2.Location = new System.Drawing.Point(514, 2);
+            this.txtOutput2.Location = new System.Drawing.Point(514, 19);
             this.txtOutput2.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput2.Name = "txtOutput2";
             this.txtOutput2.ReadOnly = true;
-            this.txtOutput2.Size = new System.Drawing.Size(252, 477);
+            this.txtOutput2.Size = new System.Drawing.Size(252, 464);
             this.txtOutput2.TabIndex = 2;
             this.txtOutput2.Text = "";
             this.txtOutput2.TextChanged += new System.EventHandler(this.txtOutput2_TextChanged);
             // 
             // txtOutput1
             // 
-            this.txtOutput1.Location = new System.Drawing.Point(258, 2);
+            this.txtOutput1.Location = new System.Drawing.Point(258, 19);
             this.txtOutput1.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput1.Name = "txtOutput1";
             this.txtOutput1.ReadOnly = true;
-            this.txtOutput1.Size = new System.Drawing.Size(252, 477);
+            this.txtOutput1.Size = new System.Drawing.Size(252, 464);
             this.txtOutput1.TabIndex = 1;
             this.txtOutput1.Text = "";
             this.txtOutput1.TextChanged += new System.EventHandler(this.txtOutput1_TextChanged);
             // 
             // txtOutput0
             // 
-            this.txtOutput0.Location = new System.Drawing.Point(2, 2);
+            this.txtOutput0.Location = new System.Drawing.Point(2, 19);
             this.txtOutput0.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput0.Name = "txtOutput0";
             this.txtOutput0.ReadOnly = true;
-            this.txtOutput0.Size = new System.Drawing.Size(252, 477);
+            this.txtOutput0.Size = new System.Drawing.Size(252, 464);
             this.txtOutput0.TabIndex = 0;
             this.txtOutput0.Text = "";
             this.txtOutput0.TextChanged += new System.EventHandler(this.txtOutput0_TextChanged);
             // 
             // btnTimeHalfPlusOneAvailThread
             // 
-            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(514, 483);
+            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(514, 487);
             this.btnTimeHalfPlusOneAvailThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeHalfPlusOneAvailThread.Name = "btnTimeHalfPlusOneAvailThread";
-            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(252, 33);
+            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeHalfPlusOneAvailThread.TabIndex = 4;
             this.btnTimeHalfPlusOneAvailThread.Text = "Run Half-Avail-PlusOne Benchmark";
             this.btnTimeHalfPlusOneAvailThread.UseVisualStyleBackColor = true;
@@ -532,10 +541,10 @@
             // 
             // btnTimeSingleThread
             // 
-            this.btnTimeSingleThread.Location = new System.Drawing.Point(2, 483);
+            this.btnTimeSingleThread.Location = new System.Drawing.Point(2, 487);
             this.btnTimeSingleThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeSingleThread.Name = "btnTimeSingleThread";
-            this.btnTimeSingleThread.Size = new System.Drawing.Size(252, 33);
+            this.btnTimeSingleThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeSingleThread.TabIndex = 2;
             this.btnTimeSingleThread.Text = "Run Single-Threaded Benchmark";
             this.btnTimeSingleThread.UseVisualStyleBackColor = true;
@@ -543,10 +552,10 @@
             // 
             // btnTimeHalfAvailThread
             // 
-            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(258, 483);
+            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(258, 487);
             this.btnTimeHalfAvailThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeHalfAvailThread.Name = "btnTimeHalfAvailThread";
-            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(252, 33);
+            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeHalfAvailThread.TabIndex = 3;
             this.btnTimeHalfAvailThread.Text = "Run Half-Available Threaded Benchmark";
             this.btnTimeHalfAvailThread.UseVisualStyleBackColor = true;
@@ -826,7 +835,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1034, 553);
             this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "Visual Representation";
+            this.tabPage4.Text = "Visual Demonstrations";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // grpCards
@@ -961,6 +970,42 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
+            // lblBench1
+            // 
+            this.lblBench1.AutoSize = true;
+            this.lblBench1.Location = new System.Drawing.Point(3, 0);
+            this.lblBench1.Name = "lblBench1";
+            this.lblBench1.Size = new System.Drawing.Size(110, 13);
+            this.lblBench1.TabIndex = 6;
+            this.lblBench1.Text = "PRNG: Single Thread";
+            // 
+            // lblBench2
+            // 
+            this.lblBench2.AutoSize = true;
+            this.lblBench2.Location = new System.Drawing.Point(259, 0);
+            this.lblBench2.Name = "lblBench2";
+            this.lblBench2.Size = new System.Drawing.Size(185, 13);
+            this.lblBench2.TabIndex = 7;
+            this.lblBench2.Text = "ParallelPRNG: Half-Available Threads";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(515, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "ParallelPRNG: Half-Available-Plus-One Threads";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(771, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(223, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "ParallelPRNG: All-Available-Plus-One Threads";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -981,6 +1026,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBenchMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBenchMax)).EndInit();
             this.tableLayoutPanelTextBox.ResumeLayout(false);
+            this.tableLayoutPanelTextBox.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMinQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).EndInit();
@@ -1058,6 +1104,10 @@
         private System.Windows.Forms.Button btnThrowCard;
         private System.Windows.Forms.TextBox txtCardsRemaining;
         private System.Windows.Forms.Button btnThrowNewShuffedDeck;
+        private System.Windows.Forms.Label lblBench1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBench2;
     }
 }
 

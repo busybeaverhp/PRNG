@@ -204,8 +204,8 @@ namespace ParallelPRNG
             txtOutput0.Text += "Single Threaded PRNG Finished" + "\n";
             txtOutput0.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
             txtOutput0.Text += "Iterations: " + iterations + "\n";
-            txtOutput0.Text += "Min Value: " + min + "\n";
-            txtOutput0.Text += "Max Value: " + max + "\n";
+            txtOutput0.Text += "Min Range: " + min + "\n";
+            txtOutput0.Text += "Max Range: " + (max - 1) + "\n";
             txtOutput0.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
             txtOutput0.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
         }
@@ -230,8 +230,8 @@ namespace ParallelPRNG
             txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
             txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailThreads) + "\n";
             txtOutput1.Text += "Iterations: " + iterations + "\n";
-            txtOutput1.Text += "Min Value: " + min + "\n";
-            txtOutput1.Text += "Max Value: " + max + "\n";
+            txtOutput1.Text += "Min Range: " + min + "\n";
+            txtOutput1.Text += "Max Range: " + (max - 1) + "\n";
             txtOutput1.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
             txtOutput1.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
         }
@@ -256,8 +256,8 @@ namespace ParallelPRNG
             txtOutput2.Text += "Half-Available+1 Threaded PRNG Finished" + "\n";
             txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailPlusOneThread) + "\n";
             txtOutput2.Text += "Iterations: " + iterations + "\n";
-            txtOutput2.Text += "Min Value: " + min + "\n";
-            txtOutput2.Text += "Max Value: " + max + "\n";
+            txtOutput2.Text += "Min Range: " + min + "\n";
+            txtOutput2.Text += "Max Range: " + (max - 1) + "\n";
             txtOutput2.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
             txtOutput2.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
         }
@@ -282,8 +282,8 @@ namespace ParallelPRNG
             txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
             txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.AllThreads) + "\n";
             txtOutput3.Text += "Iterations: " + iterations + "\n";
-            txtOutput3.Text += "Min Value: " + min + "\n";
-            txtOutput3.Text += "Max Value: " + max + "\n";
+            txtOutput3.Text += "Min Range: " + min + "\n";
+            txtOutput3.Text += "Max Range: " + (max - 1) + "\n";
             txtOutput3.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
             txtOutput3.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
         }
