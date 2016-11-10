@@ -438,8 +438,8 @@ namespace ParallelPRNG
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
             int canvasHeight = canvasTab3.Height;
 
-            Parallel.For(0, bmap.Width, i => {
-                
+            Parallel.For(0, bmap.Width, i => 
+            {
                 Graphics x;
                 Bitmap bmapx;
                 bmapx = new Bitmap(1, canvasHeight);
@@ -484,7 +484,6 @@ namespace ParallelPRNG
 
             Parallel.For(0, bmap.Width, i =>
             {
-
                 Graphics x;
                 Bitmap bmapx;
                 bmapx = new Bitmap(1, canvasHeight);
@@ -672,8 +671,11 @@ namespace ParallelPRNG
 
         private void btnCreateHistogram_Click(object sender, EventArgs e)
         {
-            int integersNeeded = canvasTab3.Height * canvasTab3.Width;
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
+            int integerMax = (int)numUpDownX.Value * (int)numUpDownY.Value - 1;
+            int integersNeeded = (int)numUpDownPoints.Value;
+
+            Tuple<int, int> coordinate = new Tuple<int, int>(2, 2);
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, integerMax);
             ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
 
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
@@ -681,7 +683,6 @@ namespace ParallelPRNG
 
             Parallel.For(0, bmap.Width, i =>
             {
-
                 Graphics x;
                 Bitmap bmapx;
                 bmapx = new Bitmap(1, canvasHeight);

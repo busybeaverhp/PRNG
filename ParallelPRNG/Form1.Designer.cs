@@ -81,6 +81,10 @@
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grpHistogramQuery = new System.Windows.Forms.GroupBox();
+            this.lblY = new System.Windows.Forms.Label();
+            this.numUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.lblX = new System.Windows.Forms.Label();
+            this.numUpDownX = new System.Windows.Forms.NumericUpDown();
             this.btnCreateHistogram = new System.Windows.Forms.Button();
             this.grpCards = new System.Windows.Forms.GroupBox();
             this.btnThrowNewShuffedDeck = new System.Windows.Forms.Button();
@@ -94,10 +98,8 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.numUpDownX = new System.Windows.Forms.NumericUpDown();
-            this.numUpDownY = new System.Windows.Forms.NumericUpDown();
-            this.lblX = new System.Windows.Forms.Label();
-            this.lblY = new System.Windows.Forms.Label();
+            this.numUpDownPoints = new System.Windows.Forms.NumericUpDown();
+            this.lblPoints = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -118,10 +120,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.grpHistogramQuery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).BeginInit();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -886,6 +889,8 @@
             // 
             // grpHistogramQuery
             // 
+            this.grpHistogramQuery.Controls.Add(this.lblPoints);
+            this.grpHistogramQuery.Controls.Add(this.numUpDownPoints);
             this.grpHistogramQuery.Controls.Add(this.lblY);
             this.grpHistogramQuery.Controls.Add(this.numUpDownY);
             this.grpHistogramQuery.Controls.Add(this.lblX);
@@ -898,9 +903,71 @@
             this.grpHistogramQuery.TabStop = false;
             this.grpHistogramQuery.Text = "2D Histogram";
             // 
+            // lblY
+            // 
+            this.lblY.AutoSize = true;
+            this.lblY.Location = new System.Drawing.Point(69, 21);
+            this.lblY.Name = "lblY";
+            this.lblY.Size = new System.Drawing.Size(17, 13);
+            this.lblY.TabIndex = 8;
+            this.lblY.Text = "Y:";
+            // 
+            // numUpDownY
+            // 
+            this.numUpDownY.Location = new System.Drawing.Point(89, 19);
+            this.numUpDownY.Maximum = new decimal(new int[] {
+            541,
+            0,
+            0,
+            0});
+            this.numUpDownY.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownY.Name = "numUpDownY";
+            this.numUpDownY.Size = new System.Drawing.Size(40, 20);
+            this.numUpDownY.TabIndex = 2;
+            this.numUpDownY.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new System.Drawing.Point(6, 21);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(17, 13);
+            this.lblX.TabIndex = 3;
+            this.lblX.Text = "X:";
+            // 
+            // numUpDownX
+            // 
+            this.numUpDownX.Location = new System.Drawing.Point(23, 19);
+            this.numUpDownX.Maximum = new decimal(new int[] {
+            541,
+            0,
+            0,
+            0});
+            this.numUpDownX.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownX.Name = "numUpDownX";
+            this.numUpDownX.Size = new System.Drawing.Size(40, 20);
+            this.numUpDownX.TabIndex = 1;
+            this.numUpDownX.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
             // btnCreateHistogram
             // 
-            this.btnCreateHistogram.Location = new System.Drawing.Point(5, 45);
+            this.btnCreateHistogram.Location = new System.Drawing.Point(5, 71);
             this.btnCreateHistogram.Name = "btnCreateHistogram";
             this.btnCreateHistogram.Size = new System.Drawing.Size(124, 23);
             this.btnCreateHistogram.TabIndex = 0;
@@ -1040,67 +1107,36 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
-            // numUpDownX
+            // numUpDownPoints
             // 
-            this.numUpDownX.Location = new System.Drawing.Point(23, 19);
-            this.numUpDownX.Maximum = new decimal(new int[] {
+            this.numUpDownPoints.Location = new System.Drawing.Point(51, 45);
+            this.numUpDownPoints.Maximum = new decimal(new int[] {
             541,
             0,
             0,
             0});
-            this.numUpDownX.Minimum = new decimal(new int[] {
+            this.numUpDownPoints.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numUpDownX.Name = "numUpDownX";
-            this.numUpDownX.Size = new System.Drawing.Size(40, 20);
-            this.numUpDownX.TabIndex = 1;
-            this.numUpDownX.Value = new decimal(new int[] {
+            this.numUpDownPoints.Name = "numUpDownPoints";
+            this.numUpDownPoints.Size = new System.Drawing.Size(78, 20);
+            this.numUpDownPoints.TabIndex = 9;
+            this.numUpDownPoints.Value = new decimal(new int[] {
             500,
             0,
             0,
             0});
             // 
-            // numUpDownY
+            // lblPoints
             // 
-            this.numUpDownY.Location = new System.Drawing.Point(89, 19);
-            this.numUpDownY.Maximum = new decimal(new int[] {
-            541,
-            0,
-            0,
-            0});
-            this.numUpDownY.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownY.Name = "numUpDownY";
-            this.numUpDownY.Size = new System.Drawing.Size(40, 20);
-            this.numUpDownY.TabIndex = 2;
-            this.numUpDownY.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            // 
-            // lblX
-            // 
-            this.lblX.AutoSize = true;
-            this.lblX.Location = new System.Drawing.Point(6, 21);
-            this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(17, 13);
-            this.lblX.TabIndex = 3;
-            this.lblX.Text = "X:";
-            // 
-            // lblY
-            // 
-            this.lblY.AutoSize = true;
-            this.lblY.Location = new System.Drawing.Point(69, 21);
-            this.lblY.Name = "lblY";
-            this.lblY.Size = new System.Drawing.Size(17, 13);
-            this.lblY.TabIndex = 8;
-            this.lblY.Text = "Y:";
+            this.lblPoints.AutoSize = true;
+            this.lblPoints.Location = new System.Drawing.Point(6, 47);
+            this.lblPoints.Name = "lblPoints";
+            this.lblPoints.Size = new System.Drawing.Size(39, 13);
+            this.lblPoints.TabIndex = 10;
+            this.lblPoints.Text = "Points:";
             // 
             // Form1
             // 
@@ -1133,11 +1169,12 @@
             this.tabPage4.ResumeLayout(false);
             this.grpHistogramQuery.ResumeLayout(false);
             this.grpHistogramQuery.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).EndInit();
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1214,6 +1251,8 @@
         private System.Windows.Forms.NumericUpDown numUpDownX;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.Label lblPoints;
+        private System.Windows.Forms.NumericUpDown numUpDownPoints;
     }
 }
 
