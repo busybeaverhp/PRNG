@@ -201,13 +201,19 @@ namespace ParallelPRNG
             List<byte[]> byteArraylist = new List<byte[]>(prng.GenerateListOfEntropy32ByteArrays(iterations));
             stopwatch2.Stop();
 
+            decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
+            decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
+
             txtOutput0.Text += "Single Threaded PRNG Finished" + "\n";
             txtOutput0.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
-            txtOutput0.Text += "Iterations: " + iterations + "\n";
-            txtOutput0.Text += "Min Range: " + min + "\n";
-            txtOutput0.Text += "Max Range: " + (max - 1) + "\n";
-            txtOutput0.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
-            txtOutput0.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
+            txtOutput0.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput0.Text += "Min Range: " + min.ToString("N0") + "\n";
+            txtOutput0.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
+            txtOutput0.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
+            txtOutput0.Text += "32-Byte Arrays per Sec: " + byteArraysPerSec.ToString("N0") + "\n\n";
+            txtOutput0.Text += "BigInteger: " + stopwatch2.Elapsed + "\n";
+            txtOutput0.Text += "BigIntegers per Sec: " + integersPerSec.ToString("N0") + "\n\n";
+            txtOutput0.Text += "--- --- --- \n\n";
         }
 
         private void btnTimeHalfAvailThread_Click(object sender, EventArgs e)
@@ -227,13 +233,19 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations, min, max);
             stopwatch2.Stop();
 
-            txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
-            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailThreads) + "\n";
-            txtOutput1.Text += "Iterations: " + iterations + "\n";
-            txtOutput1.Text += "Min Range: " + min + "\n";
-            txtOutput1.Text += "Max Range: " + (max - 1) + "\n";
-            txtOutput1.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
-            txtOutput1.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
+            decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
+            decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
+
+            txtOutput1.Text += "Single Threaded PRNG Finished" + "\n";
+            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput1.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput1.Text += "Min Range: " + min.ToString("N0") + "\n";
+            txtOutput1.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
+            txtOutput1.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
+            txtOutput1.Text += "32-Byte Arrays per Sec: " + byteArraysPerSec.ToString("N0") + "\n\n";
+            txtOutput1.Text += "BigInteger: " + stopwatch2.Elapsed + "\n";
+            txtOutput1.Text += "BigIntegers per Sec: " + integersPerSec.ToString("N0") + "\n\n";
+            txtOutput1.Text += "--- --- --- \n\n";
         }
 
         private void btnTimeHalfPlusOneAvailThread_Click(object sender, EventArgs e)
@@ -253,13 +265,19 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations, min, max);
             stopwatch2.Stop();
 
-            txtOutput2.Text += "Half-Available+1 Threaded PRNG Finished" + "\n";
-            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailPlusOneThread) + "\n";
-            txtOutput2.Text += "Iterations: " + iterations + "\n";
-            txtOutput2.Text += "Min Range: " + min + "\n";
-            txtOutput2.Text += "Max Range: " + (max - 1) + "\n";
-            txtOutput2.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
-            txtOutput2.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
+            decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
+            decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
+
+            txtOutput2.Text += "Single Threaded PRNG Finished" + "\n";
+            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput2.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput2.Text += "Min Range: " + min.ToString("N0") + "\n";
+            txtOutput2.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
+            txtOutput2.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
+            txtOutput2.Text += "32-Byte Arrays per Sec: " + byteArraysPerSec.ToString("N0") + "\n\n";
+            txtOutput2.Text += "BigInteger: " + stopwatch2.Elapsed + "\n";
+            txtOutput2.Text += "BigIntegers per Sec: " + integersPerSec.ToString("N0") + "\n\n";
+            txtOutput2.Text += "--- --- --- \n\n";
         }
 
         private void btnTimeFullThread_Click(object sender, EventArgs e)
@@ -279,13 +297,19 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
             stopwatch2.Stop();
 
-            txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
-            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.AllThreads) + "\n";
-            txtOutput3.Text += "Iterations: " + iterations + "\n";
-            txtOutput3.Text += "Min Range: " + min + "\n";
-            txtOutput3.Text += "Max Range: " + (max - 1) + "\n";
-            txtOutput3.Text += "Byte Array: " + stopwatch.Elapsed + "\n";
-            txtOutput3.Text += "BigInteger: " + stopwatch2.Elapsed + "\n\n";
+            decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
+            decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
+
+            txtOutput3.Text += "Single Threaded PRNG Finished" + "\n";
+            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput3.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput3.Text += "Min Range: " + min.ToString("N0") + "\n";
+            txtOutput3.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
+            txtOutput3.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
+            txtOutput3.Text += "32-Byte Arrays per Sec: " + byteArraysPerSec.ToString("N0") + "\n\n";
+            txtOutput3.Text += "BigInteger: " + stopwatch2.Elapsed + "\n";
+            txtOutput3.Text += "BigIntegers per Sec: " + integersPerSec.ToString("N0") + "\n\n";
+            txtOutput3.Text += "--- --- --- \n\n";
         }
 
         #endregion
@@ -644,6 +668,49 @@ namespace ParallelPRNG
 
                 newShuffledCardDeck.RemoveAt(newShuffledCardDeck.Count - 1);
             }  
+        }
+
+        private void btnCreateHistogram_Click(object sender, EventArgs e)
+        {
+            int integersNeeded = canvasTab3.Height * canvasTab3.Width;
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
+            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+
+            ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
+            int canvasHeight = canvasTab3.Height;
+
+            Parallel.For(0, bmap.Width, i =>
+            {
+
+                Graphics x;
+                Bitmap bmapx;
+                bmapx = new Bitmap(1, canvasHeight);
+                x = Graphics.FromImage(bmapx);
+
+                for (int j = 0; j < canvasHeight; j++)
+                {
+                    BigInteger greyscale;
+
+                    bool success = bagOfIntegers.TryTake(out greyscale);
+
+                    Color randomColor = Color.FromArgb((int)greyscale, (int)greyscale, (int)greyscale);
+
+                    SolidBrush randomSolidBrush = new SolidBrush(randomColor);
+                    x.FillRectangle(randomSolidBrush, 0, j, 1, 1);
+                }
+
+                bagOfBitmaps.Add(bmapx);
+                x.Dispose();
+            });
+
+            for (int i = 0; i < bmap.Width; i++)
+            {
+                Bitmap slice;
+                bool success = bagOfBitmaps.TryTake(out slice);
+
+                g.DrawImage(slice, i, 0);
+                canvasTab3.Image = bmap;
+            }
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)

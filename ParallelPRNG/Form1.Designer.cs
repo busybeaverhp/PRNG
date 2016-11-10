@@ -51,14 +51,18 @@
             this.numUpDownBenchMax = new System.Windows.Forms.NumericUpDown();
             this.btnBenchMax = new System.Windows.Forms.Button();
             this.tableLayoutPanelTextBox = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTimeFullThread = new System.Windows.Forms.Button();
-            this.txtOutput3 = new System.Windows.Forms.RichTextBox();
-            this.txtOutput2 = new System.Windows.Forms.RichTextBox();
-            this.txtOutput1 = new System.Windows.Forms.RichTextBox();
-            this.txtOutput0 = new System.Windows.Forms.RichTextBox();
-            this.btnTimeHalfPlusOneAvailThread = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblBench2 = new System.Windows.Forms.Label();
             this.btnTimeSingleThread = new System.Windows.Forms.Button();
             this.btnTimeHalfAvailThread = new System.Windows.Forms.Button();
+            this.btnTimeHalfPlusOneAvailThread = new System.Windows.Forms.Button();
+            this.btnTimeFullThread = new System.Windows.Forms.Button();
+            this.txtOutput1 = new System.Windows.Forms.RichTextBox();
+            this.txtOutput0 = new System.Windows.Forms.RichTextBox();
+            this.txtOutput2 = new System.Windows.Forms.RichTextBox();
+            this.txtOutput3 = new System.Windows.Forms.RichTextBox();
+            this.lblBench1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnMinQueryValue = new System.Windows.Forms.Button();
             this.btnMaxQueryValue = new System.Windows.Forms.Button();
@@ -76,6 +80,8 @@
             this.numUpDownPQMin = new System.Windows.Forms.NumericUpDown();
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.grpHistogramQuery = new System.Windows.Forms.GroupBox();
+            this.btnCreateHistogram = new System.Windows.Forms.Button();
             this.grpCards = new System.Windows.Forms.GroupBox();
             this.btnThrowNewShuffedDeck = new System.Windows.Forms.Button();
             this.txtCardsRemaining = new System.Windows.Forms.TextBox();
@@ -88,10 +94,10 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.lblBench1 = new System.Windows.Forms.Label();
-            this.lblBench2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.numUpDownX = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.lblX = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -111,8 +117,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.grpHistogramQuery.SuspendLayout();
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).BeginInit();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -473,6 +482,66 @@
             this.tableLayoutPanelTextBox.Size = new System.Drawing.Size(1026, 518);
             this.tableLayoutPanelTextBox.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(771, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(223, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "ParallelPRNG: All-Available-Plus-One Threads";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(515, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "ParallelPRNG: Half-Available-Plus-One Threads";
+            // 
+            // lblBench2
+            // 
+            this.lblBench2.AutoSize = true;
+            this.lblBench2.Location = new System.Drawing.Point(259, 0);
+            this.lblBench2.Name = "lblBench2";
+            this.lblBench2.Size = new System.Drawing.Size(185, 13);
+            this.lblBench2.TabIndex = 7;
+            this.lblBench2.Text = "ParallelPRNG: Half-Available Threads";
+            // 
+            // btnTimeSingleThread
+            // 
+            this.btnTimeSingleThread.Location = new System.Drawing.Point(2, 487);
+            this.btnTimeSingleThread.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimeSingleThread.Name = "btnTimeSingleThread";
+            this.btnTimeSingleThread.Size = new System.Drawing.Size(252, 29);
+            this.btnTimeSingleThread.TabIndex = 2;
+            this.btnTimeSingleThread.Text = "Run Single-Threaded Benchmark";
+            this.btnTimeSingleThread.UseVisualStyleBackColor = true;
+            this.btnTimeSingleThread.Click += new System.EventHandler(this.btnTimeSingleThread_Click);
+            // 
+            // btnTimeHalfAvailThread
+            // 
+            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(258, 487);
+            this.btnTimeHalfAvailThread.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimeHalfAvailThread.Name = "btnTimeHalfAvailThread";
+            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(252, 29);
+            this.btnTimeHalfAvailThread.TabIndex = 3;
+            this.btnTimeHalfAvailThread.Text = "Run Half-Available Threaded Benchmark";
+            this.btnTimeHalfAvailThread.UseVisualStyleBackColor = true;
+            this.btnTimeHalfAvailThread.Click += new System.EventHandler(this.btnTimeHalfAvailThread_Click);
+            // 
+            // btnTimeHalfPlusOneAvailThread
+            // 
+            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(514, 487);
+            this.btnTimeHalfPlusOneAvailThread.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimeHalfPlusOneAvailThread.Name = "btnTimeHalfPlusOneAvailThread";
+            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(252, 29);
+            this.btnTimeHalfPlusOneAvailThread.TabIndex = 4;
+            this.btnTimeHalfPlusOneAvailThread.Text = "Run Half-Avail-PlusOne Benchmark";
+            this.btnTimeHalfPlusOneAvailThread.UseVisualStyleBackColor = true;
+            this.btnTimeHalfPlusOneAvailThread.Click += new System.EventHandler(this.btnTimeHalfPlusOneAvailThread_Click);
+            // 
             // btnTimeFullThread
             // 
             this.btnTimeFullThread.Location = new System.Drawing.Point(770, 487);
@@ -483,28 +552,6 @@
             this.btnTimeFullThread.Text = "Run Full-Threaded Benchmark";
             this.btnTimeFullThread.UseVisualStyleBackColor = true;
             this.btnTimeFullThread.Click += new System.EventHandler(this.btnTimeFullThread_Click);
-            // 
-            // txtOutput3
-            // 
-            this.txtOutput3.Location = new System.Drawing.Point(770, 19);
-            this.txtOutput3.Margin = new System.Windows.Forms.Padding(2);
-            this.txtOutput3.Name = "txtOutput3";
-            this.txtOutput3.ReadOnly = true;
-            this.txtOutput3.Size = new System.Drawing.Size(254, 464);
-            this.txtOutput3.TabIndex = 3;
-            this.txtOutput3.Text = "";
-            this.txtOutput3.TextChanged += new System.EventHandler(this.txtOutput3_TextChanged);
-            // 
-            // txtOutput2
-            // 
-            this.txtOutput2.Location = new System.Drawing.Point(514, 19);
-            this.txtOutput2.Margin = new System.Windows.Forms.Padding(2);
-            this.txtOutput2.Name = "txtOutput2";
-            this.txtOutput2.ReadOnly = true;
-            this.txtOutput2.Size = new System.Drawing.Size(252, 464);
-            this.txtOutput2.TabIndex = 2;
-            this.txtOutput2.Text = "";
-            this.txtOutput2.TextChanged += new System.EventHandler(this.txtOutput2_TextChanged);
             // 
             // txtOutput1
             // 
@@ -528,38 +575,36 @@
             this.txtOutput0.Text = "";
             this.txtOutput0.TextChanged += new System.EventHandler(this.txtOutput0_TextChanged);
             // 
-            // btnTimeHalfPlusOneAvailThread
+            // txtOutput2
             // 
-            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(514, 487);
-            this.btnTimeHalfPlusOneAvailThread.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimeHalfPlusOneAvailThread.Name = "btnTimeHalfPlusOneAvailThread";
-            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(252, 29);
-            this.btnTimeHalfPlusOneAvailThread.TabIndex = 4;
-            this.btnTimeHalfPlusOneAvailThread.Text = "Run Half-Avail-PlusOne Benchmark";
-            this.btnTimeHalfPlusOneAvailThread.UseVisualStyleBackColor = true;
-            this.btnTimeHalfPlusOneAvailThread.Click += new System.EventHandler(this.btnTimeHalfPlusOneAvailThread_Click);
+            this.txtOutput2.Location = new System.Drawing.Point(514, 19);
+            this.txtOutput2.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOutput2.Name = "txtOutput2";
+            this.txtOutput2.ReadOnly = true;
+            this.txtOutput2.Size = new System.Drawing.Size(252, 464);
+            this.txtOutput2.TabIndex = 2;
+            this.txtOutput2.Text = "";
+            this.txtOutput2.TextChanged += new System.EventHandler(this.txtOutput2_TextChanged);
             // 
-            // btnTimeSingleThread
+            // txtOutput3
             // 
-            this.btnTimeSingleThread.Location = new System.Drawing.Point(2, 487);
-            this.btnTimeSingleThread.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimeSingleThread.Name = "btnTimeSingleThread";
-            this.btnTimeSingleThread.Size = new System.Drawing.Size(252, 29);
-            this.btnTimeSingleThread.TabIndex = 2;
-            this.btnTimeSingleThread.Text = "Run Single-Threaded Benchmark";
-            this.btnTimeSingleThread.UseVisualStyleBackColor = true;
-            this.btnTimeSingleThread.Click += new System.EventHandler(this.btnTimeSingleThread_Click);
+            this.txtOutput3.Location = new System.Drawing.Point(770, 19);
+            this.txtOutput3.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOutput3.Name = "txtOutput3";
+            this.txtOutput3.ReadOnly = true;
+            this.txtOutput3.Size = new System.Drawing.Size(254, 464);
+            this.txtOutput3.TabIndex = 3;
+            this.txtOutput3.Text = "";
+            this.txtOutput3.TextChanged += new System.EventHandler(this.txtOutput3_TextChanged);
             // 
-            // btnTimeHalfAvailThread
+            // lblBench1
             // 
-            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(258, 487);
-            this.btnTimeHalfAvailThread.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimeHalfAvailThread.Name = "btnTimeHalfAvailThread";
-            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(252, 29);
-            this.btnTimeHalfAvailThread.TabIndex = 3;
-            this.btnTimeHalfAvailThread.Text = "Run Half-Available Threaded Benchmark";
-            this.btnTimeHalfAvailThread.UseVisualStyleBackColor = true;
-            this.btnTimeHalfAvailThread.Click += new System.EventHandler(this.btnTimeHalfAvailThread_Click);
+            this.lblBench1.AutoSize = true;
+            this.lblBench1.Location = new System.Drawing.Point(3, 0);
+            this.lblBench1.Name = "lblBench1";
+            this.lblBench1.Size = new System.Drawing.Size(110, 13);
+            this.lblBench1.TabIndex = 6;
+            this.lblBench1.Text = "PRNG: Single Thread";
             // 
             // tabPage3
             // 
@@ -588,7 +633,7 @@
             // 
             // btnMinQueryValue
             // 
-            this.btnMinQueryValue.Location = new System.Drawing.Point(375, 501);
+            this.btnMinQueryValue.Location = new System.Drawing.Point(344, 501);
             this.btnMinQueryValue.Name = "btnMinQueryValue";
             this.btnMinQueryValue.Size = new System.Drawing.Size(81, 22);
             this.btnMinQueryValue.TabIndex = 14;
@@ -599,7 +644,7 @@
             // 
             // btnMaxQueryValue
             // 
-            this.btnMaxQueryValue.Location = new System.Drawing.Point(375, 475);
+            this.btnMaxQueryValue.Location = new System.Drawing.Point(344, 475);
             this.btnMaxQueryValue.Name = "btnMaxQueryValue";
             this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
             this.btnMaxQueryValue.TabIndex = 13;
@@ -610,7 +655,7 @@
             // 
             // btnQueryRange
             // 
-            this.btnQueryRange.Location = new System.Drawing.Point(375, 529);
+            this.btnQueryRange.Location = new System.Drawing.Point(344, 529);
             this.btnQueryRange.Name = "btnQueryRange";
             this.btnQueryRange.Size = new System.Drawing.Size(196, 20);
             this.btnQueryRange.TabIndex = 12;
@@ -621,7 +666,7 @@
             // 
             // numUpDownMinQueryValue
             // 
-            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(462, 503);
+            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(431, 503);
             this.numUpDownMinQueryValue.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -644,7 +689,7 @@
             // 
             // numUpDownMaxQueryValue
             // 
-            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(462, 477);
+            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(431, 477);
             this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -667,7 +712,7 @@
             // 
             // btnQueryValue
             // 
-            this.btnQueryValue.Location = new System.Drawing.Point(675, 501);
+            this.btnQueryValue.Location = new System.Drawing.Point(616, 503);
             this.btnQueryValue.Name = "btnQueryValue";
             this.btnQueryValue.Size = new System.Drawing.Size(108, 46);
             this.btnQueryValue.TabIndex = 9;
@@ -678,7 +723,7 @@
             // 
             // numUpDownQueryValue
             // 
-            this.numUpDownQueryValue.Location = new System.Drawing.Point(675, 475);
+            this.numUpDownQueryValue.Location = new System.Drawing.Point(616, 477);
             this.numUpDownQueryValue.Maximum = new decimal(new int[] {
             1000001,
             0,
@@ -823,6 +868,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.grpHistogramQuery);
             this.tabPage4.Controls.Add(this.grpCards);
             this.tabPage4.Controls.Add(this.btnClearCanvas);
             this.tabPage4.Controls.Add(this.btnRandomWalk);
@@ -837,6 +883,30 @@
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "Visual Demonstrations";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // grpHistogramQuery
+            // 
+            this.grpHistogramQuery.Controls.Add(this.lblY);
+            this.grpHistogramQuery.Controls.Add(this.numUpDownY);
+            this.grpHistogramQuery.Controls.Add(this.lblX);
+            this.grpHistogramQuery.Controls.Add(this.numUpDownX);
+            this.grpHistogramQuery.Controls.Add(this.btnCreateHistogram);
+            this.grpHistogramQuery.Location = new System.Drawing.Point(7, 274);
+            this.grpHistogramQuery.Name = "grpHistogramQuery";
+            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 141);
+            this.grpHistogramQuery.TabIndex = 7;
+            this.grpHistogramQuery.TabStop = false;
+            this.grpHistogramQuery.Text = "2D Histogram";
+            // 
+            // btnCreateHistogram
+            // 
+            this.btnCreateHistogram.Location = new System.Drawing.Point(5, 45);
+            this.btnCreateHistogram.Name = "btnCreateHistogram";
+            this.btnCreateHistogram.Size = new System.Drawing.Size(124, 23);
+            this.btnCreateHistogram.TabIndex = 0;
+            this.btnCreateHistogram.Text = "Create Histogram";
+            this.btnCreateHistogram.UseVisualStyleBackColor = true;
+            this.btnCreateHistogram.Click += new System.EventHandler(this.btnCreateHistogram_Click);
             // 
             // grpCards
             // 
@@ -970,41 +1040,67 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
-            // lblBench1
+            // numUpDownX
             // 
-            this.lblBench1.AutoSize = true;
-            this.lblBench1.Location = new System.Drawing.Point(3, 0);
-            this.lblBench1.Name = "lblBench1";
-            this.lblBench1.Size = new System.Drawing.Size(110, 13);
-            this.lblBench1.TabIndex = 6;
-            this.lblBench1.Text = "PRNG: Single Thread";
+            this.numUpDownX.Location = new System.Drawing.Point(23, 19);
+            this.numUpDownX.Maximum = new decimal(new int[] {
+            541,
+            0,
+            0,
+            0});
+            this.numUpDownX.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownX.Name = "numUpDownX";
+            this.numUpDownX.Size = new System.Drawing.Size(40, 20);
+            this.numUpDownX.TabIndex = 1;
+            this.numUpDownX.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
-            // lblBench2
+            // numUpDownY
             // 
-            this.lblBench2.AutoSize = true;
-            this.lblBench2.Location = new System.Drawing.Point(259, 0);
-            this.lblBench2.Name = "lblBench2";
-            this.lblBench2.Size = new System.Drawing.Size(185, 13);
-            this.lblBench2.TabIndex = 7;
-            this.lblBench2.Text = "ParallelPRNG: Half-Available Threads";
+            this.numUpDownY.Location = new System.Drawing.Point(89, 19);
+            this.numUpDownY.Maximum = new decimal(new int[] {
+            541,
+            0,
+            0,
+            0});
+            this.numUpDownY.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownY.Name = "numUpDownY";
+            this.numUpDownY.Size = new System.Drawing.Size(40, 20);
+            this.numUpDownY.TabIndex = 2;
+            this.numUpDownY.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
-            // label1
+            // lblX
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(515, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "ParallelPRNG: Half-Available-Plus-One Threads";
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new System.Drawing.Point(6, 21);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(17, 13);
+            this.lblX.TabIndex = 3;
+            this.lblX.Text = "X:";
             // 
-            // label2
+            // lblY
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(771, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "ParallelPRNG: All-Available-Plus-One Threads";
+            this.lblY.AutoSize = true;
+            this.lblY.Location = new System.Drawing.Point(69, 21);
+            this.lblY.Name = "lblY";
+            this.lblY.Size = new System.Drawing.Size(17, 13);
+            this.lblY.TabIndex = 8;
+            this.lblY.Text = "Y:";
             // 
             // Form1
             // 
@@ -1035,9 +1131,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.grpHistogramQuery.ResumeLayout(false);
+            this.grpHistogramQuery.PerformLayout();
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1108,6 +1208,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBench2;
+        private System.Windows.Forms.GroupBox grpHistogramQuery;
+        private System.Windows.Forms.Button btnCreateHistogram;
+        private System.Windows.Forms.NumericUpDown numUpDownY;
+        private System.Windows.Forms.NumericUpDown numUpDownX;
+        private System.Windows.Forms.Label lblY;
+        private System.Windows.Forms.Label lblX;
     }
 }
 
