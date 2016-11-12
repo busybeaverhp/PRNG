@@ -81,6 +81,8 @@
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grpHistogramQuery = new System.Windows.Forms.GroupBox();
+            this.lblPoints = new System.Windows.Forms.Label();
+            this.numUpDownPoints = new System.Windows.Forms.NumericUpDown();
             this.lblY = new System.Windows.Forms.Label();
             this.numUpDownY = new System.Windows.Forms.NumericUpDown();
             this.lblX = new System.Windows.Forms.Label();
@@ -98,8 +100,8 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.numUpDownPoints = new System.Windows.Forms.NumericUpDown();
-            this.lblPoints = new System.Windows.Forms.Label();
+            this.btnQryMostFrequent = new System.Windows.Forms.Button();
+            this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -120,11 +122,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.grpHistogramQuery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).BeginInit();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -611,6 +614,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.numUpDownTopFreq);
+            this.tabPage3.Controls.Add(this.btnQryMostFrequent);
             this.tabPage3.Controls.Add(this.btnMinQueryValue);
             this.tabPage3.Controls.Add(this.btnMaxQueryValue);
             this.tabPage3.Controls.Add(this.btnQueryRange);
@@ -715,9 +720,9 @@
             // 
             // btnQueryValue
             // 
-            this.btnQueryValue.Location = new System.Drawing.Point(616, 503);
+            this.btnQueryValue.Location = new System.Drawing.Point(797, 503);
             this.btnQueryValue.Name = "btnQueryValue";
-            this.btnQueryValue.Size = new System.Drawing.Size(108, 46);
+            this.btnQueryValue.Size = new System.Drawing.Size(108, 44);
             this.btnQueryValue.TabIndex = 9;
             this.btnQueryValue.Text = "Query Table for \r\nThis Value";
             this.btnQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -726,7 +731,7 @@
             // 
             // numUpDownQueryValue
             // 
-            this.numUpDownQueryValue.Location = new System.Drawing.Point(616, 477);
+            this.numUpDownQueryValue.Location = new System.Drawing.Point(797, 477);
             this.numUpDownQueryValue.Maximum = new decimal(new int[] {
             1000001,
             0,
@@ -902,6 +907,37 @@
             this.grpHistogramQuery.TabIndex = 7;
             this.grpHistogramQuery.TabStop = false;
             this.grpHistogramQuery.Text = "2D Histogram";
+            // 
+            // lblPoints
+            // 
+            this.lblPoints.AutoSize = true;
+            this.lblPoints.Location = new System.Drawing.Point(6, 47);
+            this.lblPoints.Name = "lblPoints";
+            this.lblPoints.Size = new System.Drawing.Size(39, 13);
+            this.lblPoints.TabIndex = 10;
+            this.lblPoints.Text = "Points:";
+            // 
+            // numUpDownPoints
+            // 
+            this.numUpDownPoints.Location = new System.Drawing.Point(51, 45);
+            this.numUpDownPoints.Maximum = new decimal(new int[] {
+            541,
+            0,
+            0,
+            0});
+            this.numUpDownPoints.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownPoints.Name = "numUpDownPoints";
+            this.numUpDownPoints.Size = new System.Drawing.Size(78, 20);
+            this.numUpDownPoints.TabIndex = 9;
+            this.numUpDownPoints.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // lblY
             // 
@@ -1107,36 +1143,35 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
-            // numUpDownPoints
+            // btnQryMostFrequent
             // 
-            this.numUpDownPoints.Location = new System.Drawing.Point(51, 45);
-            this.numUpDownPoints.Maximum = new decimal(new int[] {
-            541,
-            0,
-            0,
-            0});
-            this.numUpDownPoints.Minimum = new decimal(new int[] {
+            this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnQryMostFrequent.Location = new System.Drawing.Point(911, 501);
+            this.btnQryMostFrequent.Name = "btnQryMostFrequent";
+            this.btnQryMostFrequent.Size = new System.Drawing.Size(117, 46);
+            this.btnQryMostFrequent.TabIndex = 15;
+            this.btnQryMostFrequent.Text = "Query Table for Most Frequent Value(s)";
+            this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQryMostFrequent.UseVisualStyleBackColor = true;
+            this.btnQryMostFrequent.Click += new System.EventHandler(this.btnQryMostFrequent_Click);
+            // 
+            // numUpDownTopFreq
+            // 
+            this.numUpDownTopFreq.Location = new System.Drawing.Point(911, 477);
+            this.numUpDownTopFreq.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numUpDownPoints.Name = "numUpDownPoints";
-            this.numUpDownPoints.Size = new System.Drawing.Size(78, 20);
-            this.numUpDownPoints.TabIndex = 9;
-            this.numUpDownPoints.Value = new decimal(new int[] {
-            500,
+            this.numUpDownTopFreq.Name = "numUpDownTopFreq";
+            this.numUpDownTopFreq.Size = new System.Drawing.Size(117, 20);
+            this.numUpDownTopFreq.TabIndex = 16;
+            this.numUpDownTopFreq.ThousandsSeparator = true;
+            this.numUpDownTopFreq.Value = new decimal(new int[] {
+            10,
             0,
             0,
             0});
-            // 
-            // lblPoints
-            // 
-            this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(6, 47);
-            this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(39, 13);
-            this.lblPoints.TabIndex = 10;
-            this.lblPoints.Text = "Points:";
             // 
             // Form1
             // 
@@ -1169,12 +1204,13 @@
             this.tabPage4.ResumeLayout(false);
             this.grpHistogramQuery.ResumeLayout(false);
             this.grpHistogramQuery.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).EndInit();
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1253,6 +1289,8 @@
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label lblPoints;
         private System.Windows.Forms.NumericUpDown numUpDownPoints;
+        private System.Windows.Forms.NumericUpDown numUpDownTopFreq;
+        private System.Windows.Forms.Button btnQryMostFrequent;
     }
 }
 

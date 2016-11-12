@@ -236,8 +236,8 @@ namespace ParallelPRNG
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
-            txtOutput1.Text += "Single Threaded PRNG Finished" + "\n";
-            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
+            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailThreads) + "\n";
             txtOutput1.Text += "Iterations: " + iterations.ToString("N0") + "\n";
             txtOutput1.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput1.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -268,8 +268,8 @@ namespace ParallelPRNG
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
-            txtOutput2.Text += "Single Threaded PRNG Finished" + "\n";
-            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput2.Text += "Half-Available-Plus-One PRNG Finished" + "\n";
+            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailPlusOneThread) + "\n";
             txtOutput2.Text += "Iterations: " + iterations.ToString("N0") + "\n";
             txtOutput2.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput2.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -300,8 +300,8 @@ namespace ParallelPRNG
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
-            txtOutput3.Text += "Single Threaded PRNG Finished" + "\n";
-            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
+            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.AllThreads) + "\n";
             txtOutput3.Text += "Iterations: " + iterations.ToString("N0") + "\n";
             txtOutput3.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput3.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -377,7 +377,6 @@ namespace ParallelPRNG
             PQConsoleWriteLine(tempString);
         }
 
-
         private void btnMaxQueryValue_Click(object sender, EventArgs e)
         {
             numUpDownMaxQueryValue.Value = numUpDownMaxQueryValue.Maximum;
@@ -409,6 +408,30 @@ namespace ParallelPRNG
             {
                 MessageBox.Show("Min Range cannot be higher than Max Range. Try again.");
             }
+        }
+
+        private void btnQryMostFrequent_Click(object sender, EventArgs e)
+        {
+            BigInteger number;
+            int frequency;
+            string tempString;
+
+            var mostFrequentList = bigIntegerList.AsParallel().GroupBy(i => i)
+                .OrderByDescending(grp => grp.Count())
+                .Select(grp => new { Number = grp.Key, Frequency = grp.Count() }).ToArray();
+
+            var distinctValuesInTable = mostFrequentList.Distinct().ToArray();
+            decimal iMax = Math.Min(numUpDownTopFreq.Value, distinctValuesInTable.Count());
+            tempString = "The top-" + iMax.ToString("N0") + " frequently occuring values are: ";
+
+            for (int i = 0; i < iMax; i++)
+            {
+                number = mostFrequentList[i].Number;
+                frequency = mostFrequentList[i].Frequency;
+                tempString += "[ value " + number.ToString("N0") + ": " + frequency.ToString("N0") + "] ";
+            }
+
+            PQConsoleWriteLine(tempString);
         }
 
         #endregion

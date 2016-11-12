@@ -39,6 +39,12 @@ namespace ParallelRandomClassLib
                 foreach (byte[] byteArray in listOfEntropy32ByteArrays)
                     _bagOfRandomBytes.Add(byteArray);
             });
+
+            while (_bagOfRandomBytes.Count > quantityOfRandom32ByteArrays)
+            {
+                byte[] random32ByteArray;
+                _bagOfRandomBytes.TryTake(out random32ByteArray);
+            }
         }
 
         public void GenerateDesiredQuantityOfRandomIntegers(string inputString, DesiredCPUUtilization desiredCPUUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
@@ -63,6 +69,12 @@ namespace ParallelRandomClassLib
                 foreach (BigInteger randomValue in listOfRandomIntegers)
                     _bagOfRandomIntegers.Add(randomValue);
             });
+
+            while (_bagOfRandomIntegers.Count > desiredQuantityOfValues)
+            {
+                BigInteger randomValue;
+                _bagOfRandomIntegers.TryTake(out randomValue);
+            }
         }
 
         private int ThreadUsage(DesiredCPUUtilization desiredCPUUtilization)
