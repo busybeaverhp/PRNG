@@ -64,6 +64,8 @@
             this.txtOutput3 = new System.Windows.Forms.RichTextBox();
             this.lblBench1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
+            this.btnQryMostFrequent = new System.Windows.Forms.Button();
             this.btnMinQueryValue = new System.Windows.Forms.Button();
             this.btnMaxQueryValue = new System.Windows.Forms.Button();
             this.btnQueryRange = new System.Windows.Forms.Button();
@@ -100,8 +102,7 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.btnQryMostFrequent = new System.Windows.Forms.Button();
-            this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
+            this.btnAvgMedStdDev = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -114,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBenchMax)).BeginInit();
             this.tableLayoutPanelTextBox.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMinQueryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownQueryValue)).BeginInit();
@@ -127,7 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).BeginInit();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -614,6 +615,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnAvgMedStdDev);
             this.tabPage3.Controls.Add(this.numUpDownTopFreq);
             this.tabPage3.Controls.Add(this.btnQryMostFrequent);
             this.tabPage3.Controls.Add(this.btnMinQueryValue);
@@ -639,6 +641,36 @@
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // numUpDownTopFreq
+            // 
+            this.numUpDownTopFreq.Location = new System.Drawing.Point(911, 477);
+            this.numUpDownTopFreq.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownTopFreq.Name = "numUpDownTopFreq";
+            this.numUpDownTopFreq.Size = new System.Drawing.Size(117, 20);
+            this.numUpDownTopFreq.TabIndex = 16;
+            this.numUpDownTopFreq.ThousandsSeparator = true;
+            this.numUpDownTopFreq.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // btnQryMostFrequent
+            // 
+            this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnQryMostFrequent.Location = new System.Drawing.Point(911, 501);
+            this.btnQryMostFrequent.Name = "btnQryMostFrequent";
+            this.btnQryMostFrequent.Size = new System.Drawing.Size(117, 46);
+            this.btnQryMostFrequent.TabIndex = 15;
+            this.btnQryMostFrequent.Text = "Query Table for Most Frequent Value(s)";
+            this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQryMostFrequent.UseVisualStyleBackColor = true;
+            this.btnQryMostFrequent.Click += new System.EventHandler(this.btnQryMostFrequent_Click);
+            // 
             // btnMinQueryValue
             // 
             this.btnMinQueryValue.Location = new System.Drawing.Point(344, 501);
@@ -663,9 +695,10 @@
             // 
             // btnQueryRange
             // 
+            this.btnQueryRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.btnQueryRange.Location = new System.Drawing.Point(344, 529);
             this.btnQueryRange.Name = "btnQueryRange";
-            this.btnQueryRange.Size = new System.Drawing.Size(196, 20);
+            this.btnQueryRange.Size = new System.Drawing.Size(196, 18);
             this.btnQueryRange.TabIndex = 12;
             this.btnQueryRange.Text = "Query Frequency of Values in Range";
             this.btnQueryRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1143,35 +1176,16 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
-            // btnQryMostFrequent
+            // btnAvgMedStdDev
             // 
-            this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnQryMostFrequent.Location = new System.Drawing.Point(911, 501);
-            this.btnQryMostFrequent.Name = "btnQryMostFrequent";
-            this.btnQryMostFrequent.Size = new System.Drawing.Size(117, 46);
-            this.btnQryMostFrequent.TabIndex = 15;
-            this.btnQryMostFrequent.Text = "Query Table for Most Frequent Value(s)";
-            this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQryMostFrequent.UseVisualStyleBackColor = true;
-            this.btnQryMostFrequent.Click += new System.EventHandler(this.btnQryMostFrequent_Click);
-            // 
-            // numUpDownTopFreq
-            // 
-            this.numUpDownTopFreq.Location = new System.Drawing.Point(911, 477);
-            this.numUpDownTopFreq.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownTopFreq.Name = "numUpDownTopFreq";
-            this.numUpDownTopFreq.Size = new System.Drawing.Size(117, 20);
-            this.numUpDownTopFreq.TabIndex = 16;
-            this.numUpDownTopFreq.ThousandsSeparator = true;
-            this.numUpDownTopFreq.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.btnAvgMedStdDev.Location = new System.Drawing.Point(546, 475);
+            this.btnAvgMedStdDev.Name = "btnAvgMedStdDev";
+            this.btnAvgMedStdDev.Size = new System.Drawing.Size(64, 72);
+            this.btnAvgMedStdDev.TabIndex = 17;
+            this.btnAvgMedStdDev.Text = "Get Average, Median, Std.Dev.";
+            this.btnAvgMedStdDev.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvgMedStdDev.UseVisualStyleBackColor = true;
+            this.btnAvgMedStdDev.Click += new System.EventHandler(this.btnAvgMedStdDev_Click);
             // 
             // Form1
             // 
@@ -1195,6 +1209,7 @@
             this.tableLayoutPanelTextBox.ResumeLayout(false);
             this.tableLayoutPanelTextBox.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMinQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownQueryValue)).EndInit();
@@ -1210,7 +1225,6 @@
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1291,6 +1305,7 @@
         private System.Windows.Forms.NumericUpDown numUpDownPoints;
         private System.Windows.Forms.NumericUpDown numUpDownTopFreq;
         private System.Windows.Forms.Button btnQryMostFrequent;
+        private System.Windows.Forms.Button btnAvgMedStdDev;
     }
 }
 

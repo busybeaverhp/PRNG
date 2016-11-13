@@ -206,7 +206,7 @@ namespace ParallelPRNG
 
             txtOutput0.Text += "Single Threaded PRNG Finished" + "\n";
             txtOutput0.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
-            txtOutput0.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput0.Text += "Iterations: " + bigIntegerList.Count.ToString("N0") + "\n";
             txtOutput0.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput0.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
             txtOutput0.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
@@ -233,12 +233,14 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations, min, max);
             stopwatch2.Stop();
 
+            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
             txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailThreads) + "\n";
-            txtOutput1.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput1.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput1.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput1.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
             txtOutput1.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
@@ -265,12 +267,14 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations, min, max);
             stopwatch2.Stop();
 
+            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput2.Text += "Half-Available-Plus-One PRNG Finished" + "\n";
             txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailPlusOneThread) + "\n";
-            txtOutput2.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput2.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput2.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput2.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
             txtOutput2.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
@@ -297,12 +301,14 @@ namespace ParallelPRNG
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
             stopwatch2.Stop();
 
+            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
             txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.AllThreads) + "\n";
-            txtOutput3.Text += "Iterations: " + iterations.ToString("N0") + "\n";
+            txtOutput3.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput3.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput3.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
             txtOutput3.Text += "32-Byte Array: " + stopwatch.Elapsed + "\n";
@@ -345,14 +351,13 @@ namespace ParallelPRNG
                 PPRNG pprngQ = new PPRNG();
                 pprngQ.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
                 bigIntegerList = new List<BigInteger>(pprngQ.GetBagOfRandomIntegers.ToArray());
-                bigIntegerList = bigIntegerList.GetRange(0, iterations);
 
                 stopwatch.Stop();
 
                 var uniqueValues = bigIntegerList.Distinct().ToArray();
 
                 string tempString = "\n" + "--- --- ---" + "\n\n" +
-                    "New Random Number Table Created: " + iterations.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + min.ToString("N0") + " (inclusive) to " + (max - 1).ToString("N0") + " (inclusive), " +
+                    "New Random Number Table Created: " + bigIntegerList.Count.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + min.ToString("N0") + " (inclusive) to " + (max - 1).ToString("N0") + " (inclusive), " +
                     Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
                 PQConsoleWriteLine(tempString);
             }
@@ -385,6 +390,15 @@ namespace ParallelPRNG
         private void btnMinQueryValue_Click(object sender, EventArgs e)
         {
             numUpDownMinQueryValue.Value = numUpDownMinQueryValue.Minimum;
+        }
+
+        private void btnAvgMedStdDev_Click(object sender, EventArgs e)
+        {
+            List<double> doubleList = bigIntegerList.Cast<double>().ToList();
+
+            double avg = doubleList.Average();
+            double median = CalculateMedian(doubleList);
+            double standardDeviation = CalculateStandardDeviation(doubleList);
         }
 
         private void btnQueryRange_Click(object sender, EventArgs e)
@@ -822,6 +836,38 @@ namespace ParallelPRNG
                 threadUsage = 1;
 
             return threadUsage;
+        }
+
+        private double CalculateStandardDeviation(IEnumerable<double> valueList)
+        {
+            double result = 0;
+
+            if (valueList.Count() > 0)
+            {
+                double avg = valueList.Average();
+                double sum = valueList.Sum(x => Math.Pow(x - avg, 2));
+
+                result = Math.Sqrt((sum) / (valueList.Count() - 1));
+            }
+
+            return result;
+        }
+
+        private double CalculateMedian(IEnumerable<double> valueList)
+        {
+            double result = 0;
+
+            if (valueList.Count() > 0)
+            {
+                var rankedList = valueList.OrderByDescending(i => i).ToArray();
+
+                if (valueList.Count() % 2 == 1)
+                    result = rankedList[rankedList.Count() / 2];
+                else
+                    result = (rankedList[rankedList.Count() / 2] + rankedList[(rankedList.Count() / 2) - 1]) / 2f;
+            }
+
+            return result;
         }
 
         #endregion

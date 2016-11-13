@@ -12,8 +12,8 @@ namespace ParallelRandomClassLib
 
     public class PPRNG
     {
-        ConcurrentBag<byte[]> _bagOfRandomBytes = new ConcurrentBag<byte[]>();
-        ConcurrentBag<BigInteger> _bagOfRandomIntegers = new ConcurrentBag<BigInteger>();
+        ConcurrentBag<byte[]> _bagOfRandomBytes;
+        ConcurrentBag<BigInteger> _bagOfRandomIntegers;
 
         public PPRNG() { }
 
