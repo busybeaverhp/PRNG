@@ -394,11 +394,17 @@ namespace ParallelPRNG
 
         private void btnAvgMedStdDev_Click(object sender, EventArgs e)
         {
-            List<double> doubleList = bigIntegerList.Cast<double>().ToList();
+            List<double> doubleList = new List<double>();
+
+            foreach (BigInteger number in bigIntegerList)
+                doubleList.Add((double)number);
 
             double avg = doubleList.Average();
             double median = CalculateMedian(doubleList);
             double standardDeviation = CalculateStandardDeviation(doubleList);
+
+            string tempString = "Mean: " + avg.ToString("f") + ", Median: " + median.ToString("f") + ", Std.Dev.: " + standardDeviation.ToString("f");
+            PQConsoleWriteLine(tempString);
         }
 
         private void btnQueryRange_Click(object sender, EventArgs e)
@@ -460,6 +466,38 @@ namespace ParallelPRNG
         public void PQConsoleWriteLine(string input)
         {
             txtPQConsole.Text += input + "\n";
+        }
+
+        private double CalculateStandardDeviation(IEnumerable<double> valueList)
+        {
+            double result = 0;
+
+            if (valueList.Count() > 0)
+            {
+                double avg = valueList.Average();
+                double sum = valueList.Sum(x => Math.Pow(x - avg, 2));
+
+                result = Math.Sqrt((sum) / (valueList.Count() - 1));
+            }
+
+            return result;
+        }
+
+        private double CalculateMedian(IEnumerable<double> valueList)
+        {
+            double result = 0;
+
+            if (valueList.Count() > 0)
+            {
+                var rankedList = valueList.OrderByDescending(i => i).ToArray();
+
+                if (valueList.Count() % 2 == 1)
+                    result = rankedList[rankedList.Count() / 2];
+                else
+                    result = (rankedList[rankedList.Count() / 2] + rankedList[(rankedList.Count() / 2) - 1]) / 2f;
+            }
+
+            return result;
         }
 
         #endregion
@@ -708,47 +746,21 @@ namespace ParallelPRNG
 
         private void btnCreateHistogram_Click(object sender, EventArgs e)
         {
-            int integerMax = (int)numUpDownX.Value * (int)numUpDownY.Value - 1;
-            int integersNeeded = (int)numUpDownPoints.Value;
+            ConcurrentBag<Tuple<int, int>> bagOfTuples = new ConcurrentBag<Tuple<int, int>>();
+            ConcurrentBag<BigInteger> bagOfXIntegers;
+            ConcurrentBag<BigInteger> bagOfYIntegers;
 
-            Tuple<int, int> coordinate = new Tuple<int, int>(2, 2);
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, integerMax);
-            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+            int integerXMax = (int)numUpDownX.Value;
+            int integerXNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCPUUtilization.AllThreads);
 
-            ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
-            int canvasHeight = canvasTab3.Height;
+            int integerYMax = (int)numUpDownY.Value;
+            int integerYNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCPUUtilization.AllThreads);
+                
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerXNeeded, 0, integerXMax);
+            bagOfXIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
 
-            Parallel.For(0, bmap.Width, i =>
-            {
-                Graphics x;
-                Bitmap bmapx;
-                bmapx = new Bitmap(1, canvasHeight);
-                x = Graphics.FromImage(bmapx);
-
-                for (int j = 0; j < canvasHeight; j++)
-                {
-                    BigInteger greyscale;
-
-                    bool success = bagOfIntegers.TryTake(out greyscale);
-
-                    Color randomColor = Color.FromArgb((int)greyscale, (int)greyscale, (int)greyscale);
-
-                    SolidBrush randomSolidBrush = new SolidBrush(randomColor);
-                    x.FillRectangle(randomSolidBrush, 0, j, 1, 1);
-                }
-
-                bagOfBitmaps.Add(bmapx);
-                x.Dispose();
-            });
-
-            for (int i = 0; i < bmap.Width; i++)
-            {
-                Bitmap slice;
-                bool success = bagOfBitmaps.TryTake(out slice);
-
-                g.DrawImage(slice, i, 0);
-                canvasTab3.Image = bmap;
-            }
+            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerYNeeded, 0, integerYMax);
+            bagOfYIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)
@@ -838,37 +850,6 @@ namespace ParallelPRNG
             return threadUsage;
         }
 
-        private double CalculateStandardDeviation(IEnumerable<double> valueList)
-        {
-            double result = 0;
-
-            if (valueList.Count() > 0)
-            {
-                double avg = valueList.Average();
-                double sum = valueList.Sum(x => Math.Pow(x - avg, 2));
-
-                result = Math.Sqrt((sum) / (valueList.Count() - 1));
-            }
-
-            return result;
-        }
-
-        private double CalculateMedian(IEnumerable<double> valueList)
-        {
-            double result = 0;
-
-            if (valueList.Count() > 0)
-            {
-                var rankedList = valueList.OrderByDescending(i => i).ToArray();
-
-                if (valueList.Count() % 2 == 1)
-                    result = rankedList[rankedList.Count() / 2];
-                else
-                    result = (rankedList[rankedList.Count() / 2] + rankedList[(rankedList.Count() / 2) - 1]) / 2f;
-            }
-
-            return result;
-        }
 
         #endregion
     }

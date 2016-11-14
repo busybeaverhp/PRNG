@@ -64,6 +64,7 @@
             this.txtOutput3 = new System.Windows.Forms.RichTextBox();
             this.lblBench1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnAvgMedStdDev = new System.Windows.Forms.Button();
             this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
             this.btnQryMostFrequent = new System.Windows.Forms.Button();
             this.btnMinQueryValue = new System.Windows.Forms.Button();
@@ -102,7 +103,6 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
-            this.btnAvgMedStdDev = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -641,9 +641,25 @@
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnAvgMedStdDev
+            // 
+            this.btnAvgMedStdDev.Location = new System.Drawing.Point(727, 475);
+            this.btnAvgMedStdDev.Name = "btnAvgMedStdDev";
+            this.btnAvgMedStdDev.Size = new System.Drawing.Size(64, 72);
+            this.btnAvgMedStdDev.TabIndex = 17;
+            this.btnAvgMedStdDev.Text = "Get Average, Median, Std.Dev.";
+            this.btnAvgMedStdDev.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvgMedStdDev.UseVisualStyleBackColor = true;
+            this.btnAvgMedStdDev.Click += new System.EventHandler(this.btnAvgMedStdDev_Click);
+            // 
             // numUpDownTopFreq
             // 
             this.numUpDownTopFreq.Location = new System.Drawing.Point(911, 477);
+            this.numUpDownTopFreq.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numUpDownTopFreq.Minimum = new decimal(new int[] {
             1,
             0,
@@ -673,7 +689,7 @@
             // 
             // btnMinQueryValue
             // 
-            this.btnMinQueryValue.Location = new System.Drawing.Point(344, 501);
+            this.btnMinQueryValue.Location = new System.Drawing.Point(525, 501);
             this.btnMinQueryValue.Name = "btnMinQueryValue";
             this.btnMinQueryValue.Size = new System.Drawing.Size(81, 22);
             this.btnMinQueryValue.TabIndex = 14;
@@ -684,7 +700,7 @@
             // 
             // btnMaxQueryValue
             // 
-            this.btnMaxQueryValue.Location = new System.Drawing.Point(344, 475);
+            this.btnMaxQueryValue.Location = new System.Drawing.Point(525, 475);
             this.btnMaxQueryValue.Name = "btnMaxQueryValue";
             this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
             this.btnMaxQueryValue.TabIndex = 13;
@@ -696,7 +712,7 @@
             // btnQueryRange
             // 
             this.btnQueryRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.btnQueryRange.Location = new System.Drawing.Point(344, 529);
+            this.btnQueryRange.Location = new System.Drawing.Point(525, 529);
             this.btnQueryRange.Name = "btnQueryRange";
             this.btnQueryRange.Size = new System.Drawing.Size(196, 18);
             this.btnQueryRange.TabIndex = 12;
@@ -707,7 +723,7 @@
             // 
             // numUpDownMinQueryValue
             // 
-            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(431, 503);
+            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(612, 503);
             this.numUpDownMinQueryValue.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -730,7 +746,7 @@
             // 
             // numUpDownMaxQueryValue
             // 
-            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(431, 477);
+            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(612, 477);
             this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1175,17 +1191,6 @@
             this.canvasTab3.Size = new System.Drawing.Size(880, 541);
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
-            // 
-            // btnAvgMedStdDev
-            // 
-            this.btnAvgMedStdDev.Location = new System.Drawing.Point(546, 475);
-            this.btnAvgMedStdDev.Name = "btnAvgMedStdDev";
-            this.btnAvgMedStdDev.Size = new System.Drawing.Size(64, 72);
-            this.btnAvgMedStdDev.TabIndex = 17;
-            this.btnAvgMedStdDev.Text = "Get Average, Median, Std.Dev.";
-            this.btnAvgMedStdDev.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAvgMedStdDev.UseVisualStyleBackColor = true;
-            this.btnAvgMedStdDev.Click += new System.EventHandler(this.btnAvgMedStdDev_Click);
             // 
             // Form1
             // 
