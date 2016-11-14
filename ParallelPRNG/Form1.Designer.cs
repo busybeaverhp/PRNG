@@ -64,7 +64,6 @@
             this.txtOutput3 = new System.Windows.Forms.RichTextBox();
             this.lblBench1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnAvgMedStdDev = new System.Windows.Forms.Button();
             this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
             this.btnQryMostFrequent = new System.Windows.Forms.Button();
             this.btnMinQueryValue = new System.Windows.Forms.Button();
@@ -615,7 +614,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnAvgMedStdDev);
             this.tabPage3.Controls.Add(this.numUpDownTopFreq);
             this.tabPage3.Controls.Add(this.btnQryMostFrequent);
             this.tabPage3.Controls.Add(this.btnMinQueryValue);
@@ -640,17 +638,6 @@
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // btnAvgMedStdDev
-            // 
-            this.btnAvgMedStdDev.Location = new System.Drawing.Point(727, 475);
-            this.btnAvgMedStdDev.Name = "btnAvgMedStdDev";
-            this.btnAvgMedStdDev.Size = new System.Drawing.Size(64, 72);
-            this.btnAvgMedStdDev.TabIndex = 17;
-            this.btnAvgMedStdDev.Text = "Get Average, Median, Std.Dev.";
-            this.btnAvgMedStdDev.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAvgMedStdDev.UseVisualStyleBackColor = true;
-            this.btnAvgMedStdDev.Click += new System.EventHandler(this.btnAvgMedStdDev_Click);
             // 
             // numUpDownTopFreq
             // 
@@ -970,7 +957,7 @@
             // 
             this.numUpDownPoints.Location = new System.Drawing.Point(51, 45);
             this.numUpDownPoints.Maximum = new decimal(new int[] {
-            541,
+            10000000,
             0,
             0,
             0});
@@ -1310,7 +1297,6 @@
         private System.Windows.Forms.NumericUpDown numUpDownPoints;
         private System.Windows.Forms.NumericUpDown numUpDownTopFreq;
         private System.Windows.Forms.Button btnQryMostFrequent;
-        private System.Windows.Forms.Button btnAvgMedStdDev;
     }
 }
 

@@ -27,6 +27,7 @@ namespace ParallelPRNG
         Graphics g;
 
         List<BigInteger> bigIntegerList = new List<BigInteger>();
+        int[,] histogramMatrix;
 
         List<int> currentListOfCardIndexes;
         
@@ -57,6 +58,13 @@ namespace ParallelPRNG
             IEnumerable<int> newCardDeck = Enumerable.Range(1, 52);
             currentListOfCardIndexes = new List<int>(newCardDeck);
             txtCardsRemaining.Text = "R: " + currentListOfCardIndexes.Count;
+
+            int histogramDimension = Math.Min(canvasTab3.Width, canvasTab3.Height);
+            numUpDownX.Value = histogramDimension;
+            numUpDownX.Maximum = canvasTab3.Width;
+            numUpDownY.Value = histogramDimension;
+            numUpDownY.Maximum = canvasTab3.Height;
+            numUpDownPoints.Value = histogramDimension * histogramDimension;
         }
 
         #region TAB1 INDEX-TRIGGERS
@@ -360,6 +368,18 @@ namespace ParallelPRNG
                     "New Random Number Table Created: " + bigIntegerList.Count.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + min.ToString("N0") + " (inclusive) to " + (max - 1).ToString("N0") + " (inclusive), " +
                     Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
                 PQConsoleWriteLine(tempString);
+
+                List<double> doubleList = new List<double>();
+
+                foreach (BigInteger number in bigIntegerList)
+                    doubleList.Add((double)number);
+
+                double avg = doubleList.Average();
+                double median = CalculateMedian(doubleList);
+                double standardDeviation = CalculateStandardDeviation(doubleList);
+
+                tempString = "Mean: " + avg.ToString("f") + ", Median: " + median.ToString("f") + ", Std.Dev.: " + standardDeviation.ToString("f");
+                PQConsoleWriteLine(tempString);
             }
             else
             {
@@ -390,21 +410,6 @@ namespace ParallelPRNG
         private void btnMinQueryValue_Click(object sender, EventArgs e)
         {
             numUpDownMinQueryValue.Value = numUpDownMinQueryValue.Minimum;
-        }
-
-        private void btnAvgMedStdDev_Click(object sender, EventArgs e)
-        {
-            List<double> doubleList = new List<double>();
-
-            foreach (BigInteger number in bigIntegerList)
-                doubleList.Add((double)number);
-
-            double avg = doubleList.Average();
-            double median = CalculateMedian(doubleList);
-            double standardDeviation = CalculateStandardDeviation(doubleList);
-
-            string tempString = "Mean: " + avg.ToString("f") + ", Median: " + median.ToString("f") + ", Std.Dev.: " + standardDeviation.ToString("f");
-            PQConsoleWriteLine(tempString);
         }
 
         private void btnQueryRange_Click(object sender, EventArgs e)
@@ -448,7 +453,7 @@ namespace ParallelPRNG
             {
                 number = mostFrequentList[i].Number;
                 frequency = mostFrequentList[i].Frequency;
-                tempString += "[ value " + number.ToString("N0") + ": " + frequency.ToString("N0") + "] ";
+                tempString += "[ v" + number.ToString("N0") + ": " + frequency.ToString("N0") + "] ";
             }
 
             PQConsoleWriteLine(tempString);
@@ -523,13 +528,11 @@ namespace ParallelPRNG
                 for (int j = 0; j < canvasHeight; j++)
                 {
                     BigInteger red, green, blue;
-
                     bool success1 = bagOfIntegers.TryTake(out red);
                     bool success2 = bagOfIntegers.TryTake(out green);
                     bool success3 = bagOfIntegers.TryTake(out blue);
 
                     Color randomColor = Color.FromArgb((int)red, (int)green, (int)blue);
-
                     SolidBrush randomSolidBrush = new SolidBrush(randomColor);
                     x.FillRectangle(randomSolidBrush, 0, j, 1, 1);
                 }
@@ -567,11 +570,9 @@ namespace ParallelPRNG
                 for (int j = 0; j < canvasHeight; j++)
                 {
                     BigInteger greyscale;
-
                     bool success = bagOfIntegers.TryTake(out greyscale);
 
                     Color randomColor = Color.FromArgb((int)greyscale, (int)greyscale, (int)greyscale);
-
                     SolidBrush randomSolidBrush = new SolidBrush(randomColor);
                     x.FillRectangle(randomSolidBrush, 0, j, 1, 1);
                 }
@@ -747,6 +748,8 @@ namespace ParallelPRNG
         private void btnCreateHistogram_Click(object sender, EventArgs e)
         {
             ConcurrentBag<Tuple<int, int>> bagOfTuples = new ConcurrentBag<Tuple<int, int>>();
+            int tuplesNeeded = (int)numUpDownPoints.Value;
+
             ConcurrentBag<BigInteger> bagOfXIntegers;
             ConcurrentBag<BigInteger> bagOfYIntegers;
 
@@ -755,12 +758,91 @@ namespace ParallelPRNG
 
             int integerYMax = (int)numUpDownY.Value;
             int integerYNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCPUUtilization.AllThreads);
-                
+            
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerXNeeded, 0, integerXMax);
             bagOfXIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
 
             pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerYNeeded, 0, integerYMax);
             bagOfYIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+
+            ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
+            maxDegreeOfParallelism.MaxDegreeOfParallelism = ThreadUsage(DesiredCPUUtilization.AllThreads);
+
+            Parallel.For(0, ThreadUsage(DesiredCPUUtilization.AllThreads), maxDegreeOfParallelism, i => 
+            { 
+                while (bagOfTuples.Count < tuplesNeeded)
+                {
+                    BigInteger randomX, randomY;
+                    bagOfXIntegers.TryTake(out randomX);
+                    bagOfYIntegers.TryTake(out randomY);
+
+                    bagOfTuples.Add(Tuple.Create((int)randomX, (int)randomY));
+                }
+            });
+
+            while (bagOfTuples.Count > tuplesNeeded)
+            {
+                Tuple<int, int> randomTuple;
+                bagOfTuples.TryTake(out randomTuple);
+            }
+
+            List<int[,]> listOf2DMatrices = new List<int[,]>();
+                
+            Parallel.For(0, ThreadUsage(DesiredCPUUtilization.AllThreads), maxDegreeOfParallelism, i => 
+            {
+                int[,] matrix = new int[integerXMax, integerYMax];
+
+                while (bagOfTuples.Count > 0)
+                {
+                    Tuple<int, int> randomTuple;
+                    bool success = bagOfTuples.TryTake(out randomTuple);
+
+                    if (success == false)
+                        break;
+                    else
+                        matrix[randomTuple.Item1, randomTuple.Item2]++;
+                }
+
+                lock(listOf2DMatrices)
+                    listOf2DMatrices.Add(matrix); 
+            });
+
+            int[,] resultMatrix = new int[integerXMax, integerYMax];
+
+            foreach (int[,] matrix in listOf2DMatrices)
+            {
+                for (int i = 0; i < integerXMax; i++)
+                    for (int j = 0; j < integerYMax; j++)
+                        resultMatrix[i, j] += matrix[i, j];
+            }
+
+            Bitmap bmapTemp = new Bitmap(integerXMax, integerYMax);
+            Graphics gTemp = Graphics.FromImage(bmap);
+
+            int coordinateFrequency;
+            int colorValue;
+
+            for (int i = 0; i < integerXMax; i++)
+                for (int j = 0; j < integerYMax; j++)
+                {
+                    if (resultMatrix[i,j] > 0)
+                    {
+                        coordinateFrequency = resultMatrix[i,j];
+                        colorValue = 255 - (coordinateFrequency * 30);
+                        Color color;
+
+                        if (coordinateFrequency <= 255 && colorValue >= 0)
+                            color = Color.FromArgb(colorValue, colorValue, colorValue);
+                        else
+                            color = Color.Black;
+
+                        SolidBrush solidBrush = new SolidBrush(color);
+                        g.FillRectangle(solidBrush, i, j, 1, 1);
+                    }
+                }
+
+            gTemp.DrawImage(bmap, 0, 0);
+            canvasTab3.Image = bmap;
         }
 
         private void btnClearCanvas_Click(object sender, EventArgs e)
