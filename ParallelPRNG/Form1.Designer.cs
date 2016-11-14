@@ -83,6 +83,12 @@
             this.numUpDownPQMax = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grpHistogramQuery = new System.Windows.Forms.GroupBox();
+            this.grpHistogramMeta = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblPoints = new System.Windows.Forms.Label();
             this.numUpDownPoints = new System.Windows.Forms.NumericUpDown();
             this.lblY = new System.Windows.Forms.Label();
@@ -123,6 +129,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMax)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.grpHistogramQuery.SuspendLayout();
+            this.grpHistogramMeta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
@@ -930,6 +939,7 @@
             // 
             // grpHistogramQuery
             // 
+            this.grpHistogramQuery.Controls.Add(this.grpHistogramMeta);
             this.grpHistogramQuery.Controls.Add(this.lblPoints);
             this.grpHistogramQuery.Controls.Add(this.numUpDownPoints);
             this.grpHistogramQuery.Controls.Add(this.lblY);
@@ -939,10 +949,65 @@
             this.grpHistogramQuery.Controls.Add(this.btnCreateHistogram);
             this.grpHistogramQuery.Location = new System.Drawing.Point(7, 274);
             this.grpHistogramQuery.Name = "grpHistogramQuery";
-            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 141);
+            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 244);
             this.grpHistogramQuery.TabIndex = 7;
             this.grpHistogramQuery.TabStop = false;
             this.grpHistogramQuery.Text = "2D Histogram";
+            // 
+            // grpHistogramMeta
+            // 
+            this.grpHistogramMeta.Controls.Add(this.label4);
+            this.grpHistogramMeta.Controls.Add(this.label3);
+            this.grpHistogramMeta.Controls.Add(this.numericUpDown2);
+            this.grpHistogramMeta.Controls.Add(this.numericUpDown1);
+            this.grpHistogramMeta.Controls.Add(this.button1);
+            this.grpHistogramMeta.Location = new System.Drawing.Point(7, 100);
+            this.grpHistogramMeta.Name = "grpHistogramMeta";
+            this.grpHistogramMeta.Size = new System.Drawing.Size(122, 138);
+            this.grpHistogramMeta.TabIndex = 11;
+            this.grpHistogramMeta.TabStop = false;
+            this.grpHistogramMeta.Text = "Histogram Filters";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Frequency Min";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Frequency Max";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(7, 64);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(109, 20);
+            this.numericUpDown2.TabIndex = 2;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(7, 20);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(109, 20);
+            this.numericUpDown1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Draw Filtered Data";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // lblPoints
             // 
@@ -1211,6 +1276,10 @@
             this.tabPage4.ResumeLayout(false);
             this.grpHistogramQuery.ResumeLayout(false);
             this.grpHistogramQuery.PerformLayout();
+            this.grpHistogramMeta.ResumeLayout(false);
+            this.grpHistogramMeta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).EndInit();
@@ -1297,6 +1366,12 @@
         private System.Windows.Forms.NumericUpDown numUpDownPoints;
         private System.Windows.Forms.NumericUpDown numUpDownTopFreq;
         private System.Windows.Forms.Button btnQryMostFrequent;
+        private System.Windows.Forms.GroupBox grpHistogramMeta;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
