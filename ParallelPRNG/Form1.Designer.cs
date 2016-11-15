@@ -102,6 +102,12 @@
             this.btnGenerateBWNoise = new System.Windows.Forms.Button();
             this.btnGenerateRGBNoise = new System.Windows.Forms.Button();
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
+            this.grpHistogramFilter = new System.Windows.Forms.GroupBox();
+            this.btnHistogramFilter = new System.Windows.Forms.Button();
+            this.numUpDownFilterMax = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownFilterMin = new System.Windows.Forms.NumericUpDown();
+            this.lblFilterMax = new System.Windows.Forms.Label();
+            this.lblFilterMin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxU)).BeginInit();
@@ -128,6 +134,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownX)).BeginInit();
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
+            this.grpHistogramFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilterMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilterMin)).BeginInit();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -930,6 +939,7 @@
             // 
             // grpHistogramQuery
             // 
+            this.grpHistogramQuery.Controls.Add(this.grpHistogramFilter);
             this.grpHistogramQuery.Controls.Add(this.lblPoints);
             this.grpHistogramQuery.Controls.Add(this.numUpDownPoints);
             this.grpHistogramQuery.Controls.Add(this.lblY);
@@ -939,7 +949,7 @@
             this.grpHistogramQuery.Controls.Add(this.btnCreateHistogram);
             this.grpHistogramQuery.Location = new System.Drawing.Point(7, 274);
             this.grpHistogramQuery.Name = "grpHistogramQuery";
-            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 141);
+            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 244);
             this.grpHistogramQuery.TabIndex = 7;
             this.grpHistogramQuery.TabStop = false;
             this.grpHistogramQuery.Text = "2D Histogram";
@@ -1043,7 +1053,7 @@
             this.btnCreateHistogram.Name = "btnCreateHistogram";
             this.btnCreateHistogram.Size = new System.Drawing.Size(124, 23);
             this.btnCreateHistogram.TabIndex = 0;
-            this.btnCreateHistogram.Text = "Create Histogram";
+            this.btnCreateHistogram.Text = "Create New Histogram";
             this.btnCreateHistogram.UseVisualStyleBackColor = true;
             this.btnCreateHistogram.Click += new System.EventHandler(this.btnCreateHistogram_Click);
             // 
@@ -1179,6 +1189,63 @@
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
+            // grpHistogramFilter
+            // 
+            this.grpHistogramFilter.Controls.Add(this.lblFilterMin);
+            this.grpHistogramFilter.Controls.Add(this.lblFilterMax);
+            this.grpHistogramFilter.Controls.Add(this.numUpDownFilterMin);
+            this.grpHistogramFilter.Controls.Add(this.numUpDownFilterMax);
+            this.grpHistogramFilter.Controls.Add(this.btnHistogramFilter);
+            this.grpHistogramFilter.Location = new System.Drawing.Point(6, 100);
+            this.grpHistogramFilter.Name = "grpHistogramFilter";
+            this.grpHistogramFilter.Size = new System.Drawing.Size(123, 138);
+            this.grpHistogramFilter.TabIndex = 11;
+            this.grpHistogramFilter.TabStop = false;
+            this.grpHistogramFilter.Text = "Histogram Filters";
+            this.grpHistogramFilter.Visible = false;
+            // 
+            // btnHistogramFilter
+            // 
+            this.btnHistogramFilter.Location = new System.Drawing.Point(7, 109);
+            this.btnHistogramFilter.Name = "btnHistogramFilter";
+            this.btnHistogramFilter.Size = new System.Drawing.Size(110, 23);
+            this.btnHistogramFilter.TabIndex = 0;
+            this.btnHistogramFilter.Text = "Filter Histogram";
+            this.btnHistogramFilter.UseVisualStyleBackColor = true;
+            this.btnHistogramFilter.Click += new System.EventHandler(this.btnHistogramFilter_Click);
+            // 
+            // numUpDownFilterMax
+            // 
+            this.numUpDownFilterMax.Location = new System.Drawing.Point(7, 19);
+            this.numUpDownFilterMax.Name = "numUpDownFilterMax";
+            this.numUpDownFilterMax.Size = new System.Drawing.Size(110, 20);
+            this.numUpDownFilterMax.TabIndex = 1;
+            // 
+            // numUpDownFilterMin
+            // 
+            this.numUpDownFilterMin.Location = new System.Drawing.Point(6, 65);
+            this.numUpDownFilterMin.Name = "numUpDownFilterMin";
+            this.numUpDownFilterMin.Size = new System.Drawing.Size(111, 20);
+            this.numUpDownFilterMin.TabIndex = 3;
+            // 
+            // lblFilterMax
+            // 
+            this.lblFilterMax.AutoSize = true;
+            this.lblFilterMax.Location = new System.Drawing.Point(6, 42);
+            this.lblFilterMax.Name = "lblFilterMax";
+            this.lblFilterMax.Size = new System.Drawing.Size(102, 13);
+            this.lblFilterMax.TabIndex = 4;
+            this.lblFilterMax.Text = "Max Freq (Inclusive)";
+            // 
+            // lblFilterMin
+            // 
+            this.lblFilterMin.AutoSize = true;
+            this.lblFilterMin.Location = new System.Drawing.Point(6, 88);
+            this.lblFilterMin.Name = "lblFilterMin";
+            this.lblFilterMin.Size = new System.Drawing.Size(99, 13);
+            this.lblFilterMin.TabIndex = 5;
+            this.lblFilterMin.Text = "Min Freq (Inclusive)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1217,6 +1284,10 @@
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
+            this.grpHistogramFilter.ResumeLayout(false);
+            this.grpHistogramFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilterMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownFilterMin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1297,6 +1368,12 @@
         private System.Windows.Forms.NumericUpDown numUpDownPoints;
         private System.Windows.Forms.NumericUpDown numUpDownTopFreq;
         private System.Windows.Forms.Button btnQryMostFrequent;
+        private System.Windows.Forms.GroupBox grpHistogramFilter;
+        private System.Windows.Forms.Label lblFilterMin;
+        private System.Windows.Forms.Label lblFilterMax;
+        private System.Windows.Forms.NumericUpDown numUpDownFilterMin;
+        private System.Windows.Forms.NumericUpDown numUpDownFilterMax;
+        private System.Windows.Forms.Button btnHistogramFilter;
     }
 }
 

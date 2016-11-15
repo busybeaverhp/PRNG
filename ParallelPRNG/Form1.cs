@@ -816,30 +816,85 @@ namespace ParallelPRNG
                         resultMatrix[i, j] += matrix[i, j];
             }
 
+            histogramMatrix = new int[resultMatrix.GetLength(0), resultMatrix.GetLength(1)];
+            Array.Copy(resultMatrix, histogramMatrix, resultMatrix.Length);
+
             Bitmap bmapTemp = new Bitmap(integerXMax, integerYMax);
             Graphics gTemp = Graphics.FromImage(bmap);
+            Color color;
 
             int coordinateFrequency;
             int colorValue;
 
+            SolidBrush solidBrush = new SolidBrush(Color.White);
+            g.FillRectangle(solidBrush, 0, 0, integerXMax, integerYMax);
+
             for (int i = 0; i < integerXMax; i++)
                 for (int j = 0; j < integerYMax; j++)
-                {
                     if (resultMatrix[i,j] > 0)
                     {
                         coordinateFrequency = resultMatrix[i,j];
-                        colorValue = 255 - (coordinateFrequency * 30);
-                        Color color;
+                        colorValue = 255 - (coordinateFrequency * 30);    
 
                         if (coordinateFrequency <= 255 && colorValue >= 0)
                             color = Color.FromArgb(colorValue, colorValue, colorValue);
                         else
                             color = Color.Black;
 
-                        SolidBrush solidBrush = new SolidBrush(color);
+                        solidBrush = new SolidBrush(color);
                         g.FillRectangle(solidBrush, i, j, 1, 1);
                     }
-                }
+
+            gTemp.DrawImage(bmap, 0, 0);
+            canvasTab3.Image = bmap;
+
+            int maxFrequency = resultMatrix.Cast<int>().Max();
+
+            numUpDownFilterMax.Value = maxFrequency;
+            numUpDownFilterMin.Value = maxFrequency / 2;
+            grpHistogramFilter.Visible = true;
+        }
+
+        private void btnHistogramFilter_Click(object sender, EventArgs e)
+        {
+            int integerXMax = histogramMatrix.GetLength(0);
+            int integerYMax = histogramMatrix.GetLength(1);
+
+            Bitmap bmapTemp = new Bitmap(integerXMax, integerYMax);
+            Graphics gTemp = Graphics.FromImage(bmap);
+            Color color;
+
+            int coordinateFrequency;
+            int colorValue;
+
+            if (numUpDownFilterMin.Value <= numUpDownFilterMax.Value)
+            {
+                SolidBrush solidBrush = new SolidBrush(Color.White);
+                g.FillRectangle(solidBrush, 0, 0, integerXMax, integerYMax);
+
+                for (int i = 0; i < integerXMax; i++)
+                    for (int j = 0; j < integerYMax; j++)
+                    {
+                        if (histogramMatrix[i, j] > 0)
+                        {
+                            coordinateFrequency = histogramMatrix[i, j];
+                            colorValue = 255 - (coordinateFrequency * 30);
+
+                            if (coordinateFrequency >= (int)numUpDownFilterMin.Value && coordinateFrequency <= (int)numUpDownFilterMax.Value)
+                            {
+                                if (coordinateFrequency <= 255 && colorValue >= 0)
+                                    color = Color.FromArgb(colorValue, colorValue, colorValue);
+                                else
+                                    color = Color.Black;
+
+                                solidBrush = new SolidBrush(color);
+                                g.FillRectangle(solidBrush, i, j, 1, 1);
+                            }
+                        } 
+                    }
+            }
+            else
+                MessageBox.Show("Filter Max cannot be smaller than Filter Min. Try again.");
 
             gTemp.DrawImage(bmap, 0, 0);
             canvasTab3.Image = bmap;
