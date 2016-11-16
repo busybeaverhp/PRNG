@@ -31,3 +31,6 @@ C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
 C:\Users\hqpham\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
+D:\GitProjects\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+D:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+D:\GitProjects\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
