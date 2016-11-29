@@ -65,6 +65,8 @@ namespace ParallelPRNG
             numUpDownY.Value = histogramDimension;
             numUpDownY.Maximum = canvasTab3.Height;
             numUpDownPoints.Value = histogramDimension * histogramDimension;
+
+            DisplayAboutText();
         }
 
         #region TAB1 INDEX-TRIGGERS
@@ -965,6 +967,19 @@ namespace ParallelPRNG
 
             y = (int)floatX;
             x = (int)floatY;
+        }
+
+        #endregion
+
+        #region TAB5 TEXT
+
+        private void DisplayAboutText()
+        {
+            txtAbout.Text =
+                "Huy Pham's Parallel Pseudorandom Random Number Generator" + "\n" + "\n" +
+                
+                "Random "
+                ;
         }
 
         #endregion
