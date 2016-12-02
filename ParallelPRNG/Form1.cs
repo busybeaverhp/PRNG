@@ -965,8 +965,27 @@ namespace ParallelPRNG
         {
             txtAbout.Text =
                 "Huy Pham's Parallel Pseudorandom Random Number Generator" + "\n" + "\n" +
-                
-                "Random "
+
+                "A SHA2-based pseudorandom number generator that uses System.Security.Cryptography.RNGCryptoServiceProvider as the seed." + "\n" +
+                "512-bit internal state, 256-bit output." + "\n" + "\n" +
+
+                "The seeding starts with 64 bytes of RNGCryptoServiceProvider, concatenated by the SHA512 hash of the user input, then both 64-byte arrays is SHA512'd, generating the initial internal state. Pseudocode: " + "\n" + "\n" +
+
+                "InternalState-0 = SHA512(RNGCryptoServiceProvider + SHA512('ASCII user input'))" + "\n" + "\n" +
+
+                "The random number requested by the user is a SHA256 digest of the internal state, followed by the next iteration of the internal state change. Pseudocode: " + "\n" + "\n" +
+
+                "Output-0 = SHA256(InternalState-0)" + "\n" +
+                "InternalState-1 = SHA512(InternalState-0)" + "\n" + "\n" +
+
+                "Output-1 = SHA256(InternalState-1)" + "\n" +
+                "InternalState-2 = SHA512(InternalState-1)" + "\n" + "\n" +
+
+                "Output-2 = SHA256(InternalState-2)" + "\n" +
+                "InternalState-3 = SHA512(InternalState-2)" + "\n" +
+                "... and so on." + "\n" + "\n" +
+
+                "The effects of segregating the algorithm of the internal state from the requested PRNG output, is that short of viewing the memory bytes, the user cannot predict the next pseudorandom value, even if the algorithm is known!"
                 ;
         }
 
