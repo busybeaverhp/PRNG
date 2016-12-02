@@ -86,18 +86,6 @@ namespace ParallelPRNG
 
         #region TAB1 BUTTONS
 
-        private void btnSeed_Click(object sender, EventArgs e)
-        {
-            BigInteger seed = new BigInteger(prng.HashedSeedByte);
-            txtConsole.Text += "Original Seed: " + seed + "\n";
-        }
-
-        private void btnCurrentEntropy_Click(object sender, EventArgs e)
-        {
-            BigInteger currentEntropy = new BigInteger(prng.CurrentEntropyHash);
-            txtConsole.Text += "Current Seed: " + currentEntropy + "\n";
-        }
-
         private void btnNextUInteger_Click(object sender, EventArgs e)
         {
             BigInteger randomNext = prng.NextUInteger(new BigInteger(numUpDownMaxU.Value));

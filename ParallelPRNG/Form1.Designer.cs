@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.txtConsole = new System.Windows.Forms.RichTextBox();
-            this.btnSeed = new System.Windows.Forms.Button();
             this.btnNextUInteger = new System.Windows.Forms.Button();
             this.btnNextRanged = new System.Windows.Forms.Button();
-            this.btnCurrentEntropy = new System.Windows.Forms.Button();
             this.numUpDownMax = new System.Windows.Forms.NumericUpDown();
             this.numUpDownMin = new System.Windows.Forms.NumericUpDown();
             this.numUpDownMaxU = new System.Windows.Forms.NumericUpDown();
@@ -155,16 +153,6 @@
             this.txtConsole.TextChanged += new System.EventHandler(this.txtConsole_TextChanged);
             this.txtConsole.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtConsole_MouseDoubleClick);
             // 
-            // btnSeed
-            // 
-            this.btnSeed.Location = new System.Drawing.Point(657, 474);
-            this.btnSeed.Name = "btnSeed";
-            this.btnSeed.Size = new System.Drawing.Size(372, 20);
-            this.btnSeed.TabIndex = 1;
-            this.btnSeed.Text = "Display Original Seed";
-            this.btnSeed.UseVisualStyleBackColor = true;
-            this.btnSeed.Click += new System.EventHandler(this.btnSeed_Click);
-            // 
             // btnNextUInteger
             // 
             this.btnNextUInteger.Location = new System.Drawing.Point(929, 526);
@@ -184,16 +172,6 @@
             this.btnNextRanged.Text = "Next Ranged";
             this.btnNextRanged.UseVisualStyleBackColor = true;
             this.btnNextRanged.Click += new System.EventHandler(this.btnNextRanged_Click);
-            // 
-            // btnCurrentEntropy
-            // 
-            this.btnCurrentEntropy.Location = new System.Drawing.Point(657, 500);
-            this.btnCurrentEntropy.Name = "btnCurrentEntropy";
-            this.btnCurrentEntropy.Size = new System.Drawing.Size(372, 20);
-            this.btnCurrentEntropy.TabIndex = 5;
-            this.btnCurrentEntropy.Text = "Display Current Entropy Value";
-            this.btnCurrentEntropy.UseVisualStyleBackColor = true;
-            this.btnCurrentEntropy.Click += new System.EventHandler(this.btnCurrentEntropy_Click);
             // 
             // numUpDownMax
             // 
@@ -311,11 +289,9 @@
             this.tabPage1.Controls.Add(this.btnNextUInteger);
             this.tabPage1.Controls.Add(this.numUpDownMaxU);
             this.tabPage1.Controls.Add(this.btnUMax);
-            this.tabPage1.Controls.Add(this.btnSeed);
             this.tabPage1.Controls.Add(this.btnMin);
             this.tabPage1.Controls.Add(this.btnNextRanged);
             this.tabPage1.Controls.Add(this.numUpDownMin);
-            this.tabPage1.Controls.Add(this.btnCurrentEntropy);
             this.tabPage1.Controls.Add(this.numUpDownMax);
             this.tabPage1.Controls.Add(this.btnMax);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -1321,10 +1297,8 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox txtConsole;
-        private System.Windows.Forms.Button btnSeed;
         private System.Windows.Forms.Button btnNextUInteger;
         private System.Windows.Forms.Button btnNextRanged;
-        private System.Windows.Forms.Button btnCurrentEntropy;
         private System.Windows.Forms.NumericUpDown numUpDownMax;
         private System.Windows.Forms.NumericUpDown numUpDownMin;
         private System.Windows.Forms.NumericUpDown numUpDownMaxU;

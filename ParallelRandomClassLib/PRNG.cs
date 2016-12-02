@@ -140,13 +140,5 @@ namespace ParallelRandomClassLib
 
             return listOfEntropyValues;
         }
-
-        // Delete this when deploying my PRNG in a real application. This is for debugging only!
-        public byte[] HashedSeedByte
-        { get { return _hashedSeedByte; } }
-
-        // Delete this when deploying my PRNG in a real application. This is for debugging only!
-        public byte[] CurrentEntropyHash
-        { get { return _currentEntropyBytes; } }
     }
 }
