@@ -59,15 +59,17 @@
             this.txtOutput3 = new System.Windows.Forms.RichTextBox();
             this.lblBench1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.numUpDownBottomFreq = new System.Windows.Forms.NumericUpDown();
-            this.btnQryLeastFrequent = new System.Windows.Forms.Button();
-            this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
-            this.btnQryMostFrequent = new System.Windows.Forms.Button();
-            this.btnMinQueryValue = new System.Windows.Forms.Button();
+            this.grpQueries = new System.Windows.Forms.GroupBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.btnMaxQueryValue = new System.Windows.Forms.Button();
-            this.btnQueryRange = new System.Windows.Forms.Button();
-            this.numUpDownMinQueryValue = new System.Windows.Forms.NumericUpDown();
+            this.btnQryLeastFrequent = new System.Windows.Forms.Button();
+            this.numUpDownBottomFreq = new System.Windows.Forms.NumericUpDown();
+            this.btnMinQueryValue = new System.Windows.Forms.Button();
             this.numUpDownMaxQueryValue = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownTopFreq = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownMinQueryValue = new System.Windows.Forms.NumericUpDown();
+            this.btnQryMostFrequent = new System.Windows.Forms.Button();
+            this.btnQueryRange = new System.Windows.Forms.Button();
             this.btnQueryValue = new System.Windows.Forms.Button();
             this.numUpDownQueryValue = new System.Windows.Forms.NumericUpDown();
             this.btnPQMin = new System.Windows.Forms.Button();
@@ -107,7 +109,6 @@
             this.canvasTab3 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.txtAbout = new System.Windows.Forms.RichTextBox();
-            this.grpQueries = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMin)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -119,10 +120,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBenchMax)).BeginInit();
             this.tableLayoutPanelTextBox.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.grpQueries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBottomFreq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMinQueryValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownQueryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQIterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).BeginInit();
@@ -138,7 +140,6 @@
             this.grpCards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).BeginInit();
             this.tabPage5.SuspendLayout();
-            this.grpQueries.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtConsole
@@ -575,6 +576,61 @@
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // grpQueries
+            // 
+            this.grpQueries.Controls.Add(this.btnTest);
+            this.grpQueries.Controls.Add(this.btnMaxQueryValue);
+            this.grpQueries.Controls.Add(this.btnQryLeastFrequent);
+            this.grpQueries.Controls.Add(this.numUpDownBottomFreq);
+            this.grpQueries.Controls.Add(this.btnMinQueryValue);
+            this.grpQueries.Controls.Add(this.numUpDownMaxQueryValue);
+            this.grpQueries.Controls.Add(this.numUpDownTopFreq);
+            this.grpQueries.Controls.Add(this.numUpDownMinQueryValue);
+            this.grpQueries.Controls.Add(this.btnQryMostFrequent);
+            this.grpQueries.Controls.Add(this.btnQueryRange);
+            this.grpQueries.Controls.Add(this.btnQueryValue);
+            this.grpQueries.Controls.Add(this.numUpDownQueryValue);
+            this.grpQueries.Location = new System.Drawing.Point(274, 475);
+            this.grpQueries.Name = "grpQueries";
+            this.grpQueries.Size = new System.Drawing.Size(754, 72);
+            this.grpQueries.TabIndex = 19;
+            this.grpQueries.TabStop = false;
+            this.grpQueries.Text = "Queries";
+            this.grpQueries.Visible = false;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(318, 19);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(53, 45);
+            this.btnTest.TabIndex = 19;
+            this.btnTest.Text = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnMaxQueryValue
+            // 
+            this.btnMaxQueryValue.Location = new System.Drawing.Point(6, 19);
+            this.btnMaxQueryValue.Name = "btnMaxQueryValue";
+            this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
+            this.btnMaxQueryValue.TabIndex = 13;
+            this.btnMaxQueryValue.Text = "MaxInclusive";
+            this.btnMaxQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMaxQueryValue.UseVisualStyleBackColor = true;
+            this.btnMaxQueryValue.Click += new System.EventHandler(this.btnMaxQueryValue_Click);
+            // 
+            // btnQryLeastFrequent
+            // 
+            this.btnQryLeastFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnQryLeastFrequent.Location = new System.Drawing.Point(621, 44);
+            this.btnQryLeastFrequent.Name = "btnQryLeastFrequent";
+            this.btnQryLeastFrequent.Size = new System.Drawing.Size(127, 20);
+            this.btnQryLeastFrequent.TabIndex = 17;
+            this.btnQryLeastFrequent.Text = "Least Frequent Value(s)";
+            this.btnQryLeastFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQryLeastFrequent.UseVisualStyleBackColor = true;
+            this.btnQryLeastFrequent.Click += new System.EventHandler(this.btnQryLeastFrequent_Click);
+            // 
             // numUpDownBottomFreq
             // 
             this.numUpDownBottomFreq.Location = new System.Drawing.Point(621, 19);
@@ -598,17 +654,39 @@
             0,
             0});
             // 
-            // btnQryLeastFrequent
+            // btnMinQueryValue
             // 
-            this.btnQryLeastFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnQryLeastFrequent.Location = new System.Drawing.Point(621, 44);
-            this.btnQryLeastFrequent.Name = "btnQryLeastFrequent";
-            this.btnQryLeastFrequent.Size = new System.Drawing.Size(127, 20);
-            this.btnQryLeastFrequent.TabIndex = 17;
-            this.btnQryLeastFrequent.Text = "Least Frequent Value(s)";
-            this.btnQryLeastFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQryLeastFrequent.UseVisualStyleBackColor = true;
-            this.btnQryLeastFrequent.Click += new System.EventHandler(this.btnQryLeastFrequent_Click);
+            this.btnMinQueryValue.Location = new System.Drawing.Point(6, 44);
+            this.btnMinQueryValue.Name = "btnMinQueryValue";
+            this.btnMinQueryValue.Size = new System.Drawing.Size(81, 20);
+            this.btnMinQueryValue.TabIndex = 14;
+            this.btnMinQueryValue.Text = "MinInclusive";
+            this.btnMinQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMinQueryValue.UseVisualStyleBackColor = true;
+            this.btnMinQueryValue.Click += new System.EventHandler(this.btnMinQueryValue_Click);
+            // 
+            // numUpDownMaxQueryValue
+            // 
+            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(93, 19);
+            this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numUpDownMaxQueryValue.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.numUpDownMaxQueryValue.Name = "numUpDownMaxQueryValue";
+            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(80, 20);
+            this.numUpDownMaxQueryValue.TabIndex = 10;
+            this.numUpDownMaxQueryValue.ThousandsSeparator = true;
+            this.numUpDownMaxQueryValue.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
             // 
             // numUpDownTopFreq
             // 
@@ -633,52 +711,6 @@
             0,
             0});
             // 
-            // btnQryMostFrequent
-            // 
-            this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnQryMostFrequent.Location = new System.Drawing.Point(491, 44);
-            this.btnQryMostFrequent.Name = "btnQryMostFrequent";
-            this.btnQryMostFrequent.Size = new System.Drawing.Size(124, 20);
-            this.btnQryMostFrequent.TabIndex = 15;
-            this.btnQryMostFrequent.Text = "Most Frequent Value(s)";
-            this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQryMostFrequent.UseVisualStyleBackColor = true;
-            this.btnQryMostFrequent.Click += new System.EventHandler(this.btnQryMostFrequent_Click);
-            // 
-            // btnMinQueryValue
-            // 
-            this.btnMinQueryValue.Location = new System.Drawing.Point(6, 44);
-            this.btnMinQueryValue.Name = "btnMinQueryValue";
-            this.btnMinQueryValue.Size = new System.Drawing.Size(81, 20);
-            this.btnMinQueryValue.TabIndex = 14;
-            this.btnMinQueryValue.Text = "MinInclusive";
-            this.btnMinQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMinQueryValue.UseVisualStyleBackColor = true;
-            this.btnMinQueryValue.Click += new System.EventHandler(this.btnMinQueryValue_Click);
-            // 
-            // btnMaxQueryValue
-            // 
-            this.btnMaxQueryValue.Location = new System.Drawing.Point(6, 19);
-            this.btnMaxQueryValue.Name = "btnMaxQueryValue";
-            this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
-            this.btnMaxQueryValue.TabIndex = 13;
-            this.btnMaxQueryValue.Text = "MaxInclusive";
-            this.btnMaxQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMaxQueryValue.UseVisualStyleBackColor = true;
-            this.btnMaxQueryValue.Click += new System.EventHandler(this.btnMaxQueryValue_Click);
-            // 
-            // btnQueryRange
-            // 
-            this.btnQueryRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.btnQueryRange.Location = new System.Drawing.Point(179, 19);
-            this.btnQueryRange.Name = "btnQueryRange";
-            this.btnQueryRange.Size = new System.Drawing.Size(105, 45);
-            this.btnQueryRange.TabIndex = 12;
-            this.btnQueryRange.Text = "Query Frequency of Values in Range";
-            this.btnQueryRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQueryRange.UseVisualStyleBackColor = true;
-            this.btnQueryRange.Click += new System.EventHandler(this.btnQueryRange_Click);
-            // 
             // numUpDownMinQueryValue
             // 
             this.numUpDownMinQueryValue.Location = new System.Drawing.Point(93, 44);
@@ -702,28 +734,29 @@
             0,
             0});
             // 
-            // numUpDownMaxQueryValue
+            // btnQryMostFrequent
             // 
-            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(93, 19);
-            this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numUpDownMaxQueryValue.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.numUpDownMaxQueryValue.Name = "numUpDownMaxQueryValue";
-            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(80, 20);
-            this.numUpDownMaxQueryValue.TabIndex = 10;
-            this.numUpDownMaxQueryValue.ThousandsSeparator = true;
-            this.numUpDownMaxQueryValue.Value = new decimal(new int[] {
-            75,
-            0,
-            0,
-            0});
+            this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnQryMostFrequent.Location = new System.Drawing.Point(491, 44);
+            this.btnQryMostFrequent.Name = "btnQryMostFrequent";
+            this.btnQryMostFrequent.Size = new System.Drawing.Size(124, 20);
+            this.btnQryMostFrequent.TabIndex = 15;
+            this.btnQryMostFrequent.Text = "Most Frequent Value(s)";
+            this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQryMostFrequent.UseVisualStyleBackColor = true;
+            this.btnQryMostFrequent.Click += new System.EventHandler(this.btnQryMostFrequent_Click);
+            // 
+            // btnQueryRange
+            // 
+            this.btnQueryRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.btnQueryRange.Location = new System.Drawing.Point(179, 19);
+            this.btnQueryRange.Name = "btnQueryRange";
+            this.btnQueryRange.Size = new System.Drawing.Size(105, 45);
+            this.btnQueryRange.TabIndex = 12;
+            this.btnQueryRange.Text = "Query Frequency of Values in Range";
+            this.btnQueryRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQueryRange.UseVisualStyleBackColor = true;
+            this.btnQueryRange.Click += new System.EventHandler(this.btnQueryRange_Click);
             // 
             // btnQueryValue
             // 
@@ -1229,27 +1262,6 @@
             this.txtAbout.TabIndex = 0;
             this.txtAbout.Text = "";
             // 
-            // grpQueries
-            // 
-            this.grpQueries.Controls.Add(this.btnMaxQueryValue);
-            this.grpQueries.Controls.Add(this.btnQryLeastFrequent);
-            this.grpQueries.Controls.Add(this.numUpDownBottomFreq);
-            this.grpQueries.Controls.Add(this.btnMinQueryValue);
-            this.grpQueries.Controls.Add(this.numUpDownMaxQueryValue);
-            this.grpQueries.Controls.Add(this.numUpDownTopFreq);
-            this.grpQueries.Controls.Add(this.numUpDownMinQueryValue);
-            this.grpQueries.Controls.Add(this.btnQryMostFrequent);
-            this.grpQueries.Controls.Add(this.btnQueryRange);
-            this.grpQueries.Controls.Add(this.btnQueryValue);
-            this.grpQueries.Controls.Add(this.numUpDownQueryValue);
-            this.grpQueries.Location = new System.Drawing.Point(274, 475);
-            this.grpQueries.Name = "grpQueries";
-            this.grpQueries.Size = new System.Drawing.Size(754, 72);
-            this.grpQueries.TabIndex = 19;
-            this.grpQueries.TabStop = false;
-            this.grpQueries.Text = "Queries";
-            this.grpQueries.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1271,10 +1283,11 @@
             this.tableLayoutPanelTextBox.ResumeLayout(false);
             this.tableLayoutPanelTextBox.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.grpQueries.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownBottomFreq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTopFreq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownMinQueryValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownMaxQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownQueryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQIterations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownPQMin)).EndInit();
@@ -1293,7 +1306,6 @@
             this.grpCards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasTab3)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            this.grpQueries.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1380,6 +1392,7 @@
         private System.Windows.Forms.NumericUpDown numUpDownBottomFreq;
         private System.Windows.Forms.Button btnQryLeastFrequent;
         private System.Windows.Forms.GroupBox grpQueries;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

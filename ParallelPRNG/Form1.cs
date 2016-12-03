@@ -510,6 +510,33 @@ namespace ParallelPRNG
             return result;
         }
 
+        private Dictionary<int, double> CalculatePoissonDistribution(IEnumerable<double> valueList)
+        {
+            Dictionary<int, double> frequencyList = new Dictionary<int,double>();
+
+            return frequencyList;
+        }
+
+        private double PoissonProbability(double expectedFrequency, double actualFrequency)
+        {
+            return Math.Exp(-expectedFrequency) * Math.Pow(expectedFrequency, actualFrequency) / Factorial(actualFrequency);
+        }
+
+        private double Factorial(double x)
+        {
+            double num = 1;
+
+            for (int i = 1; i <= x; i++)
+                num *= i;
+
+            return num;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(PoissonProbability(1, 2).ToString());
+        }
+
         #endregion
 
         #region TAB4 BUTTONS
@@ -1023,7 +1050,6 @@ namespace ParallelPRNG
 
             return threadUsage;
         }
-
 
         #endregion
     }
