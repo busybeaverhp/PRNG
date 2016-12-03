@@ -86,12 +86,6 @@ namespace ParallelPRNG
 
         #region TAB1 BUTTONS
 
-        private void btnNextUInteger_Click(object sender, EventArgs e)
-        {
-            BigInteger randomNext = prng.NextUInteger(new BigInteger(numUpDownMaxU.Value));
-            txtConsole.Text += randomNext + ", ";
-        }
-
         private void btnNextRanged_Click(object sender, EventArgs e)
         {
             BigInteger min = new BigInteger(numUpDownMin.Value);
@@ -128,11 +122,6 @@ namespace ParallelPRNG
         private void btnMaxIterations_Click(object sender, EventArgs e)
         {
             numUpDownIterations.Value = numUpDownIterations.Maximum;
-        }
-
-        private void btnUMax_Click(object sender, EventArgs e)
-        {
-            numUpDownMaxU.Value = numUpDownMaxU.Maximum;
         }
 
         #endregion
@@ -355,7 +344,7 @@ namespace ParallelPRNG
                 var uniqueValues = bigIntegerList.Distinct().ToArray();
 
                 string tempString = "\n" + "--- --- ---" + "\n\n" +
-                    "New Random Number Table Created: " + bigIntegerList.Count.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + min.ToString("N0") + " (inclusive) to " + (max - 1).ToString("N0") + " (inclusive), " +
+                    "New Random Number Table Created: " + bigIntegerList.Count.ToString("N0") + " numbers, with " + uniqueValues.Count().ToString("N0") + " unique values ranging from " + bigIntegerList.Min().ToString("N0") + " (inclusive) to " + bigIntegerList.Max().ToString("N0") + " (inclusive), " +
                     Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
                 PQConsoleWriteLine(tempString);
 
@@ -370,6 +359,8 @@ namespace ParallelPRNG
 
                 tempString = "Mean: " + avg.ToString("f") + ", Median: " + median.ToString("f") + ", Std.Dev.: " + standardDeviation.ToString("f");
                 PQConsoleWriteLine(tempString);
+
+                grpQueries.Visible = true;
             }
             else
             {
@@ -443,6 +434,30 @@ namespace ParallelPRNG
             {
                 number = mostFrequentList[i].Number;
                 frequency = mostFrequentList[i].Frequency;
+                tempString += "[ v" + number.ToString("N0") + ": " + frequency.ToString("N0") + "] ";
+            }
+
+            PQConsoleWriteLine(tempString);
+        }
+
+        private void btnQryLeastFrequent_Click(object sender, EventArgs e)
+        {
+            BigInteger number;
+            int frequency;
+            string tempString;
+
+            var leastFrequentList = bigIntegerList.AsParallel().GroupBy(i => i)
+                .OrderBy(grp => grp.Count())
+                .Select(grp => new { Number = grp.Key, Frequency = grp.Count() }).ToArray();
+
+            var distinctValuesInTable = leastFrequentList.Distinct().ToArray();
+            decimal iMax = Math.Min(numUpDownBottomFreq.Value, distinctValuesInTable.Count());
+            tempString = "The bottom-" + iMax.ToString("N0") + " frequently occuring values are: ";
+
+            for (int i = 0; i < iMax; i++)
+            {
+                number = leastFrequentList[i].Number;
+                frequency = leastFrequentList[i].Frequency;
                 tempString += "[ v" + number.ToString("N0") + ": " + frequency.ToString("N0") + "] ";
             }
 
