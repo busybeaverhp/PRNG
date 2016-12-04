@@ -348,6 +348,20 @@ namespace ParallelPRNG
                     Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
                 PQConsoleWriteLine(tempString);
 
+                // The following tests the actual distribution of empty slots versus the theoretical poisson values. HQP 2016-12-03.
+
+                double predictedEmptySlots = Math.Round(PoissonProbability(((double)iterations / (double)(max - min)), 0) * (double)(max - min));
+                double actualEmptySlots = (double)(max - min) - uniqueValues.Count();
+                double predictionAccuracy = 100 - Math.Abs((actualEmptySlots - predictedEmptySlots) / predictedEmptySlots) * 100;
+
+                tempString = "Poisson Prediction of Empty Slots: " + predictedEmptySlots.ToString("N0") + ". " +
+                                "Actual Empty Slots: " + actualEmptySlots.ToString("N0") + ". " +
+                                "Percent Accuracy: " + predictionAccuracy;
+
+                PQConsoleWriteLine(tempString);
+
+                // The following measures the mean, median, and standard deviation of the value set. HQP 2016-12-03.
+
                 List<double> doubleList = new List<double>();
 
                 foreach (BigInteger number in bigIntegerList)
@@ -510,31 +524,33 @@ namespace ParallelPRNG
             return result;
         }
 
-        private Dictionary<int, double> CalculatePoissonDistribution(IEnumerable<double> valueList)
+        private double PoissonEqualOrLessThan(double expectedFrequency, uint actualFrequency)
         {
-            Dictionary<int, double> frequencyList = new Dictionary<int,double>();
-
-            return frequencyList;
+            double result = 0;
+            for (int i = 0; i <= actualFrequency; i++)
+                result += PoissonProbability(expectedFrequency, (uint)i);
+            return result;
         }
 
-        private double PoissonProbability(double expectedFrequency, double actualFrequency)
+        private double PoissonEqualOrGreaterThan(double expectedFrequency, uint actualFrequency)
+        {
+            double result = 1;
+            for (int i = 0; i < actualFrequency; i++)
+                result -= PoissonProbability(expectedFrequency, (uint)i);
+            return result;
+        }
+
+        private double PoissonProbability(double expectedFrequency, uint actualFrequency)
         {
             return Math.Exp(-expectedFrequency) * Math.Pow(expectedFrequency, actualFrequency) / Factorial(actualFrequency);
         }
 
-        private double Factorial(double x)
+        private double Factorial(uint x)
         {
             double num = 1;
-
             for (int i = 1; i <= x; i++)
                 num *= i;
-
             return num;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(PoissonProbability(1, 2).ToString());
         }
 
         #endregion
