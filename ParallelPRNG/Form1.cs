@@ -897,10 +897,40 @@ namespace ParallelPRNG
             canvasTab3.Image = bmap;
 
             int maxFrequency = resultMatrix.Cast<int>().Max();
+            int minFrequency = resultMatrix.Cast<int>().Min();
 
             numUpDownFilterMax.Value = maxFrequency;
             numUpDownFilterMin.Value = maxFrequency / 2;
             grpHistogramFilter.Visible = true;
+
+            #region MESSAGEBOX ANALYSIS
+
+            int totalPointsDrawn = resultMatrix.Cast<int>().Sum();
+            double avgDensity = (double)numUpDownPoints.Value / (double)histogramMatrix.Length;
+
+            string tempString = "2D Histogram Dimensions: " + resultMatrix.GetLength(0) + " by " + resultMatrix.GetLength(1) + "\n" +
+                                "Total Points Generated: " + totalPointsDrawn.ToString("N0") + "\n" +
+                                "Average Density (Point per Pixel): " + avgDensity.ToString() + "\n" + "\n";
+
+            
+            double emptySlotsTheoretical = Math.Round(PoissonProbability(avgDensity, 0) * resultMatrix.Length);
+
+            var queryableMatrix = resultMatrix.Cast<int>();
+            var zeroFrequencyList = (from int num in queryableMatrix
+                                     where num == 0
+                                     select num).ToArray();
+
+            int emptySlotsActual = zeroFrequencyList.Count();
+
+            double accuracy = 100 - Math.Abs((emptySlotsTheoretical - emptySlotsActual) / emptySlotsTheoretical) * 100;      
+
+            tempString +=   "Thereotical Poisson Empty Slots: " + emptySlotsTheoretical.ToString("N0") + "\n" +
+                            "Generated Empty Slots: " + emptySlotsActual.ToString("N0") + "\n" +
+                            "Accuracy to Poisson Distribution: " + accuracy.ToString() + "%";
+                                
+            MessageBox.Show(tempString);
+
+            #endregion
         }
 
         private void btnHistogramFilter_Click(object sender, EventArgs e)
