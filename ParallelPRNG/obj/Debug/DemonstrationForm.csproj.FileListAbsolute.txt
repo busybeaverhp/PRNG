@@ -45,3 +45,14 @@ E:\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csprojResolv
 E:\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
 E:\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
 E:\Documents\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe.config
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.exe
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.pdb
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.exe
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelPRNG.pdb
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.dll
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\bin\Debug\ParallelRandomClassLib.pdb
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csprojResolveAssemblyReference.cache
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Form1.resources
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\ParallelPRNG.Properties.Resources.resources
+E:\Documents\GitHub\Parallel_PRNG\ParallelPRNG\obj\Debug\DemonstrationForm.csproj.GenerateResource.Cache

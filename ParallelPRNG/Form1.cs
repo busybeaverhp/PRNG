@@ -348,28 +348,59 @@ namespace ParallelPRNG
                     Environment.ProcessorCount + " threads used, " + stopwatch.Elapsed.ToString();
                 PQConsoleWriteLine(tempString);
 
-                // The following tests the actual distribution of empty slots versus the theoretical poisson values. HQP 2016-12-03.
+                // The following tests the actual distribution of empty slots versus the theoretical poisson predictions. HQP 2016-12-03.
 
                 double predictedEmptySlots = Math.Round(PoissonProbability(((double)iterations / (double)(max - min)), 0) * (double)(max - min));
                 double actualEmptySlots = (double)(max - min) - uniqueValues.Count();
-                double predictionAccuracy = 100 - Math.Abs((actualEmptySlots - predictedEmptySlots) / predictedEmptySlots) * 100;
+                double accuracy = 100 - Math.Abs((actualEmptySlots - predictedEmptySlots) / predictedEmptySlots) * 100;
 
-                tempString = "Poisson Prediction of Empty Slots: " + predictedEmptySlots.ToString("N0") + ". " +
-                                "Actual Empty Slots: " + actualEmptySlots.ToString("N0") + ". " +
-                                "Percent Accuracy: " + predictionAccuracy;
+                tempString = "Poisson Prediction of Empty Slots: " + predictedEmptySlots.ToString("N0") + "... " +
+                                "Actual Empty Slots: " + actualEmptySlots.ToString("N0") + "... " +
+                                "Accuracy to Prediction: " + accuracy + "%";
 
                 PQConsoleWriteLine(tempString);
 
-                // The following measures the mean, median, and standard deviation of the value set. HQP 2016-12-03.
+                // The following tests the actual non-colliding values versus the theoretical poisson predictions.
 
                 List<double> doubleList = new List<double>();
 
                 foreach (BigInteger number in bigIntegerList)
                     doubleList.Add((double)number);
 
+                double predictionCollisionProbability = PoissonBirthdayCollisionProbablity((int)(max - min), bigIntegerList.Count()) * 100;
+
+                double predictedCollisions = Math.Round(
+                                                (1 - PoissonProbability(((double)iterations / (double)(max - min)), 0) 
+                                                - PoissonProbability(((double)iterations / (double)(max - min)), 1))
+                                                * (double)(max - min)
+                                                );
+
+                double actualCollisions = uniqueValues.Count() - CalculateSingularFrequencyCount(doubleList);
+
+                double collisionAccuracy = 100 - Math.Abs((actualCollisions - predictedCollisions) / predictedCollisions) * 100;
+
+                tempString = "Poisson Prediction of Colliding Values... Probability: " + predictionCollisionProbability.ToString() + 
+                                "% with " + predictedCollisions.ToString("N0") + " Collisions... " +
+                                "Actual Collision Count: " + actualCollisions.ToString("N0") + "... " +
+                                "Accuracy to Prediction: " + collisionAccuracy + "%";
+
+                PQConsoleWriteLine(tempString);
+
+                // The following measures the mean, median, and standard deviation of the value set. HQP 2016-12-03.
+
                 double avg = doubleList.Average();
                 double median = CalculateMedian(doubleList);
                 double standardDeviation = CalculateStandardDeviation(doubleList);
+
+                // The following measure what I call non-zero modal frequency. 
+                // Technical explanation above "CalculateNonZeroModalFrequency(IEnumerable<double> valueList)." HQP 2016-12-04.
+
+                int nonZeroModalFrequency = 0;
+                int nonZeroModalCount = 0;
+                CalculateNonZeroModalFrequency(doubleList, out nonZeroModalFrequency, out nonZeroModalCount);
+
+                tempString = "Non-Zero Modal Frequency: " + nonZeroModalCount.ToString() + " value(s) have occurence(s) of " + nonZeroModalFrequency.ToString();
+                PQConsoleWriteLine(tempString);
 
                 tempString = "Mean: " + avg.ToString("f") + ", Median: " + median.ToString("f") + ", Std.Dev.: " + standardDeviation.ToString("f");
                 PQConsoleWriteLine(tempString);
@@ -501,10 +532,57 @@ namespace ParallelPRNG
                 double avg = valueList.Average();
                 double sum = valueList.Sum(x => Math.Pow(x - avg, 2));
 
-                result = Math.Sqrt((sum) / (valueList.Count() - 1));
+                result = Math.Sqrt((sum) / valueList.Count());
+            }
+            return result;
+        }
+
+        // Non-zero modal frequency is the most common frequency which values in a set will occur.
+        // Example set: {0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 6}
+        // Above set will have a modal frequency of 2, with count of 4.
+        // Reasoning: there are four sets of values that has frequency of 2. The non-zero modal frequency is 2.
+        private void CalculateNonZeroModalFrequency(IEnumerable<double> valueList, out int frequency, out int count)
+        {
+            frequency = 0;
+            count = 0;
+
+            if (valueList.Count() > 0)
+            {
+                var queryModalFrequency = valueList
+                    .AsParallel()
+                    .GroupBy(i => i)
+                    .GroupBy(grp => grp.Count())
+                    .OrderByDescending(frq => frq.Count())
+                    .Select(frq => new { Frequency = frq.Key, Count = frq.Count() })
+                    .ToArray();
+
+                frequency = queryModalFrequency[0].Frequency;
+                count = queryModalFrequency[0].Count;
+            }
+        }
+
+        private int CalculateSingularFrequencyCount(IEnumerable<double> valueList)
+        {
+            int singularFrequencyCount = 0;
+
+            if (valueList.Count() > 0)
+            {
+                var queryModalFrequency = valueList
+                                            .AsParallel()
+                                            .GroupBy(i => i)
+                                            .GroupBy(grp => grp.Count())
+                                            .OrderByDescending(frq => frq.Count())
+                                            .Select(frq => new { Frequency = frq.Key, Count = frq.Count() })
+                                            .ToArray();
+
+                singularFrequencyCount = queryModalFrequency
+                                            .AsParallel()
+                                            .Where(i => i.Frequency == 1)
+                                            .First()
+                                            .Count;
             }
 
-            return result;
+            return singularFrequencyCount;
         }
 
         private double CalculateMedian(IEnumerable<double> valueList)
@@ -543,6 +621,12 @@ namespace ParallelPRNG
         private double PoissonProbability(double expectedFrequency, uint actualFrequency)
         {
             return Math.Exp(-expectedFrequency) * Math.Pow(expectedFrequency, actualFrequency) / Factorial(actualFrequency);
+        }
+
+        private double PoissonBirthdayCollisionProbablity(int setSize, int numbersOfActors)
+        {
+            double factor = -(double)(numbersOfActors * numbersOfActors) / (double)(2 * setSize);
+            return (1 - Math.Exp(factor));
         }
 
         private double Factorial(uint x)
