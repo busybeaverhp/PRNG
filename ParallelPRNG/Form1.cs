@@ -97,9 +97,26 @@ namespace ParallelPRNG
                 List<BigInteger> randomValuesList = new List<BigInteger>(prng.GenerateListOfEntropyValuesBigInteger(min, max, iterations));
 
                 string[] stringArray = randomValuesList.Select(i => i.ToString()).ToArray();
+                string delimiter;
+
+                switch (cboDelimiter.Text)
+                {
+                    case "Comma Delimiter":
+                        delimiter = ", ";
+                        break;
+                    case "Space Delimiter":
+                        delimiter = " ";
+                        break;
+                    case "Semi-Colon Delimiter":
+                        delimiter = "; ";
+                        break;
+                    default:
+                        delimiter = " ";
+                        break;
+                }
 
                 string blockOfValues;
-                blockOfValues = String.Join(", ", stringArray.Select(i => i.ToString()));
+                blockOfValues = String.Join(delimiter, stringArray.Select(i => i.ToString()));
 
                 txtConsole.Text += blockOfValues + " ";
             }
