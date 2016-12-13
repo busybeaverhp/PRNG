@@ -19,8 +19,8 @@ namespace ParallelPRNG
 {
     public partial class Form1 : Form
     {
-        PRNG prng;
-        PPRNG pprng;
+        Prng prng;
+        ParallelPrng _parallelPrng;
         RichTextBox[] txtOutputArray = new RichTextBox[4];
 
         Bitmap bmap;
@@ -47,8 +47,8 @@ namespace ParallelPRNG
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            prng = new PRNG("Huy's Parallel PRNG Class");
-            pprng = new PPRNG();
+            prng = new Prng("Huy's Parallel PRNG Class");
+            _parallelPrng = new ParallelPrng();
 
             txtOutputArray[0] = (RichTextBox)txtOutput0;
             txtOutputArray[1] = (RichTextBox)txtOutput1;
@@ -202,14 +202,14 @@ namespace ParallelPRNG
             stopwatch.Stop();
 
             stopwatch2.Start();
-            List<byte[]> byteArraylist = new List<byte[]>(prng.GenerateListOfEntropy32ByteArrays(iterations));
+            List<byte[]> byteArraylist = new List<byte[]>(prng.GenerateListOf32ByteArrays(iterations));
             stopwatch2.Stop();
 
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput0.Text += "Single Threaded PRNG Finished" + "\n";
-            txtOutput0.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.SingleThread) + "\n";
+            txtOutput0.Text += "Maximum Threads: " + ThreadUsage(DesiredCpuUtilization.SingleThread) + "\n";
             txtOutput0.Text += "Iterations: " + bigIntegerList.Count.ToString("N0") + "\n";
             txtOutput0.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput0.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -230,20 +230,20 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations);
+            _parallelPrng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCpuUtilization.HalfAvailThreads, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailThreads, iterations, min, max);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.HalfAvailThreads, iterations, min, max);
             stopwatch2.Stop();
 
-            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+            ConcurrentBag<BigInteger> bagOfBigIntegers = _parallelPrng.GetBagOfRandomIntegers;
 
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput1.Text += "Half-Available Threaded PRNG Finished" + "\n";
-            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailThreads) + "\n";
+            txtOutput1.Text += "Maximum Threads: " + ThreadUsage(DesiredCpuUtilization.HalfAvailThreads) + "\n";
             txtOutput1.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput1.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput1.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -264,20 +264,20 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations);
+            _parallelPrng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCpuUtilization.HalfAvailPlusOneThread, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.HalfAvailPlusOneThread, iterations, min, max);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.HalfAvailPlusOneThread, iterations, min, max);
             stopwatch2.Stop();
 
-            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+            ConcurrentBag<BigInteger> bagOfBigIntegers = _parallelPrng.GetBagOfRandomIntegers;
 
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput2.Text += "Half-Available-Plus-One PRNG Finished" + "\n";
-            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.HalfAvailPlusOneThread) + "\n";
+            txtOutput2.Text += "Maximum Threads: " + ThreadUsage(DesiredCpuUtilization.HalfAvailPlusOneThread) + "\n";
             txtOutput2.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput2.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput2.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -298,20 +298,20 @@ namespace ParallelPRNG
             BigInteger max = (BigInteger)numUpDownBenchMax.Value;
 
             stopwatch.Start();
-            pprng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations);
+            _parallelPrng.GenerateDesiredQuantityOfRandom32ByteArrays("Huy's PPRNG", DesiredCpuUtilization.AllThreads, iterations);
             stopwatch.Stop();
 
             stopwatch2.Start();
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, iterations, min, max);
             stopwatch2.Stop();
 
-            ConcurrentBag<BigInteger> bagOfBigIntegers = pprng.GetBagOfRandomIntegers;
+            ConcurrentBag<BigInteger> bagOfBigIntegers = _parallelPrng.GetBagOfRandomIntegers;
 
             decimal byteArraysPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch.ElapsedMilliseconds;
             decimal integersPerSec = ((decimal)iterations * 1000m) / (decimal)stopwatch2.ElapsedMilliseconds;
 
             txtOutput3.Text += "All-Threaded PRNG Finished" + "\n";
-            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCPUUtilization.AllThreads) + "\n";
+            txtOutput3.Text += "Maximum Threads: " + ThreadUsage(DesiredCpuUtilization.AllThreads) + "\n";
             txtOutput3.Text += "Iterations: " + bagOfBigIntegers.Count.ToString("N0") + "\n";
             txtOutput3.Text += "Min Range: " + min.ToString("N0") + "\n";
             txtOutput3.Text += "Max Range: " + (max - 1).ToString("N0") + "\n\n";
@@ -352,9 +352,9 @@ namespace ParallelPRNG
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                PPRNG pprngQ = new PPRNG();
-                pprngQ.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, iterations, min, max);
-                bigIntegerList = new List<BigInteger>(pprngQ.GetBagOfRandomIntegers.ToArray());
+                ParallelPrng parallelPrng = new ParallelPrng();
+                parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, iterations, min, max);
+                bigIntegerList = new List<BigInteger>(parallelPrng.GetBagOfRandomIntegers.ToArray());
 
                 stopwatch.Stop();
 
@@ -661,8 +661,8 @@ namespace ParallelPRNG
         private void btnGenerateRGBNoise_Click(object sender, EventArgs e)
         {
             int integersNeeded = canvasTab3.Height * canvasTab3.Width * 3;
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
-            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, integersNeeded, 0, 256);
+            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(_parallelPrng.GetBagOfRandomIntegers);
 
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
             int canvasHeight = canvasTab3.Height;
@@ -703,8 +703,8 @@ namespace ParallelPRNG
         private void btnGenerateBWNoise_Click(object sender, EventArgs e)
         {
             int integersNeeded = canvasTab3.Height * canvasTab3.Width;
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integersNeeded, 0, 256);
-            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, integersNeeded, 0, 256);
+            ConcurrentBag<BigInteger> bagOfIntegers = new ConcurrentBag<BigInteger>(_parallelPrng.GetBagOfRandomIntegers);
 
             ConcurrentBag<Bitmap> bagOfBitmaps = new ConcurrentBag<Bitmap>();
             int canvasHeight = canvasTab3.Height;
@@ -903,21 +903,21 @@ namespace ParallelPRNG
             ConcurrentBag<BigInteger> bagOfYIntegers;
 
             int integerXMax = (int)numUpDownX.Value;
-            int integerXNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCPUUtilization.AllThreads);
+            int integerXNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCpuUtilization.AllThreads);
 
             int integerYMax = (int)numUpDownY.Value;
-            int integerYNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCPUUtilization.AllThreads);
+            int integerYNeeded = (int)numUpDownPoints.Value + ThreadUsage(DesiredCpuUtilization.AllThreads);
             
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerXNeeded, 0, integerXMax);
-            bagOfXIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, integerXNeeded, 0, integerXMax);
+            bagOfXIntegers = new ConcurrentBag<BigInteger>(_parallelPrng.GetBagOfRandomIntegers);
 
-            pprng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCPUUtilization.AllThreads, integerYNeeded, 0, integerYMax);
-            bagOfYIntegers = new ConcurrentBag<BigInteger>(pprng.GetBagOfRandomIntegers);
+            _parallelPrng.GenerateDesiredQuantityOfRandomIntegers("Huy's PPRNG", DesiredCpuUtilization.AllThreads, integerYNeeded, 0, integerYMax);
+            bagOfYIntegers = new ConcurrentBag<BigInteger>(_parallelPrng.GetBagOfRandomIntegers);
 
             ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
-            maxDegreeOfParallelism.MaxDegreeOfParallelism = ThreadUsage(DesiredCPUUtilization.AllThreads);
+            maxDegreeOfParallelism.MaxDegreeOfParallelism = ThreadUsage(DesiredCpuUtilization.AllThreads);
 
-            Parallel.For(0, ThreadUsage(DesiredCPUUtilization.AllThreads), maxDegreeOfParallelism, i => 
+            Parallel.For(0, ThreadUsage(DesiredCpuUtilization.AllThreads), maxDegreeOfParallelism, i => 
             { 
                 while (bagOfTuples.Count < tuplesNeeded)
                 {
@@ -937,7 +937,7 @@ namespace ParallelPRNG
 
             List<int[,]> listOf2DMatrices = new List<int[,]>();
                 
-            Parallel.For(0, ThreadUsage(DesiredCPUUtilization.AllThreads), maxDegreeOfParallelism, i => 
+            Parallel.For(0, ThreadUsage(DesiredCpuUtilization.AllThreads), maxDegreeOfParallelism, i => 
             {
                 int[,] matrix = new int[integerXMax, integerYMax];
 
@@ -1182,17 +1182,17 @@ namespace ParallelPRNG
 
         #region METHODS
 
-        private int ThreadUsage(DesiredCPUUtilization desiredCPUUtilization)
+        private int ThreadUsage(DesiredCpuUtilization desiredCPUUtilization)
         {
             int threadUsage = 1;
 
-            if (desiredCPUUtilization == DesiredCPUUtilization.AllThreads)
+            if (desiredCPUUtilization == DesiredCpuUtilization.AllThreads)
                 threadUsage = Environment.ProcessorCount;
-            else if (desiredCPUUtilization == DesiredCPUUtilization.HalfAvailPlusOneThread)
+            else if (desiredCPUUtilization == DesiredCpuUtilization.HalfAvailPlusOneThread)
                 threadUsage = (Environment.ProcessorCount / 2) + 1;
-            else if (desiredCPUUtilization == DesiredCPUUtilization.HalfAvailThreads)
+            else if (desiredCPUUtilization == DesiredCpuUtilization.HalfAvailThreads)
                 threadUsage = (Environment.ProcessorCount / 2);
-            else if (desiredCPUUtilization == DesiredCPUUtilization.SingleThread)
+            else if (desiredCPUUtilization == DesiredCpuUtilization.SingleThread)
                 threadUsage = 1;
 
             return threadUsage;

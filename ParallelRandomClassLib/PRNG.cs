@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
@@ -9,90 +8,86 @@ using System.Threading.Tasks;
 
 namespace ParallelRandomClassLib
 {
-    public class PRNG
+    public class Prng
     {
-        HashAlgorithm sha512 = new SHA512Managed();
-        HashAlgorithm sha256 = new SHA256Managed();
+        readonly HashAlgorithm _sha512 = new SHA512Managed();
+        readonly HashAlgorithm _sha256 = new SHA256Managed();
 
-        private byte[] _hashedSeedByte;
         private byte[] _currentEntropyBytes;
 
-        public PRNG()
+        public Prng()
         {
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _currentEntropyBytes = new byte[64];
 
             // RNGCrypto provides the virtually random bytes.
-            byte[] _systemEntropy64ByteSeed = new byte[64];
-            rngcsp.GetBytes(_systemEntropy64ByteSeed);
+            byte[] systemEntropy64ByteSeed = new byte[64];
+            rngcsp.GetBytes(systemEntropy64ByteSeed);
             rngcsp.Dispose();
 
             // When initializing PRNG without an argument, a SHA-512("inputString") hash will be used.
-            byte[] _inputEntropy64ByteSeed = sha512.ComputeHash(Encoding.ASCII.GetBytes("inputString"));
+            byte[] inputEntropy64ByteSeed = _sha512.ComputeHash(Encoding.ASCII.GetBytes("inputString"));
 
             // Concatenate both entropy seeds.
-            var concatenatedSeed = new byte[_systemEntropy64ByteSeed.Length + _inputEntropy64ByteSeed.Length];
-            _systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
-            _inputEntropy64ByteSeed.CopyTo(concatenatedSeed, _inputEntropy64ByteSeed.Length);
+            byte[] concatenatedSeed = new byte[systemEntropy64ByteSeed.Length + inputEntropy64ByteSeed.Length];
+            systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
+            inputEntropy64ByteSeed.CopyTo(concatenatedSeed, inputEntropy64ByteSeed.Length);
 
-            _hashedSeedByte = sha512.ComputeHash(concatenatedSeed);
-            _currentEntropyBytes = _hashedSeedByte.ToArray();
+            byte[] hashedSeedByte = _sha512.ComputeHash(concatenatedSeed);
+            _currentEntropyBytes = hashedSeedByte.ToArray();
         }
 
-        public PRNG(string inputString)
+        public Prng(string inputString)
         {
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _currentEntropyBytes = new byte[64];
 
             // RNGCrypto provides the virtually random bytes.
-            byte[] _systemEntropy64ByteSeed = new byte[64];
-            rngcsp.GetBytes(_systemEntropy64ByteSeed);
+            byte[] systemEntropy64ByteSeed = new byte[64];
+            rngcsp.GetBytes(systemEntropy64ByteSeed);
             rngcsp.Dispose();
 
             // Your input is to guarantee an additional source of entropy in case the entropy pool from RNGCSP fails.
-            byte[] _inputEntropy64ByteSeed = sha512.ComputeHash(Encoding.ASCII.GetBytes(inputString));
+            byte[] inputEntropy64ByteSeed = _sha512.ComputeHash(Encoding.ASCII.GetBytes(inputString));
 
             // Concatenate both entropy seeds.
-            var concatenatedSeed = new byte[_systemEntropy64ByteSeed.Length + _inputEntropy64ByteSeed.Length];
-            _systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
-            _inputEntropy64ByteSeed.CopyTo(concatenatedSeed, _inputEntropy64ByteSeed.Length);
+            byte[] concatenatedSeed = new byte[systemEntropy64ByteSeed.Length + inputEntropy64ByteSeed.Length];
+            systemEntropy64ByteSeed.CopyTo(concatenatedSeed, 0);
+            inputEntropy64ByteSeed.CopyTo(concatenatedSeed, inputEntropy64ByteSeed.Length);
 
-            _hashedSeedByte = sha512.ComputeHash(concatenatedSeed);
-            _currentEntropyBytes = _hashedSeedByte.ToArray();
+            byte[] hashedSeedByte = _sha512.ComputeHash(concatenatedSeed);
+            _currentEntropyBytes = hashedSeedByte.ToArray();
         }
 
-        public byte[] NextEntropy32ByteArray()
+        public byte[] Next32ByteArray()
         {
-            byte[] entropy32ByteArray = sha256.ComputeHash(_currentEntropyBytes);
+            byte[] entropy32ByteArray = _sha256.ComputeHash(_currentEntropyBytes);
 
             // Hashes the current entropy value and stores the hash as the basis for the next psuedorandom value.
-            _currentEntropyBytes = sha512.ComputeHash(_currentEntropyBytes);
-
+            _currentEntropyBytes = _sha512.ComputeHash(_currentEntropyBytes);
             return entropy32ByteArray;
         }
 
-        public List<byte[]> GenerateListOfEntropy32ByteArrays(int desiredQuantityOfArrays)
+        public List<byte[]> GenerateListOf32ByteArrays(int desiredQuantityOfArrays)
         {
             List<byte[]> listOfEntropy32ByteArray = new List<byte[]>();
-            byte[] entropy32ByteArray = new byte[32];
 
             if (desiredQuantityOfArrays > 0)
                 for (int i = 0; i < desiredQuantityOfArrays; i++)
                 {
-                    entropy32ByteArray = NextEntropy32ByteArray();
+                    byte[] entropy32ByteArray = Next32ByteArray();
                     listOfEntropy32ByteArray.Add(entropy32ByteArray);
                 }
-
             return listOfEntropy32ByteArray;
         }
 
         public BigInteger NextUInteger(BigInteger integerMaxExclusive)
         {
-            BigInteger prn = new BigInteger(sha256.ComputeHash(_currentEntropyBytes));
+            BigInteger prn = new BigInteger(_sha256.ComputeHash(_currentEntropyBytes));
             prn = BigInteger.Abs(prn);
 
             // Hashes the current entropy value and stores the hash as the basis for the next psuedorandom value.
-            _currentEntropyBytes = sha512.ComputeHash(_currentEntropyBytes);
+            _currentEntropyBytes = _sha512.ComputeHash(_currentEntropyBytes);
 
             prn = prn % integerMaxExclusive;
             return prn;
@@ -101,11 +96,11 @@ namespace ParallelRandomClassLib
         public BigInteger Next(BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
         {
             BigInteger minMaxDifference = maxIntValueExclusive - minIntValueInclusive;
-            BigInteger prn = new BigInteger(sha256.ComputeHash(_currentEntropyBytes));
+            BigInteger prn = new BigInteger(_sha256.ComputeHash(_currentEntropyBytes));
             prn = BigInteger.Abs(prn);
 
             // Hashes the current entropy value and stores the hash as the basis for the next psuedorandom value.
-            _currentEntropyBytes = sha512.ComputeHash(_currentEntropyBytes);
+            _currentEntropyBytes = _sha512.ComputeHash(_currentEntropyBytes);
 
             prn = (prn % minMaxDifference) + minIntValueInclusive;
             return prn;
@@ -114,7 +109,7 @@ namespace ParallelRandomClassLib
         public List<BigInteger> GenerateListOfEntropyUValues(BigInteger integerMaxExclusive, int desiredQuantityOfValues)
         {
             List<BigInteger> listOfEntropyUValues = new List<BigInteger>();
-            BigInteger generatedValue = 0;
+            BigInteger generatedValue;
 
             if (desiredQuantityOfValues > 0)
                 for (int i = 0; i < desiredQuantityOfValues; i++)
@@ -122,14 +117,13 @@ namespace ParallelRandomClassLib
                     generatedValue = NextUInteger(integerMaxExclusive);
                     listOfEntropyUValues.Add(generatedValue);
                 }
-
             return listOfEntropyUValues;
         }
 
         public List<BigInteger> GenerateListOfEntropyValuesBigInteger(BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive, int desiredQuantityOfValues)
         {
             List<BigInteger> listOfEntropyValues = new List<BigInteger>();
-            BigInteger generatedValue = 0;
+            BigInteger generatedValue;
 
             if (desiredQuantityOfValues > 0)
                 for (int i = 0; i < desiredQuantityOfValues; i++)
@@ -137,7 +131,6 @@ namespace ParallelRandomClassLib
                     generatedValue = Next(minIntValueInclusive, maxIntValueExclusive);
                     listOfEntropyValues.Add(generatedValue);
                 }
-
             return listOfEntropyValues;
         }
     }

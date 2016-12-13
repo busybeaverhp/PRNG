@@ -8,32 +8,28 @@ using System.Threading.Tasks;
 
 namespace ParallelRandomClassLib
 {
-    public enum DesiredCPUUtilization {AllThreads, HalfAvailPlusOneThread, HalfAvailThreads, SingleThread};
+    public enum DesiredCpuUtilization {AllThreads, HalfAvailPlusOneThread, HalfAvailThreads, SingleThread};
 
-    public class PPRNG
+    public class ParallelPrng
     {
         ConcurrentBag<byte[]> _bagOfRandomBytes;
         ConcurrentBag<BigInteger> _bagOfRandomIntegers;
 
-        public PPRNG() { }
-
-        public void GenerateDesiredQuantityOfRandom32ByteArrays(string inputString, DesiredCPUUtilization desiredCPUUtilization, int quantityOfRandom32ByteArrays)
+        public void GenerateDesiredQuantityOfRandom32ByteArrays(string inputString, DesiredCpuUtilization desiredCpuUtilization, int quantityOfRandom32ByteArrays)
         {
             _bagOfRandomBytes = new ConcurrentBag<byte[]>();
 
-            int threadUsage = ThreadUsage(desiredCPUUtilization);
-
-            ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
-            maxDegreeOfParallelism.MaxDegreeOfParallelism = threadUsage;
+            int threadUsage = ThreadUsage(desiredCpuUtilization);
+            ParallelOptions maxDegreeOfParallelism = new ParallelOptions {MaxDegreeOfParallelism = threadUsage};
 
             int iterationsPerThread = (quantityOfRandom32ByteArrays / threadUsage) + 1;
 
-            Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, ParallelLoopState) =>
+            Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, parallelLoopState) =>
             {
                 inputString += i;
-                PRNG prng = new PRNG(inputString);
+                Prng prng = new Prng(inputString);
 
-                var listOfEntropy32ByteArrays = prng.GenerateListOfEntropy32ByteArrays(iterationsPerThread);
+                var listOfEntropy32ByteArrays = prng.GenerateListOf32ByteArrays(iterationsPerThread);
 
                 // ConcurrentBag.Concat will turn the concurrent bag into IEnumrable, therefore each byte array must be added to the bag invidually.
                 foreach (byte[] byteArray in listOfEntropy32ByteArrays)
@@ -47,21 +43,19 @@ namespace ParallelRandomClassLib
             }
         }
 
-        public void GenerateDesiredQuantityOfRandomIntegers(string inputString, DesiredCPUUtilization desiredCPUUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
+        public void GenerateDesiredQuantityOfRandomIntegers(string inputString, DesiredCpuUtilization desiredCpuUtilization, int desiredQuantityOfValues, BigInteger minIntValueInclusive, BigInteger maxIntValueExclusive)
         {
             _bagOfRandomIntegers = new ConcurrentBag<BigInteger>();
 
-            int threadUsage = ThreadUsage(desiredCPUUtilization);
-
-            ParallelOptions maxDegreeOfParallelism = new ParallelOptions();
-            maxDegreeOfParallelism.MaxDegreeOfParallelism = threadUsage;
+            int threadUsage = ThreadUsage(desiredCpuUtilization);
+            ParallelOptions maxDegreeOfParallelism = new ParallelOptions {MaxDegreeOfParallelism = threadUsage};
 
             int iterationsPerThread = (desiredQuantityOfValues / threadUsage) + 1;
 
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i) =>
             {
                 inputString += i;
-                PRNG prng = new PRNG(inputString);
+                Prng prng = new Prng(inputString);
 
                 var listOfRandomIntegers = prng.GenerateListOfEntropyValuesBigInteger(minIntValueInclusive, maxIntValueExclusive, iterationsPerThread);
 
@@ -77,17 +71,17 @@ namespace ParallelRandomClassLib
             }
         }
 
-        private int ThreadUsage(DesiredCPUUtilization desiredCPUUtilization)
+        private int ThreadUsage(DesiredCpuUtilization desiredCpuUtilization)
         {
             int threadUsage = 1;
 
-            if (desiredCPUUtilization == DesiredCPUUtilization.AllThreads)
+            if (desiredCpuUtilization == DesiredCpuUtilization.AllThreads)
                 threadUsage = Environment.ProcessorCount;
-            else if (desiredCPUUtilization == DesiredCPUUtilization.HalfAvailPlusOneThread)
+            else if (desiredCpuUtilization == DesiredCpuUtilization.HalfAvailPlusOneThread)
                 threadUsage = (Environment.ProcessorCount / 2) + 1;
-            else if (desiredCPUUtilization == DesiredCPUUtilization.HalfAvailThreads)
+            else if (desiredCpuUtilization == DesiredCpuUtilization.HalfAvailThreads)
                 threadUsage = (Environment.ProcessorCount / 2);
-            else if (desiredCPUUtilization == DesiredCPUUtilization.SingleThread)
+            else if (desiredCpuUtilization == DesiredCpuUtilization.SingleThread)
                 threadUsage = 1;
 
             return threadUsage;
