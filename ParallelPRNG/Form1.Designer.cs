@@ -146,11 +146,10 @@
             // 
             this.txtConsole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConsole.Location = new System.Drawing.Point(7, 7);
-            this.txtConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConsole.Location = new System.Drawing.Point(5, 6);
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
-            this.txtConsole.Size = new System.Drawing.Size(1364, 570);
+            this.txtConsole.Size = new System.Drawing.Size(1024, 464);
             this.txtConsole.TabIndex = 0;
             this.txtConsole.Text = "";
             this.txtConsole.TextChanged += new System.EventHandler(this.txtConsole_TextChanged);
@@ -158,10 +157,9 @@
             // 
             // btnNextRanged
             // 
-            this.btnNextRanged.Location = new System.Drawing.Point(516, 586);
-            this.btnNextRanged.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNextRanged.Location = new System.Drawing.Point(387, 476);
             this.btnNextRanged.Name = "btnNextRanged";
-            this.btnNextRanged.Size = new System.Drawing.Size(167, 89);
+            this.btnNextRanged.Size = new System.Drawing.Size(125, 72);
             this.btnNextRanged.TabIndex = 3;
             this.btnNextRanged.Text = "Next Ranged";
             this.btnNextRanged.UseVisualStyleBackColor = true;
@@ -169,8 +167,7 @@
             // 
             // numUpDownMax
             // 
-            this.numUpDownMax.Location = new System.Drawing.Point(123, 586);
-            this.numUpDownMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownMax.Location = new System.Drawing.Point(92, 476);
             this.numUpDownMax.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -182,7 +179,7 @@
             -1,
             -2147483648});
             this.numUpDownMax.Name = "numUpDownMax";
-            this.numUpDownMax.Size = new System.Drawing.Size(216, 22);
+            this.numUpDownMax.Size = new System.Drawing.Size(162, 20);
             this.numUpDownMax.TabIndex = 8;
             this.numUpDownMax.ThousandsSeparator = true;
             this.numUpDownMax.Value = new decimal(new int[] {
@@ -193,8 +190,7 @@
             // 
             // numUpDownMin
             // 
-            this.numUpDownMin.Location = new System.Drawing.Point(123, 618);
-            this.numUpDownMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownMin.Location = new System.Drawing.Point(92, 502);
             this.numUpDownMin.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -206,16 +202,15 @@
             -1,
             -2147483648});
             this.numUpDownMin.Name = "numUpDownMin";
-            this.numUpDownMin.Size = new System.Drawing.Size(216, 22);
+            this.numUpDownMin.Size = new System.Drawing.Size(162, 20);
             this.numUpDownMin.TabIndex = 9;
             this.numUpDownMin.ThousandsSeparator = true;
             // 
             // btnMax
             // 
-            this.btnMax.Location = new System.Drawing.Point(7, 586);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMax.Location = new System.Drawing.Point(5, 476);
             this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(108, 25);
+            this.btnMax.Size = new System.Drawing.Size(81, 20);
             this.btnMax.TabIndex = 11;
             this.btnMax.Text = "MaxExclusive";
             this.btnMax.UseVisualStyleBackColor = true;
@@ -223,10 +218,9 @@
             // 
             // btnMin
             // 
-            this.btnMin.Location = new System.Drawing.Point(7, 618);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMin.Location = new System.Drawing.Point(5, 502);
             this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(108, 25);
+            this.btnMin.Size = new System.Drawing.Size(81, 20);
             this.btnMin.TabIndex = 12;
             this.btnMin.Text = "MinInclusive";
             this.btnMin.UseVisualStyleBackColor = true;
@@ -239,11 +233,11 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(15, 14);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(11, 11);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1389, 713);
+            this.tabControl1.Size = new System.Drawing.Size(1042, 579);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -257,11 +251,11 @@
             this.tabPage1.Controls.Add(this.numUpDownMin);
             this.tabPage1.Controls.Add(this.numUpDownMax);
             this.tabPage1.Controls.Add(this.btnMax);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1381, 684);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(1034, 553);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -273,19 +267,17 @@
             "Comma Delimiter",
             "Space Delimiter",
             "Semi-Colon Delimiter"});
-            this.cboDelimiter.Location = new System.Drawing.Point(347, 586);
-            this.cboDelimiter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDelimiter.Location = new System.Drawing.Point(260, 476);
             this.cboDelimiter.Name = "cboDelimiter";
-            this.cboDelimiter.Size = new System.Drawing.Size(160, 24);
+            this.cboDelimiter.Size = new System.Drawing.Size(121, 21);
             this.cboDelimiter.TabIndex = 16;
             this.cboDelimiter.Text = "Comma Delimiter";
             // 
             // btnMaxIterations
             // 
-            this.btnMaxIterations.Location = new System.Drawing.Point(7, 650);
-            this.btnMaxIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaxIterations.Location = new System.Drawing.Point(5, 528);
             this.btnMaxIterations.Name = "btnMaxIterations";
-            this.btnMaxIterations.Size = new System.Drawing.Size(108, 25);
+            this.btnMaxIterations.Size = new System.Drawing.Size(81, 20);
             this.btnMaxIterations.TabIndex = 15;
             this.btnMaxIterations.Text = "Iterations";
             this.btnMaxIterations.UseVisualStyleBackColor = true;
@@ -293,8 +285,7 @@
             // 
             // numUpDownIterations
             // 
-            this.numUpDownIterations.Location = new System.Drawing.Point(123, 650);
-            this.numUpDownIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownIterations.Location = new System.Drawing.Point(92, 528);
             this.numUpDownIterations.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -306,7 +297,7 @@
             0,
             0});
             this.numUpDownIterations.Name = "numUpDownIterations";
-            this.numUpDownIterations.Size = new System.Drawing.Size(216, 22);
+            this.numUpDownIterations.Size = new System.Drawing.Size(162, 20);
             this.numUpDownIterations.TabIndex = 14;
             this.numUpDownIterations.ThousandsSeparator = true;
             this.numUpDownIterations.Value = new decimal(new int[] {
@@ -324,21 +315,20 @@
             this.tabPage2.Controls.Add(this.numUpDownBenchMax);
             this.tabPage2.Controls.Add(this.btnBenchMax);
             this.tabPage2.Controls.Add(this.tableLayoutPanelTextBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1381, 684);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(1034, 553);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Benchmarks";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnBenchIterations
             // 
-            this.btnBenchIterations.Location = new System.Drawing.Point(771, 650);
-            this.btnBenchIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBenchIterations.Location = new System.Drawing.Point(578, 528);
             this.btnBenchIterations.Name = "btnBenchIterations";
-            this.btnBenchIterations.Size = new System.Drawing.Size(108, 25);
+            this.btnBenchIterations.Size = new System.Drawing.Size(81, 20);
             this.btnBenchIterations.TabIndex = 21;
             this.btnBenchIterations.Text = "Iterations";
             this.btnBenchIterations.UseVisualStyleBackColor = true;
@@ -346,8 +336,7 @@
             // 
             // numUpDownBenchIterations
             // 
-            this.numUpDownBenchIterations.Location = new System.Drawing.Point(887, 650);
-            this.numUpDownBenchIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownBenchIterations.Location = new System.Drawing.Point(665, 528);
             this.numUpDownBenchIterations.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -359,7 +348,7 @@
             0,
             0});
             this.numUpDownBenchIterations.Name = "numUpDownBenchIterations";
-            this.numUpDownBenchIterations.Size = new System.Drawing.Size(244, 22);
+            this.numUpDownBenchIterations.Size = new System.Drawing.Size(183, 20);
             this.numUpDownBenchIterations.TabIndex = 20;
             this.numUpDownBenchIterations.ThousandsSeparator = true;
             this.numUpDownBenchIterations.Value = new decimal(new int[] {
@@ -370,10 +359,9 @@
             // 
             // btnBenchMin
             // 
-            this.btnBenchMin.Location = new System.Drawing.Point(8, 650);
-            this.btnBenchMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBenchMin.Location = new System.Drawing.Point(6, 528);
             this.btnBenchMin.Name = "btnBenchMin";
-            this.btnBenchMin.Size = new System.Drawing.Size(108, 25);
+            this.btnBenchMin.Size = new System.Drawing.Size(81, 20);
             this.btnBenchMin.TabIndex = 19;
             this.btnBenchMin.Text = "MinInclusive";
             this.btnBenchMin.UseVisualStyleBackColor = true;
@@ -381,8 +369,7 @@
             // 
             // numUpDownBenchMin
             // 
-            this.numUpDownBenchMin.Location = new System.Drawing.Point(124, 650);
-            this.numUpDownBenchMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownBenchMin.Location = new System.Drawing.Point(93, 528);
             this.numUpDownBenchMin.Maximum = new decimal(new int[] {
             0,
             0,
@@ -394,14 +381,13 @@
             -1,
             -2147483648});
             this.numUpDownBenchMin.Name = "numUpDownBenchMin";
-            this.numUpDownBenchMin.Size = new System.Drawing.Size(244, 22);
+            this.numUpDownBenchMin.Size = new System.Drawing.Size(183, 20);
             this.numUpDownBenchMin.TabIndex = 17;
             this.numUpDownBenchMin.ThousandsSeparator = true;
             // 
             // numUpDownBenchMax
             // 
-            this.numUpDownBenchMax.Location = new System.Drawing.Point(505, 650);
-            this.numUpDownBenchMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownBenchMax.Location = new System.Drawing.Point(379, 528);
             this.numUpDownBenchMax.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -413,7 +399,7 @@
             -1,
             -2147483648});
             this.numUpDownBenchMax.Name = "numUpDownBenchMax";
-            this.numUpDownBenchMax.Size = new System.Drawing.Size(244, 22);
+            this.numUpDownBenchMax.Size = new System.Drawing.Size(183, 20);
             this.numUpDownBenchMax.TabIndex = 16;
             this.numUpDownBenchMax.ThousandsSeparator = true;
             this.numUpDownBenchMax.Value = new decimal(new int[] {
@@ -424,10 +410,9 @@
             // 
             // btnBenchMax
             // 
-            this.btnBenchMax.Location = new System.Drawing.Point(389, 650);
-            this.btnBenchMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBenchMax.Location = new System.Drawing.Point(292, 528);
             this.btnBenchMax.Name = "btnBenchMax";
-            this.btnBenchMax.Size = new System.Drawing.Size(108, 25);
+            this.btnBenchMax.Size = new System.Drawing.Size(81, 20);
             this.btnBenchMax.TabIndex = 18;
             this.btnBenchMax.Text = "MaxExclusive";
             this.btnBenchMax.UseVisualStyleBackColor = true;
@@ -452,52 +437,49 @@
             this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput2, 2, 1);
             this.tableLayoutPanelTextBox.Controls.Add(this.txtOutput3, 3, 1);
             this.tableLayoutPanelTextBox.Controls.Add(this.lblBench1, 0, 0);
-            this.tableLayoutPanelTextBox.Location = new System.Drawing.Point(5, 6);
-            this.tableLayoutPanelTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanelTextBox.Location = new System.Drawing.Point(4, 5);
+            this.tableLayoutPanelTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanelTextBox.Name = "tableLayoutPanelTextBox";
             this.tableLayoutPanelTextBox.RowCount = 3;
             this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.505155F));
             this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.49484F));
-            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanelTextBox.Size = new System.Drawing.Size(1368, 638);
+            this.tableLayoutPanelTextBox.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanelTextBox.Size = new System.Drawing.Size(1026, 518);
             this.tableLayoutPanelTextBox.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1030, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(771, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(301, 17);
+            this.label2.Size = new System.Drawing.Size(177, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "ParallelPRNG: All-Available-Plus-One Threads";
+            this.label2.Text = "ParallelPRNG: All-Available Threads";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(688, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(515, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 17);
+            this.label1.Size = new System.Drawing.Size(231, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "ParallelPRNG: Half-Available-Plus-One Threads";
             // 
             // lblBench2
             // 
             this.lblBench2.AutoSize = true;
-            this.lblBench2.Location = new System.Drawing.Point(346, 0);
-            this.lblBench2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBench2.Location = new System.Drawing.Point(259, 0);
             this.lblBench2.Name = "lblBench2";
-            this.lblBench2.Size = new System.Drawing.Size(247, 17);
+            this.lblBench2.Size = new System.Drawing.Size(185, 13);
             this.lblBench2.TabIndex = 7;
             this.lblBench2.Text = "ParallelPRNG: Half-Available Threads";
             // 
             // btnTimeSingleThread
             // 
-            this.btnTimeSingleThread.Location = new System.Drawing.Point(3, 600);
-            this.btnTimeSingleThread.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimeSingleThread.Location = new System.Drawing.Point(2, 487);
+            this.btnTimeSingleThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeSingleThread.Name = "btnTimeSingleThread";
-            this.btnTimeSingleThread.Size = new System.Drawing.Size(336, 36);
+            this.btnTimeSingleThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeSingleThread.TabIndex = 2;
             this.btnTimeSingleThread.Text = "Run Single-Threaded Benchmark";
             this.btnTimeSingleThread.UseVisualStyleBackColor = true;
@@ -505,10 +487,10 @@
             // 
             // btnTimeHalfAvailThread
             // 
-            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(345, 600);
-            this.btnTimeHalfAvailThread.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimeHalfAvailThread.Location = new System.Drawing.Point(258, 487);
+            this.btnTimeHalfAvailThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeHalfAvailThread.Name = "btnTimeHalfAvailThread";
-            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(336, 36);
+            this.btnTimeHalfAvailThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeHalfAvailThread.TabIndex = 3;
             this.btnTimeHalfAvailThread.Text = "Run Half-Available Threaded Benchmark";
             this.btnTimeHalfAvailThread.UseVisualStyleBackColor = true;
@@ -516,10 +498,10 @@
             // 
             // btnTimeHalfPlusOneAvailThread
             // 
-            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(687, 600);
-            this.btnTimeHalfPlusOneAvailThread.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimeHalfPlusOneAvailThread.Location = new System.Drawing.Point(514, 487);
+            this.btnTimeHalfPlusOneAvailThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeHalfPlusOneAvailThread.Name = "btnTimeHalfPlusOneAvailThread";
-            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(336, 36);
+            this.btnTimeHalfPlusOneAvailThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeHalfPlusOneAvailThread.TabIndex = 4;
             this.btnTimeHalfPlusOneAvailThread.Text = "Run Half-Avail-PlusOne Benchmark";
             this.btnTimeHalfPlusOneAvailThread.UseVisualStyleBackColor = true;
@@ -527,10 +509,10 @@
             // 
             // btnTimeFullThread
             // 
-            this.btnTimeFullThread.Location = new System.Drawing.Point(1029, 600);
-            this.btnTimeFullThread.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimeFullThread.Location = new System.Drawing.Point(770, 487);
+            this.btnTimeFullThread.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimeFullThread.Name = "btnTimeFullThread";
-            this.btnTimeFullThread.Size = new System.Drawing.Size(336, 36);
+            this.btnTimeFullThread.Size = new System.Drawing.Size(252, 29);
             this.btnTimeFullThread.TabIndex = 5;
             this.btnTimeFullThread.Text = "Run Full-Threaded Benchmark";
             this.btnTimeFullThread.UseVisualStyleBackColor = true;
@@ -538,44 +520,44 @@
             // 
             // txtOutput1
             // 
-            this.txtOutput1.Location = new System.Drawing.Point(345, 22);
-            this.txtOutput1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOutput1.Location = new System.Drawing.Point(258, 19);
+            this.txtOutput1.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput1.Name = "txtOutput1";
             this.txtOutput1.ReadOnly = true;
-            this.txtOutput1.Size = new System.Drawing.Size(335, 570);
+            this.txtOutput1.Size = new System.Drawing.Size(252, 464);
             this.txtOutput1.TabIndex = 1;
             this.txtOutput1.Text = "";
             this.txtOutput1.TextChanged += new System.EventHandler(this.txtOutput1_TextChanged);
             // 
             // txtOutput0
             // 
-            this.txtOutput0.Location = new System.Drawing.Point(3, 22);
-            this.txtOutput0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOutput0.Location = new System.Drawing.Point(2, 19);
+            this.txtOutput0.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput0.Name = "txtOutput0";
             this.txtOutput0.ReadOnly = true;
-            this.txtOutput0.Size = new System.Drawing.Size(335, 570);
+            this.txtOutput0.Size = new System.Drawing.Size(252, 464);
             this.txtOutput0.TabIndex = 0;
             this.txtOutput0.Text = "";
             this.txtOutput0.TextChanged += new System.EventHandler(this.txtOutput0_TextChanged);
             // 
             // txtOutput2
             // 
-            this.txtOutput2.Location = new System.Drawing.Point(687, 22);
-            this.txtOutput2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOutput2.Location = new System.Drawing.Point(514, 19);
+            this.txtOutput2.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput2.Name = "txtOutput2";
             this.txtOutput2.ReadOnly = true;
-            this.txtOutput2.Size = new System.Drawing.Size(335, 570);
+            this.txtOutput2.Size = new System.Drawing.Size(252, 464);
             this.txtOutput2.TabIndex = 2;
             this.txtOutput2.Text = "";
             this.txtOutput2.TextChanged += new System.EventHandler(this.txtOutput2_TextChanged);
             // 
             // txtOutput3
             // 
-            this.txtOutput3.Location = new System.Drawing.Point(1029, 22);
-            this.txtOutput3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOutput3.Location = new System.Drawing.Point(770, 19);
+            this.txtOutput3.Margin = new System.Windows.Forms.Padding(2);
             this.txtOutput3.Name = "txtOutput3";
             this.txtOutput3.ReadOnly = true;
-            this.txtOutput3.Size = new System.Drawing.Size(336, 570);
+            this.txtOutput3.Size = new System.Drawing.Size(253, 464);
             this.txtOutput3.TabIndex = 3;
             this.txtOutput3.Text = "";
             this.txtOutput3.TextChanged += new System.EventHandler(this.txtOutput3_TextChanged);
@@ -583,10 +565,9 @@
             // lblBench1
             // 
             this.lblBench1.AutoSize = true;
-            this.lblBench1.Location = new System.Drawing.Point(4, 0);
-            this.lblBench1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBench1.Location = new System.Drawing.Point(3, 0);
             this.lblBench1.Name = "lblBench1";
-            this.lblBench1.Size = new System.Drawing.Size(145, 17);
+            this.lblBench1.Size = new System.Drawing.Size(110, 13);
             this.lblBench1.TabIndex = 6;
             this.lblBench1.Text = "PRNG: Single Thread";
             // 
@@ -601,11 +582,10 @@
             this.tabPage3.Controls.Add(this.txtPQConsole);
             this.tabPage3.Controls.Add(this.numUpDownPQMin);
             this.tabPage3.Controls.Add(this.numUpDownPQMax);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage3.Size = new System.Drawing.Size(1381, 684);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1034, 553);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Probability Queries";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -623,11 +603,9 @@
             this.grpQueries.Controls.Add(this.btnQueryRange);
             this.grpQueries.Controls.Add(this.btnQueryValue);
             this.grpQueries.Controls.Add(this.numUpDownQueryValue);
-            this.grpQueries.Location = new System.Drawing.Point(365, 585);
-            this.grpQueries.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpQueries.Location = new System.Drawing.Point(274, 475);
             this.grpQueries.Name = "grpQueries";
-            this.grpQueries.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpQueries.Size = new System.Drawing.Size(1005, 89);
+            this.grpQueries.Size = new System.Drawing.Size(754, 72);
             this.grpQueries.TabIndex = 19;
             this.grpQueries.TabStop = false;
             this.grpQueries.Text = "Queries";
@@ -635,10 +613,9 @@
             // 
             // btnMaxQueryValue
             // 
-            this.btnMaxQueryValue.Location = new System.Drawing.Point(8, 23);
-            this.btnMaxQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaxQueryValue.Location = new System.Drawing.Point(6, 19);
             this.btnMaxQueryValue.Name = "btnMaxQueryValue";
-            this.btnMaxQueryValue.Size = new System.Drawing.Size(108, 25);
+            this.btnMaxQueryValue.Size = new System.Drawing.Size(81, 20);
             this.btnMaxQueryValue.TabIndex = 13;
             this.btnMaxQueryValue.Text = "MaxInclusive";
             this.btnMaxQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -648,10 +625,9 @@
             // btnQryLeastFrequent
             // 
             this.btnQryLeastFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnQryLeastFrequent.Location = new System.Drawing.Point(828, 54);
-            this.btnQryLeastFrequent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQryLeastFrequent.Location = new System.Drawing.Point(621, 44);
             this.btnQryLeastFrequent.Name = "btnQryLeastFrequent";
-            this.btnQryLeastFrequent.Size = new System.Drawing.Size(169, 25);
+            this.btnQryLeastFrequent.Size = new System.Drawing.Size(127, 20);
             this.btnQryLeastFrequent.TabIndex = 17;
             this.btnQryLeastFrequent.Text = "Least Frequent Value(s)";
             this.btnQryLeastFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -660,8 +636,7 @@
             // 
             // numUpDownBottomFreq
             // 
-            this.numUpDownBottomFreq.Location = new System.Drawing.Point(828, 23);
-            this.numUpDownBottomFreq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownBottomFreq.Location = new System.Drawing.Point(621, 19);
             this.numUpDownBottomFreq.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -673,7 +648,7 @@
             0,
             0});
             this.numUpDownBottomFreq.Name = "numUpDownBottomFreq";
-            this.numUpDownBottomFreq.Size = new System.Drawing.Size(169, 22);
+            this.numUpDownBottomFreq.Size = new System.Drawing.Size(127, 20);
             this.numUpDownBottomFreq.TabIndex = 18;
             this.numUpDownBottomFreq.ThousandsSeparator = true;
             this.numUpDownBottomFreq.Value = new decimal(new int[] {
@@ -684,10 +659,9 @@
             // 
             // btnMinQueryValue
             // 
-            this.btnMinQueryValue.Location = new System.Drawing.Point(8, 54);
-            this.btnMinQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinQueryValue.Location = new System.Drawing.Point(6, 44);
             this.btnMinQueryValue.Name = "btnMinQueryValue";
-            this.btnMinQueryValue.Size = new System.Drawing.Size(108, 25);
+            this.btnMinQueryValue.Size = new System.Drawing.Size(81, 20);
             this.btnMinQueryValue.TabIndex = 14;
             this.btnMinQueryValue.Text = "MinInclusive";
             this.btnMinQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -696,8 +670,7 @@
             // 
             // numUpDownMaxQueryValue
             // 
-            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(124, 23);
-            this.numUpDownMaxQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownMaxQueryValue.Location = new System.Drawing.Point(93, 19);
             this.numUpDownMaxQueryValue.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -709,7 +682,7 @@
             -1,
             -2147483648});
             this.numUpDownMaxQueryValue.Name = "numUpDownMaxQueryValue";
-            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(107, 22);
+            this.numUpDownMaxQueryValue.Size = new System.Drawing.Size(80, 20);
             this.numUpDownMaxQueryValue.TabIndex = 10;
             this.numUpDownMaxQueryValue.ThousandsSeparator = true;
             this.numUpDownMaxQueryValue.Value = new decimal(new int[] {
@@ -720,8 +693,7 @@
             // 
             // numUpDownTopFreq
             // 
-            this.numUpDownTopFreq.Location = new System.Drawing.Point(655, 23);
-            this.numUpDownTopFreq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownTopFreq.Location = new System.Drawing.Point(491, 19);
             this.numUpDownTopFreq.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -733,7 +705,7 @@
             0,
             0});
             this.numUpDownTopFreq.Name = "numUpDownTopFreq";
-            this.numUpDownTopFreq.Size = new System.Drawing.Size(165, 22);
+            this.numUpDownTopFreq.Size = new System.Drawing.Size(124, 20);
             this.numUpDownTopFreq.TabIndex = 16;
             this.numUpDownTopFreq.ThousandsSeparator = true;
             this.numUpDownTopFreq.Value = new decimal(new int[] {
@@ -744,8 +716,7 @@
             // 
             // numUpDownMinQueryValue
             // 
-            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(124, 54);
-            this.numUpDownMinQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownMinQueryValue.Location = new System.Drawing.Point(93, 44);
             this.numUpDownMinQueryValue.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -757,7 +728,7 @@
             -1,
             -2147483648});
             this.numUpDownMinQueryValue.Name = "numUpDownMinQueryValue";
-            this.numUpDownMinQueryValue.Size = new System.Drawing.Size(107, 22);
+            this.numUpDownMinQueryValue.Size = new System.Drawing.Size(80, 20);
             this.numUpDownMinQueryValue.TabIndex = 11;
             this.numUpDownMinQueryValue.ThousandsSeparator = true;
             this.numUpDownMinQueryValue.Value = new decimal(new int[] {
@@ -769,10 +740,9 @@
             // btnQryMostFrequent
             // 
             this.btnQryMostFrequent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnQryMostFrequent.Location = new System.Drawing.Point(655, 54);
-            this.btnQryMostFrequent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQryMostFrequent.Location = new System.Drawing.Point(491, 44);
             this.btnQryMostFrequent.Name = "btnQryMostFrequent";
-            this.btnQryMostFrequent.Size = new System.Drawing.Size(165, 25);
+            this.btnQryMostFrequent.Size = new System.Drawing.Size(124, 20);
             this.btnQryMostFrequent.TabIndex = 15;
             this.btnQryMostFrequent.Text = "Most Frequent Value(s)";
             this.btnQryMostFrequent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -782,10 +752,9 @@
             // btnQueryRange
             // 
             this.btnQueryRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.btnQueryRange.Location = new System.Drawing.Point(239, 23);
-            this.btnQueryRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQueryRange.Location = new System.Drawing.Point(179, 19);
             this.btnQueryRange.Name = "btnQueryRange";
-            this.btnQueryRange.Size = new System.Drawing.Size(140, 55);
+            this.btnQueryRange.Size = new System.Drawing.Size(105, 45);
             this.btnQueryRange.TabIndex = 12;
             this.btnQueryRange.Text = "Query Frequency of Values in Range";
             this.btnQueryRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -794,10 +763,9 @@
             // 
             // btnQueryValue
             // 
-            this.btnQueryValue.Location = new System.Drawing.Point(549, 54);
-            this.btnQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQueryValue.Location = new System.Drawing.Point(412, 44);
             this.btnQueryValue.Name = "btnQueryValue";
-            this.btnQueryValue.Size = new System.Drawing.Size(97, 25);
+            this.btnQueryValue.Size = new System.Drawing.Size(73, 20);
             this.btnQueryValue.TabIndex = 9;
             this.btnQueryValue.Text = "Query Value";
             this.btnQueryValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -806,8 +774,7 @@
             // 
             // numUpDownQueryValue
             // 
-            this.numUpDownQueryValue.Location = new System.Drawing.Point(549, 23);
-            this.numUpDownQueryValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownQueryValue.Location = new System.Drawing.Point(412, 19);
             this.numUpDownQueryValue.Maximum = new decimal(new int[] {
             -1,
             -1,
@@ -819,7 +786,7 @@
             -1,
             -2147483648});
             this.numUpDownQueryValue.Name = "numUpDownQueryValue";
-            this.numUpDownQueryValue.Size = new System.Drawing.Size(97, 22);
+            this.numUpDownQueryValue.Size = new System.Drawing.Size(73, 20);
             this.numUpDownQueryValue.TabIndex = 8;
             this.numUpDownQueryValue.ThousandsSeparator = true;
             this.numUpDownQueryValue.Value = new decimal(new int[] {
@@ -830,10 +797,9 @@
             // 
             // btnPQMin
             // 
-            this.btnPQMin.Location = new System.Drawing.Point(8, 617);
-            this.btnPQMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPQMin.Location = new System.Drawing.Point(6, 501);
             this.btnPQMin.Name = "btnPQMin";
-            this.btnPQMin.Size = new System.Drawing.Size(108, 25);
+            this.btnPQMin.Size = new System.Drawing.Size(81, 20);
             this.btnPQMin.TabIndex = 7;
             this.btnPQMin.Text = "MinInclusive";
             this.btnPQMin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -842,10 +808,9 @@
             // 
             // btnPQMax
             // 
-            this.btnPQMax.Location = new System.Drawing.Point(8, 585);
-            this.btnPQMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPQMax.Location = new System.Drawing.Point(6, 475);
             this.btnPQMax.Name = "btnPQMax";
-            this.btnPQMax.Size = new System.Drawing.Size(108, 25);
+            this.btnPQMax.Size = new System.Drawing.Size(81, 20);
             this.btnPQMax.TabIndex = 6;
             this.btnPQMax.Text = "MaxExclusive";
             this.btnPQMax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -854,10 +819,9 @@
             // 
             // btnPQIterations
             // 
-            this.btnPQIterations.Location = new System.Drawing.Point(8, 649);
-            this.btnPQIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPQIterations.Location = new System.Drawing.Point(6, 527);
             this.btnPQIterations.Name = "btnPQIterations";
-            this.btnPQIterations.Size = new System.Drawing.Size(108, 25);
+            this.btnPQIterations.Size = new System.Drawing.Size(81, 20);
             this.btnPQIterations.TabIndex = 5;
             this.btnPQIterations.Text = "Iterations";
             this.btnPQIterations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -866,10 +830,9 @@
             // 
             // btnCreateNumberTable
             // 
-            this.btnCreateNumberTable.Location = new System.Drawing.Point(272, 585);
-            this.btnCreateNumberTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateNumberTable.Location = new System.Drawing.Point(204, 475);
             this.btnCreateNumberTable.Name = "btnCreateNumberTable";
-            this.btnCreateNumberTable.Size = new System.Drawing.Size(85, 89);
+            this.btnCreateNumberTable.Size = new System.Drawing.Size(64, 72);
             this.btnCreateNumberTable.TabIndex = 4;
             this.btnCreateNumberTable.Text = "Create Random Number Table";
             this.btnCreateNumberTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -878,8 +841,7 @@
             // 
             // numUpDownPQIterations
             // 
-            this.numUpDownPQIterations.Location = new System.Drawing.Point(124, 649);
-            this.numUpDownPQIterations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownPQIterations.Location = new System.Drawing.Point(93, 527);
             this.numUpDownPQIterations.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -891,7 +853,7 @@
             0,
             0});
             this.numUpDownPQIterations.Name = "numUpDownPQIterations";
-            this.numUpDownPQIterations.Size = new System.Drawing.Size(140, 22);
+            this.numUpDownPQIterations.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQIterations.TabIndex = 3;
             this.numUpDownPQIterations.ThousandsSeparator = true;
             this.numUpDownPQIterations.Value = new decimal(new int[] {
@@ -902,18 +864,16 @@
             // 
             // txtPQConsole
             // 
-            this.txtPQConsole.Location = new System.Drawing.Point(8, 7);
-            this.txtPQConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPQConsole.Location = new System.Drawing.Point(6, 6);
             this.txtPQConsole.Name = "txtPQConsole";
             this.txtPQConsole.ReadOnly = true;
-            this.txtPQConsole.Size = new System.Drawing.Size(1361, 569);
+            this.txtPQConsole.Size = new System.Drawing.Size(1022, 463);
             this.txtPQConsole.TabIndex = 2;
             this.txtPQConsole.Text = "";
             // 
             // numUpDownPQMin
             // 
-            this.numUpDownPQMin.Location = new System.Drawing.Point(124, 617);
-            this.numUpDownPQMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownPQMin.Location = new System.Drawing.Point(93, 501);
             this.numUpDownPQMin.Maximum = new decimal(new int[] {
             1000001,
             0,
@@ -925,7 +885,7 @@
             0,
             -2147483648});
             this.numUpDownPQMin.Name = "numUpDownPQMin";
-            this.numUpDownPQMin.Size = new System.Drawing.Size(140, 22);
+            this.numUpDownPQMin.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQMin.TabIndex = 1;
             this.numUpDownPQMin.ThousandsSeparator = true;
             this.numUpDownPQMin.Value = new decimal(new int[] {
@@ -936,8 +896,7 @@
             // 
             // numUpDownPQMax
             // 
-            this.numUpDownPQMax.Location = new System.Drawing.Point(124, 585);
-            this.numUpDownPQMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownPQMax.Location = new System.Drawing.Point(93, 475);
             this.numUpDownPQMax.Maximum = new decimal(new int[] {
             1000001,
             0,
@@ -949,7 +908,7 @@
             0,
             -2147483648});
             this.numUpDownPQMax.Name = "numUpDownPQMax";
-            this.numUpDownPQMax.Size = new System.Drawing.Size(140, 22);
+            this.numUpDownPQMax.Size = new System.Drawing.Size(105, 20);
             this.numUpDownPQMax.TabIndex = 0;
             this.numUpDownPQMax.ThousandsSeparator = true;
             this.numUpDownPQMax.Value = new decimal(new int[] {
@@ -968,11 +927,10 @@
             this.tabPage4.Controls.Add(this.btnGenerateBWNoise);
             this.tabPage4.Controls.Add(this.btnGenerateRGBNoise);
             this.tabPage4.Controls.Add(this.canvasTab3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage4.Size = new System.Drawing.Size(1381, 684);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1034, 553);
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "Visual Demonstrations";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -987,11 +945,9 @@
             this.grpHistogramQuery.Controls.Add(this.lblX);
             this.grpHistogramQuery.Controls.Add(this.numUpDownX);
             this.grpHistogramQuery.Controls.Add(this.btnCreateHistogram);
-            this.grpHistogramQuery.Location = new System.Drawing.Point(9, 337);
-            this.grpHistogramQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpHistogramQuery.Location = new System.Drawing.Point(7, 274);
             this.grpHistogramQuery.Name = "grpHistogramQuery";
-            this.grpHistogramQuery.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpHistogramQuery.Size = new System.Drawing.Size(180, 300);
+            this.grpHistogramQuery.Size = new System.Drawing.Size(135, 244);
             this.grpHistogramQuery.TabIndex = 7;
             this.grpHistogramQuery.TabStop = false;
             this.grpHistogramQuery.Text = "2D Histogram";
@@ -1003,11 +959,9 @@
             this.grpHistogramFilter.Controls.Add(this.numUpDownFilterMin);
             this.grpHistogramFilter.Controls.Add(this.numUpDownFilterMax);
             this.grpHistogramFilter.Controls.Add(this.btnHistogramFilter);
-            this.grpHistogramFilter.Location = new System.Drawing.Point(8, 123);
-            this.grpHistogramFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpHistogramFilter.Location = new System.Drawing.Point(6, 100);
             this.grpHistogramFilter.Name = "grpHistogramFilter";
-            this.grpHistogramFilter.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpHistogramFilter.Size = new System.Drawing.Size(164, 170);
+            this.grpHistogramFilter.Size = new System.Drawing.Size(123, 138);
             this.grpHistogramFilter.TabIndex = 11;
             this.grpHistogramFilter.TabStop = false;
             this.grpHistogramFilter.Text = "Histogram Filters";
@@ -1016,45 +970,40 @@
             // lblFilterMin
             // 
             this.lblFilterMin.AutoSize = true;
-            this.lblFilterMin.Location = new System.Drawing.Point(8, 108);
-            this.lblFilterMin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilterMin.Location = new System.Drawing.Point(6, 88);
             this.lblFilterMin.Name = "lblFilterMin";
-            this.lblFilterMin.Size = new System.Drawing.Size(131, 17);
+            this.lblFilterMin.Size = new System.Drawing.Size(99, 13);
             this.lblFilterMin.TabIndex = 5;
             this.lblFilterMin.Text = "Min Freq (Inclusive)";
             // 
             // lblFilterMax
             // 
             this.lblFilterMax.AutoSize = true;
-            this.lblFilterMax.Location = new System.Drawing.Point(8, 52);
-            this.lblFilterMax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilterMax.Location = new System.Drawing.Point(6, 42);
             this.lblFilterMax.Name = "lblFilterMax";
-            this.lblFilterMax.Size = new System.Drawing.Size(134, 17);
+            this.lblFilterMax.Size = new System.Drawing.Size(102, 13);
             this.lblFilterMax.TabIndex = 4;
             this.lblFilterMax.Text = "Max Freq (Inclusive)";
             // 
             // numUpDownFilterMin
             // 
-            this.numUpDownFilterMin.Location = new System.Drawing.Point(8, 80);
-            this.numUpDownFilterMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownFilterMin.Location = new System.Drawing.Point(6, 65);
             this.numUpDownFilterMin.Name = "numUpDownFilterMin";
-            this.numUpDownFilterMin.Size = new System.Drawing.Size(148, 22);
+            this.numUpDownFilterMin.Size = new System.Drawing.Size(111, 20);
             this.numUpDownFilterMin.TabIndex = 3;
             // 
             // numUpDownFilterMax
             // 
-            this.numUpDownFilterMax.Location = new System.Drawing.Point(9, 23);
-            this.numUpDownFilterMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownFilterMax.Location = new System.Drawing.Point(7, 19);
             this.numUpDownFilterMax.Name = "numUpDownFilterMax";
-            this.numUpDownFilterMax.Size = new System.Drawing.Size(147, 22);
+            this.numUpDownFilterMax.Size = new System.Drawing.Size(110, 20);
             this.numUpDownFilterMax.TabIndex = 1;
             // 
             // btnHistogramFilter
             // 
-            this.btnHistogramFilter.Location = new System.Drawing.Point(9, 134);
-            this.btnHistogramFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHistogramFilter.Location = new System.Drawing.Point(7, 109);
             this.btnHistogramFilter.Name = "btnHistogramFilter";
-            this.btnHistogramFilter.Size = new System.Drawing.Size(147, 28);
+            this.btnHistogramFilter.Size = new System.Drawing.Size(110, 23);
             this.btnHistogramFilter.TabIndex = 0;
             this.btnHistogramFilter.Text = "Filter Histogram";
             this.btnHistogramFilter.UseVisualStyleBackColor = true;
@@ -1063,17 +1012,15 @@
             // lblPoints
             // 
             this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(8, 58);
-            this.lblPoints.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPoints.Location = new System.Drawing.Point(6, 47);
             this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(51, 17);
+            this.lblPoints.Size = new System.Drawing.Size(39, 13);
             this.lblPoints.TabIndex = 10;
             this.lblPoints.Text = "Points:";
             // 
             // numUpDownPoints
             // 
-            this.numUpDownPoints.Location = new System.Drawing.Point(68, 55);
-            this.numUpDownPoints.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownPoints.Location = new System.Drawing.Point(51, 45);
             this.numUpDownPoints.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -1085,7 +1032,7 @@
             0,
             0});
             this.numUpDownPoints.Name = "numUpDownPoints";
-            this.numUpDownPoints.Size = new System.Drawing.Size(104, 22);
+            this.numUpDownPoints.Size = new System.Drawing.Size(78, 20);
             this.numUpDownPoints.TabIndex = 9;
             this.numUpDownPoints.Value = new decimal(new int[] {
             500,
@@ -1096,17 +1043,15 @@
             // lblY
             // 
             this.lblY.AutoSize = true;
-            this.lblY.Location = new System.Drawing.Point(92, 26);
-            this.lblY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblY.Location = new System.Drawing.Point(69, 21);
             this.lblY.Name = "lblY";
-            this.lblY.Size = new System.Drawing.Size(21, 17);
+            this.lblY.Size = new System.Drawing.Size(17, 13);
             this.lblY.TabIndex = 8;
             this.lblY.Text = "Y:";
             // 
             // numUpDownY
             // 
-            this.numUpDownY.Location = new System.Drawing.Point(119, 23);
-            this.numUpDownY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownY.Location = new System.Drawing.Point(89, 19);
             this.numUpDownY.Maximum = new decimal(new int[] {
             541,
             0,
@@ -1118,7 +1063,7 @@
             0,
             0});
             this.numUpDownY.Name = "numUpDownY";
-            this.numUpDownY.Size = new System.Drawing.Size(53, 22);
+            this.numUpDownY.Size = new System.Drawing.Size(40, 20);
             this.numUpDownY.TabIndex = 2;
             this.numUpDownY.Value = new decimal(new int[] {
             500,
@@ -1129,17 +1074,15 @@
             // lblX
             // 
             this.lblX.AutoSize = true;
-            this.lblX.Location = new System.Drawing.Point(8, 26);
-            this.lblX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblX.Location = new System.Drawing.Point(6, 21);
             this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(21, 17);
+            this.lblX.Size = new System.Drawing.Size(17, 13);
             this.lblX.TabIndex = 3;
             this.lblX.Text = "X:";
             // 
             // numUpDownX
             // 
-            this.numUpDownX.Location = new System.Drawing.Point(31, 23);
-            this.numUpDownX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUpDownX.Location = new System.Drawing.Point(23, 19);
             this.numUpDownX.Maximum = new decimal(new int[] {
             541,
             0,
@@ -1151,7 +1094,7 @@
             0,
             0});
             this.numUpDownX.Name = "numUpDownX";
-            this.numUpDownX.Size = new System.Drawing.Size(53, 22);
+            this.numUpDownX.Size = new System.Drawing.Size(40, 20);
             this.numUpDownX.TabIndex = 1;
             this.numUpDownX.Value = new decimal(new int[] {
             500,
@@ -1161,10 +1104,9 @@
             // 
             // btnCreateHistogram
             // 
-            this.btnCreateHistogram.Location = new System.Drawing.Point(7, 87);
-            this.btnCreateHistogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateHistogram.Location = new System.Drawing.Point(5, 71);
             this.btnCreateHistogram.Name = "btnCreateHistogram";
-            this.btnCreateHistogram.Size = new System.Drawing.Size(165, 28);
+            this.btnCreateHistogram.Size = new System.Drawing.Size(124, 23);
             this.btnCreateHistogram.TabIndex = 0;
             this.btnCreateHistogram.Text = "Create New Histogram";
             this.btnCreateHistogram.UseVisualStyleBackColor = true;
@@ -1177,21 +1119,18 @@
             this.grpCards.Controls.Add(this.btnThrowCard);
             this.grpCards.Controls.Add(this.btnShuffleDeck);
             this.grpCards.Controls.Add(this.btnGetNewDeck);
-            this.grpCards.Location = new System.Drawing.Point(8, 150);
-            this.grpCards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpCards.Location = new System.Drawing.Point(6, 122);
             this.grpCards.Name = "grpCards";
-            this.grpCards.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpCards.Size = new System.Drawing.Size(181, 178);
+            this.grpCards.Size = new System.Drawing.Size(136, 145);
             this.grpCards.TabIndex = 6;
             this.grpCards.TabStop = false;
             this.grpCards.Text = "Cards Shuffler";
             // 
             // btnThrowNewShuffedDeck
             // 
-            this.btnThrowNewShuffedDeck.Location = new System.Drawing.Point(8, 129);
-            this.btnThrowNewShuffedDeck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThrowNewShuffedDeck.Location = new System.Drawing.Point(6, 105);
             this.btnThrowNewShuffedDeck.Name = "btnThrowNewShuffedDeck";
-            this.btnThrowNewShuffedDeck.Size = new System.Drawing.Size(165, 42);
+            this.btnThrowNewShuffedDeck.Size = new System.Drawing.Size(124, 34);
             this.btnThrowNewShuffedDeck.TabIndex = 10;
             this.btnThrowNewShuffedDeck.Text = "Throw 52 Cards from a Newly Shuffled Deck";
             this.btnThrowNewShuffedDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1200,21 +1139,19 @@
             // 
             // txtCardsRemaining
             // 
-            this.txtCardsRemaining.Location = new System.Drawing.Point(8, 97);
-            this.txtCardsRemaining.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCardsRemaining.Location = new System.Drawing.Point(6, 79);
             this.txtCardsRemaining.Name = "txtCardsRemaining";
             this.txtCardsRemaining.ReadOnly = true;
-            this.txtCardsRemaining.Size = new System.Drawing.Size(51, 22);
+            this.txtCardsRemaining.Size = new System.Drawing.Size(39, 20);
             this.txtCardsRemaining.TabIndex = 7;
             this.txtCardsRemaining.Text = "R: 0";
             // 
             // btnThrowCard
             // 
             this.btnThrowCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
-            this.btnThrowCard.Location = new System.Drawing.Point(68, 95);
-            this.btnThrowCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThrowCard.Location = new System.Drawing.Point(51, 77);
             this.btnThrowCard.Name = "btnThrowCard";
-            this.btnThrowCard.Size = new System.Drawing.Size(105, 28);
+            this.btnThrowCard.Size = new System.Drawing.Size(79, 23);
             this.btnThrowCard.TabIndex = 9;
             this.btnThrowCard.Text = "Throw Top Card";
             this.btnThrowCard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1223,10 +1160,9 @@
             // 
             // btnShuffleDeck
             // 
-            this.btnShuffleDeck.Location = new System.Drawing.Point(8, 59);
-            this.btnShuffleDeck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShuffleDeck.Location = new System.Drawing.Point(6, 48);
             this.btnShuffleDeck.Name = "btnShuffleDeck";
-            this.btnShuffleDeck.Size = new System.Drawing.Size(165, 28);
+            this.btnShuffleDeck.Size = new System.Drawing.Size(124, 23);
             this.btnShuffleDeck.TabIndex = 8;
             this.btnShuffleDeck.Text = "Shuffle Current Deck";
             this.btnShuffleDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1236,10 +1172,9 @@
             // btnGetNewDeck
             // 
             this.btnGetNewDeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnGetNewDeck.Location = new System.Drawing.Point(8, 23);
-            this.btnGetNewDeck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGetNewDeck.Location = new System.Drawing.Point(6, 19);
             this.btnGetNewDeck.Name = "btnGetNewDeck";
-            this.btnGetNewDeck.Size = new System.Drawing.Size(165, 28);
+            this.btnGetNewDeck.Size = new System.Drawing.Size(124, 23);
             this.btnGetNewDeck.TabIndex = 7;
             this.btnGetNewDeck.Text = "New Ordered Deck";
             this.btnGetNewDeck.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1248,10 +1183,9 @@
             // 
             // btnClearCanvas
             // 
-            this.btnClearCanvas.Location = new System.Drawing.Point(8, 645);
-            this.btnClearCanvas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearCanvas.Location = new System.Drawing.Point(6, 524);
             this.btnClearCanvas.Name = "btnClearCanvas";
-            this.btnClearCanvas.Size = new System.Drawing.Size(181, 28);
+            this.btnClearCanvas.Size = new System.Drawing.Size(136, 23);
             this.btnClearCanvas.TabIndex = 5;
             this.btnClearCanvas.Text = "Clear Canvas";
             this.btnClearCanvas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1260,10 +1194,9 @@
             // 
             // btnRandomWalk
             // 
-            this.btnRandomWalk.Location = new System.Drawing.Point(8, 114);
-            this.btnRandomWalk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRandomWalk.Location = new System.Drawing.Point(6, 93);
             this.btnRandomWalk.Name = "btnRandomWalk";
-            this.btnRandomWalk.Size = new System.Drawing.Size(181, 28);
+            this.btnRandomWalk.Size = new System.Drawing.Size(136, 23);
             this.btnRandomWalk.TabIndex = 4;
             this.btnRandomWalk.Text = "Draw Random Walk";
             this.btnRandomWalk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1272,10 +1205,9 @@
             // 
             // btnGenerateVerticalBars
             // 
-            this.btnGenerateVerticalBars.Location = new System.Drawing.Point(8, 79);
-            this.btnGenerateVerticalBars.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerateVerticalBars.Location = new System.Drawing.Point(6, 64);
             this.btnGenerateVerticalBars.Name = "btnGenerateVerticalBars";
-            this.btnGenerateVerticalBars.Size = new System.Drawing.Size(181, 28);
+            this.btnGenerateVerticalBars.Size = new System.Drawing.Size(136, 23);
             this.btnGenerateVerticalBars.TabIndex = 3;
             this.btnGenerateVerticalBars.Text = "Generate Vertical Bars";
             this.btnGenerateVerticalBars.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1284,10 +1216,9 @@
             // 
             // btnGenerateBWNoise
             // 
-            this.btnGenerateBWNoise.Location = new System.Drawing.Point(8, 43);
-            this.btnGenerateBWNoise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerateBWNoise.Location = new System.Drawing.Point(6, 35);
             this.btnGenerateBWNoise.Name = "btnGenerateBWNoise";
-            this.btnGenerateBWNoise.Size = new System.Drawing.Size(181, 28);
+            this.btnGenerateBWNoise.Size = new System.Drawing.Size(136, 23);
             this.btnGenerateBWNoise.TabIndex = 2;
             this.btnGenerateBWNoise.Text = "Generate BW Noise";
             this.btnGenerateBWNoise.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1296,10 +1227,9 @@
             // 
             // btnGenerateRGBNoise
             // 
-            this.btnGenerateRGBNoise.Location = new System.Drawing.Point(8, 7);
-            this.btnGenerateRGBNoise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerateRGBNoise.Location = new System.Drawing.Point(6, 6);
             this.btnGenerateRGBNoise.Name = "btnGenerateRGBNoise";
-            this.btnGenerateRGBNoise.Size = new System.Drawing.Size(181, 28);
+            this.btnGenerateRGBNoise.Size = new System.Drawing.Size(136, 23);
             this.btnGenerateRGBNoise.TabIndex = 1;
             this.btnGenerateRGBNoise.Text = "Generate RGB Noise";
             this.btnGenerateRGBNoise.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1308,21 +1238,19 @@
             // 
             // canvasTab3
             // 
-            this.canvasTab3.Location = new System.Drawing.Point(197, 7);
-            this.canvasTab3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.canvasTab3.Location = new System.Drawing.Point(148, 6);
             this.canvasTab3.Name = "canvasTab3";
-            this.canvasTab3.Size = new System.Drawing.Size(1173, 666);
+            this.canvasTab3.Size = new System.Drawing.Size(880, 541);
             this.canvasTab3.TabIndex = 0;
             this.canvasTab3.TabStop = false;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.txtAbout);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage5.Size = new System.Drawing.Size(1381, 684);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1034, 553);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "About";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1330,21 +1258,19 @@
             // txtAbout
             // 
             this.txtAbout.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtAbout.Location = new System.Drawing.Point(8, 7);
-            this.txtAbout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAbout.Location = new System.Drawing.Point(6, 6);
             this.txtAbout.Name = "txtAbout";
             this.txtAbout.ReadOnly = true;
-            this.txtAbout.Size = new System.Drawing.Size(1361, 665);
+            this.txtAbout.Size = new System.Drawing.Size(1022, 541);
             this.txtAbout.TabIndex = 0;
             this.txtAbout.Text = "";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1419, 740);
+            this.ClientSize = new System.Drawing.Size(1064, 601);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Huy Pham\'s Parallel Pseudorandom Number Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
