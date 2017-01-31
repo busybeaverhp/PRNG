@@ -609,7 +609,6 @@ namespace ParallelPRNG
                 else
                     result = (rankedList[rankedList.Count() / 2] + rankedList[(rankedList.Count() / 2) - 1]) / 2f;
             }
-
             return result;
         }
 
