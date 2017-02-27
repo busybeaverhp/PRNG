@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace ParallelRandomClassLib
 {
-    public class Prng
+    public class PRNG
     {
         readonly HashAlgorithm _sha512 = new SHA512Managed();
         readonly HashAlgorithm _sha256 = new SHA256Managed();
 
         private byte[] _currentEntropyBytes;
 
-        public Prng()
+        public PRNG()
         {
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _currentEntropyBytes = new byte[64];
@@ -25,7 +25,7 @@ namespace ParallelRandomClassLib
             rngcsp.GetBytes(systemEntropy64ByteSeed);
             rngcsp.Dispose();
 
-            // When initializing PRNG without an argument, a SHA-512("inputString") hash will be used.
+            // When initializing PRNG without a string argument, a SHA-512("inputString") hash will be used.
             byte[] inputEntropy64ByteSeed = _sha512.ComputeHash(Encoding.ASCII.GetBytes("inputString"));
 
             // Concatenate both entropy seeds.
@@ -37,7 +37,7 @@ namespace ParallelRandomClassLib
             _currentEntropyBytes = hashedSeedByte.ToArray();
         }
 
-        public Prng(string inputString)
+        public PRNG(string inputString)
         {
             RNGCryptoServiceProvider rngcsp = new RNGCryptoServiceProvider();
             _currentEntropyBytes = new byte[64];
@@ -63,7 +63,7 @@ namespace ParallelRandomClassLib
         {
             byte[] entropy32ByteArray = _sha256.ComputeHash(_currentEntropyBytes);
 
-            // Hashes the current entropy value and stores the hash as the basis for the next psuedorandom value.
+            // Hashes the current entropy value and stores the hash as the basis for the next pseudorandom value.
             _currentEntropyBytes = _sha512.ComputeHash(_currentEntropyBytes);
             return entropy32ByteArray;
         }

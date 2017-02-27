@@ -27,7 +27,7 @@ namespace ParallelRandomClassLib
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i, parallelLoopState) =>
             {
                 inputString += i;
-                Prng prng = new Prng(inputString);
+                PRNG prng = new PRNG(inputString);
 
                 var listOfEntropy32ByteArrays = prng.GenerateListOf32ByteArrays(iterationsPerThread);
 
@@ -55,7 +55,7 @@ namespace ParallelRandomClassLib
             Parallel.For(0, threadUsage, maxDegreeOfParallelism, (i) =>
             {
                 inputString += i;
-                Prng prng = new Prng(inputString);
+                PRNG prng = new PRNG(inputString);
 
                 var listOfRandomIntegers = prng.GenerateListOfEntropyValuesBigInteger(minIntValueInclusive, maxIntValueExclusive, iterationsPerThread);
 

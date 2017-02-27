@@ -15,7 +15,7 @@ namespace ParallelPRNG
 {
     public partial class Form1 : Form
     {
-        private Prng _prng;
+        private PRNG _prng;
         private ParallelPrng _parallelPrng;
         readonly RichTextBox[] _txtOutputArray = new RichTextBox[4];
 
@@ -43,7 +43,7 @@ namespace ParallelPRNG
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _prng = new Prng("Huy's Parallel PRNG Class");
+            _prng = new PRNG("Huy's Parallel PRNG Class");
             _parallelPrng = new ParallelPrng();
 
             _txtOutputArray[0] = txtOutput0;
